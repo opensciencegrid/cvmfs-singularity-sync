@@ -40,6 +40,7 @@ import os
 import re
 import sys
 import stat
+import errno
 import urllib2
 import hashlib
 import tempfile
@@ -159,7 +160,11 @@ def make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo
         retval = start_txn(singularity_rootfs)
         if retval:
             return retval
-        os.makedirs(final_dir)
+        try:
+            os.makedirs(final_dir)
+        except OSError as oe:
+            if oe.errno != errno.EEXIST:
+                raise
     if os.path.exists(final_path):
         # Final symlink exists and is already correct.
         link_value = os.readlink(final_path)
@@ -248,7 +253,11 @@ def publish_image(image, singularity_rootfs, registry, doauth):
         retval = start_txn(singularity_rootfs)
         if retval:
             return retval
-        os.makedirs(image_dir)
+        try:
+            os.makedirs(image_dir)
+        except OSError as oe:
+            if oe.errno != errno.EEXIST:
+                raise
 
 #  DOWNLOAD LAYERS -------------------------------------------
 # Each is a .tar.gz file, obtained from registry with curl

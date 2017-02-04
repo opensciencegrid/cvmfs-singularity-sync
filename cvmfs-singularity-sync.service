@@ -13,6 +13,9 @@ User=bbockelm
 Nice=19
 LimitNOFILE=65536
 
+# Make sure python sends its stderr immediately.
+Environment=PYTHONUNBUFFERED=1
+
 [Install]
 WantedBy=multi-user.target
 
