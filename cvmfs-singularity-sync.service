@@ -5,7 +5,7 @@ After=network.target cvmfs-singularity.opensciencegrid.org.mount
 Wants=network.target cvmfs-singularity.opensciencegrid.org.mount
 
 [Service]
-ExecStart=/home/cse496/bbockelm/cvmfs-singularity-sync/cvmfs-singularity-sync --images-url file:///home/cse496/bbockelm/test_docker_images
+ExecStart=/home/cse496/bbockelm/cvmfs-singularity-sync/cvmfs-singularity-sync --images-url https://raw.githubusercontent.com/bbockelm/cvmfs-singularity-sync/master/docker_images.txt
 WorkingDirectory=/home/cse496/bbockelm/cvmfs-singularity-sync
 RestartSec=15min
 Restart=always

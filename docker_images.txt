@@ -1,0 +1,16 @@
+
+# This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
+
+# First, some generic CentOS images:
+centos:latest
+centos:centos6
+centos:centos7
+
+# OSG-specific worker node images
+opensciencegrid/osg-3.3-wn-el6
+opensciencegrid/osg-3.3-wn-el7
+
+# Lightweight images
+busybox
+alpine
+
