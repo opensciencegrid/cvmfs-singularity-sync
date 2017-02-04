@@ -1,0 +1,18 @@
+
+[Unit]
+Description=singularity.opensciencegrid.org repo update
+After=network.target cvmfs-singularity.opensciencegrid.org.mount
+Wants=network.target cvmfs-singularity.opensciencegrid.org.mount
+
+[Service]
+ExecStart=/home/cse496/bbockelm/cvmfs-singularity-sync/cvmfs-singularity-sync --images-url file:///home/cse496/bbockelm/test_docker_images
+WorkingDirectory=/home/cse496/bbockelm/cvmfs-singularity-sync
+RestartSec=15min
+Restart=always
+User=bbockelm
+Nice=19
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+
