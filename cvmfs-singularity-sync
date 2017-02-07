@@ -308,10 +308,20 @@ def publish_image(image, singularity_rootfs, registry, doauth):
     # Various fixups to make the image compatible with CVMFS and singularity.
     srv = os.path.join(image_dir, "srv")
     cvmfs = os.path.join(image_dir, "cvmfs")
+    dev = os.path.join(image_dir, "dev")
+    proc = os.path.join(image_dir, "proc")
+    sys_dir = os.path.join(image_dir, "sys")
     if not os.path.exists(srv):
         os.makedirs(srv)
     if not os.path.exists(cvmfs):
         os.makedirs(cvmfs)
+    if not os.path.exists(dev):
+        os.makedirs(dev)
+    if not os.path.exists(proc):
+        os.makedirs(proc)
+    if not os.path.exists(sys_dir):
+        os.makedirs(sys_dir)
+
 
     make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
 
