@@ -30,6 +30,10 @@ tensorflow/tensorflow
 opensciencegrid/osg-3.3-wn-el6
 opensciencegrid/osg-3.3-wn-el7
 
+# OSGVO
+rynge/osgvo:el6
+rynge/osgvo:el7
+
 # Lightweight images
 busybox
 alpine
