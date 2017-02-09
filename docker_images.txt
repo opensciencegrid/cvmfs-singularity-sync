@@ -12,6 +12,7 @@ debian:stable
 debian:testing
 debian:unstable
 ubuntu:latest
+fedora:latest
 
 # Common programming environments
 python:latest
