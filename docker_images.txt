@@ -39,3 +39,6 @@ rynge/osgvo:el7
 busybox
 alpine
 
+# Electron Ion Collider images
+whit2333/eic-slic:latest
+
