@@ -44,3 +44,4 @@ whit2333/eic-slic:latest
 
 # Common biology tools
 biocontainers/blast
+cyverse/rsem-prepare
