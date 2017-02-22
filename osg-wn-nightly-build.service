@@ -1,0 +1,21 @@
+
+[Unit]
+Description=osg-wn DockerHub nightly build
+After=network.target
+Wants=network.target
+
+[Service]
+ExecStart=/home/cse496/bbockelm/cvmfs-singularity-sync/osg-wn-nightly-build --tokenfile /home/cse496/bbockelm/cvmfs-singularity-sync/tokenfile
+WorkingDirectory=/home/cse496/bbockelm/cvmfs-singularity-sync
+RestartSec=24hr
+Restart=always
+User=bbockelm
+Nice=19
+LimitNOFILE=65536
+
+# Make sure python sends its stderr immediately.
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,43 @@
+#!/usr/bin/python
+
+import sys
+import json
+import urllib
+import urllib2
+import argparse
+import urlparse
+
+if '/usr/libexec/singularity/python' not in sys.path:
+    sys.path.append('/usr/libexec/singularity/python')
+
+import docker.api
+
+def main():
+    parser = argparse.ArgumentParser(description="Tool for triggering automated builds in Docker")
+    parser.add_argument("-t", "--tokenfile", help="Path to file containing DockerHub security token", dest="tokenfile", required=True)
+
+    args = parser.parse_args()
+
+    with open(args.tokenfile, "r") as fp:
+        token = fp.read().strip()
+
+    all_tags = [i for i in docker.api.get_tags(namespace="opensciencegrid", repo_name="osg-wn") if (('testing' in i) or ('devel' in i))]
+
+    token_escaped = urllib.quote(token)
+    url = urlparse.urljoin("https://registry.hub.docker.com/u/opensciencegrid/osg-wn/trigger/", token_escaped) + "/"
+
+    #handler=urllib2.HTTPSHandler(debuglevel=1)
+    #opener = urllib2.build_opener(handler)
+    #urllib2.install_opener(opener)
+
+    for tag in all_tags:
+        print "Requesting rebuild of tag", tag
+        request_data = json.dumps({"docker_tag": tag})
+        req = urllib2.Request(url, request_data, {"Content-Type": "application/json", "Content-Length": len(request_data)})
+        f = urllib2.urlopen(req)
+        print f.read()
+        f.close()
+
+if __name__ == '__main__':
+    main()
+
