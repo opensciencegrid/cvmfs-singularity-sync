@@ -12,6 +12,7 @@ debian:stable
 debian:testing
 debian:unstable
 ubuntu:latest
+fedora:latest
 
 # Common programming environments
 python:latest
@@ -29,6 +30,12 @@ tensorflow/tensorflow
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
 opensciencegrid/osg-3.3-wn-el7
+opensciencegrid/osg-wn:3.3-el7
+opensciencegrid/osg-wn:3.3-el6
+
+# OSG-specific images oriented to developers and testers
+opensciencegrid/osg-wn:3.3-testing-el7
+opensciencegrid/osg-wn:3.3-devel-el7
 
 # OSGVO
 rynge/osgvo:el6
@@ -38,3 +45,9 @@ rynge/osgvo:el7
 busybox
 alpine
 
+# Electron Ion Collider images
+whit2333/eic-slic:latest
+
+# Common biology tools
+biocontainers/blast
+cyverse/rsem-prepare
