@@ -30,6 +30,12 @@ tensorflow/tensorflow
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
 opensciencegrid/osg-3.3-wn-el7
+openscienegrid/osg-wn:3.3-el7
+openscienegrid/osg-wn:3.3-el6
+
+# OSG-specific images oriented to developers and testers
+openscienegrid/osg-wn:3.3-testing-el7
+openscienegrid/osg-wn:3.3-devel-el7
 
 # OSGVO
 rynge/osgvo:el6
