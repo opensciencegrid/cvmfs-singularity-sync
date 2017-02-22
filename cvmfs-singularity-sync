@@ -120,6 +120,7 @@ def main():
             retval = publish_image(image, singularity_rootfs, args.registry, doauth)
             if retval:
                 final_retval = retval
+        print "All requested images have been attempted; final return code: %d" % final_retval
         return final_retval
 
 
@@ -140,6 +141,15 @@ def start_txn(singularity_rootfs):
         print >> sys.stderr, "Transaction start failed (exit status %d); will not attempt update." % result
         return 1
     _in_txn = True
+
+    # Test CVMFS mount if applicable.
+    test_dir = os.path.join(singularity_rootfs, "library")
+    if not os.path.exists(test_dir):
+        try:
+            os.makedirs(test_dir)
+        except OSError as oe:
+            if oe.errno != errno.EEXIST:
+                raise
 
 
 def publish_txn():
@@ -250,7 +260,11 @@ def publish_image(image, singularity_rootfs, registry, doauth):
         make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
         return publish_txn()
     else:
+        print "Image dir, %s, does not exist; triggering CVMFS mount." % image_dir
         retval = start_txn(singularity_rootfs)
+        if os.path.exists(image_dir):   # Same as above
+            make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
+            return publish_txn()
         if retval:
             return retval
         try:
@@ -263,7 +277,7 @@ def publish_image(image, singularity_rootfs, registry, doauth):
 # Each is a .tar.gz file, obtained from registry with curl
 
     # Create a temporary directory for targzs
-    tmpdir = tempfile.mkdtemp()
+    tmpdir = tempfile.mkdtemp(prefix="singularity-image-", dir="/var/tmp")
 
     for image_id in images:
 
