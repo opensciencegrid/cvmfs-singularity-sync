@@ -54,3 +54,8 @@ cyverse/rsem-prepare
 
 # LIGO worker node
 ligo/ligo-wn
+
+# CMS worker node
+bbockelm/cms:rhel6
+bbockelm/cms:rhel7
+
