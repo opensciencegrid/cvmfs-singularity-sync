@@ -64,3 +64,7 @@ dockerhub: bbockelm/cms:rhel7
 
 # ATLAS worker node
 dockerhub: lincolnbryant/atlas-wn
+
+# chm@UCSD
+singularity-http: http://workflow.isi.edu/OSGVO/Singularity/chm_s22.img
+
