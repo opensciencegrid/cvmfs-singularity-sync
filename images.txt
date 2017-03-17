@@ -1,0 +1,66 @@
+
+# This file is a list of images to synchronize to singularity.opensciencegrid.org.
+# Currently supported sources are dockerhub and singularity-http. For example:
+#   dockerhub: centos:centos7
+#   singularity-http: http://images.somewhere.com/centos7.img
+
+# First, some generic CentOS images:
+dockerhub: centos:latest
+dockerhub: centos:centos6
+dockerhub: centos:centos7
+
+# Fairly common Linux distros
+dockerhub: debian:latest
+dockerhub: debian:stable
+dockerhub: debian:testing
+dockerhub: debian:unstable
+dockerhub: ubuntu:latest
+dockerhub: fedora:latest
+
+# Common programming environments
+dockerhub: python:latest
+dockerhub: python:3.4
+dockerhub: python:2.7
+dockerhub: openjdk:latest
+dockerhub: openjdk:8
+dockerhub: openjdk:9
+dockerhub: gcc:latest
+dockerhub: julia:latest
+dockerhub: r-base:latest
+dockerhub: continuumio/anaconda
+dockerhub: tensorflow/tensorflow
+
+# OSG-specific worker node images
+dockerhub: opensciencegrid/osg-3.3-wn-el6
+dockerhub: opensciencegrid/osg-3.3-wn-el7
+dockerhub: opensciencegrid/osg-wn:3.3-el7
+dockerhub: opensciencegrid/osg-wn:3.3-el6
+
+# OSG-specific images oriented to developers and testers
+dockerhub: opensciencegrid/osg-wn:3.3-testing-el7
+dockerhub: opensciencegrid/osg-wn:3.3-devel-el7
+
+# OSGVO
+dockerhub: rynge/osgvo:el6
+dockerhub: rynge/osgvo:el7
+
+# Lightweight images
+dockerhub: busybox
+dockerhub: alpine
+
+# Electron Ion Collider images
+dockerhub: whit2333/eic-slic:latest
+
+# Common biology tools
+dockerhub: biocontainers/blast
+dockerhub: cyverse/rsem-prepare
+
+# LIGO worker node
+dockerhub: ligo/ligo-wn
+
+# CMS worker node
+dockerhub: bbockelm/cms:rhel6
+dockerhub: bbockelm/cms:rhel7
+
+# ATLAS worker node
+dockerhub: lincolnbryant/atlas-wn
