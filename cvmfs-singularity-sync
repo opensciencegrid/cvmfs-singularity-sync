@@ -388,8 +388,8 @@ def publish_image_singularity_http(image, singularity_rootfs):
     # Tell the user the namespace, repo name and tag
     print("Singularity image to publish: %s/%s:%s" %(namespace, repo_name, repo_tag))
 
-    # get the etag for the file - we will use that as the identifier for the final image
-    etag = backticks("curl -vs -o /dev/null --head '%s' 2>&1 | grep 'ETag:' | sed 's/.*ETag: //' | sed 's/\"//g'" %(image))
+    # get the etag/last-modified for the file - we will use that as the identifier for the final image
+    etag = backticks("curl -vs -o /dev/null --head '%s' 2>&1 | sort | egrep -i 'ETag:|Last-Modified:' | sed 's/[< A-Za-Z_-]*: //' |  tr '\\r\\n\"' ' '" %(image))
 
     if len(str(etag)) == 0:
         print "Unable to determine etag for image %s" %(image)

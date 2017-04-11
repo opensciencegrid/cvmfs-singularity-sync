@@ -28,7 +28,8 @@ dockerhub: gcc:latest
 dockerhub: julia:latest
 dockerhub: r-base:latest
 dockerhub: continuumio/anaconda
-dockerhub: tensorflow/tensorflow
+dockerhub: tensorflow/tensorflow:latest
+dockerhub: tensorflow/tensorflow:latest-gpu
 
 # OSG-specific worker node images
 dockerhub: opensciencegrid/osg-3.3-wn-el6
