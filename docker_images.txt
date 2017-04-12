@@ -55,6 +55,10 @@ cyverse/rsem-prepare
 # LIGO worker node
 ligo/ligo-wn
 
+# LIGO PyCBC compute nodes
+pycbc/pycbc-el7:v1.7.0
+pycbc/pycbc-el7:latest
+
 # CMS worker node
 bbockelm/cms:rhel6
 bbockelm/cms:rhel7
