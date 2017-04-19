@@ -25,7 +25,8 @@ gcc:latest
 julia:latest
 r-base:latest
 continuumio/anaconda
-tensorflow/tensorflow
+tensorflow/tensorflow:latest
+tensorflow/tensorflow:latest-gpu
 
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
@@ -38,8 +39,11 @@ opensciencegrid/osg-wn:3.3-testing-el7
 opensciencegrid/osg-wn:3.3-devel-el7
 
 # OSGVO
+opensciencegrid/osgvo:el6
+opensciencegrid/osgvo:el7
 rynge/osgvo:el6
 rynge/osgvo:el7
+rynge/einsteintoolkit:latest
 
 # Lightweight images
 busybox
