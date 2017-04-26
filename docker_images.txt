@@ -44,6 +44,7 @@ opensciencegrid/osgvo:el7
 rynge/osgvo:el6
 rynge/osgvo:el7
 rynge/einsteintoolkit:latest
+rynge/osg-tensorflow-gpu:latest
 
 # Lightweight images
 busybox
