@@ -62,6 +62,7 @@ ligo/ligo-wn
 
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v1.7.0
+pycbc/pycbc-el7:v1.7.1
 pycbc/pycbc-el7:latest
 
 # CMS worker node
