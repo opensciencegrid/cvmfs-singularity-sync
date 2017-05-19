@@ -41,6 +41,7 @@ import re
 import sys
 import stat
 import errno
+import fnmatch
 import urllib2
 import hashlib
 import tempfile
@@ -117,9 +118,19 @@ def main():
             image = image.strip()
             if image.startswith("#") or not image:
                 continue
-            retval = publish_image(image, singularity_rootfs, args.registry, doauth)
-            if retval:
-                final_retval = retval
+            namespace, repo_name, repo_tag = parse_image(image)
+
+            if '*' in repo_tag: # Treat wildcards as a glob
+                tag_names = get_tags(namespace, repo_name, registry=args.registry, auth=doauth)
+                repo_tag = fnmatch.filter(tag_names, repo_tag)
+            else:
+                repo_tag = [repo_tag]
+
+            for tag in repo_tag:
+                image = '%s/%s:%s' % (namespace, repo_name, repo_tag)
+                retval = publish_image(image, singularity_rootfs, args.registry, doauth)
+                if retval:
+                    final_retval = retval
         print "All requested images have been attempted; final return code: %d" % final_retval
         return final_retval
 
@@ -194,7 +205,11 @@ def make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo
     return 0
 
 
-def publish_image(image, singularity_rootfs, registry, doauth):
+def parse_image(image):
+    """
+    Parse an image string into image components, setting appropriate defaults.
+    Returns a tuple of (namespace, repo_name, repo_tag).
+    """
 
 # INPUT PARSING -------------------------------------------
 # Parse image name, repo name, and namespace
@@ -223,8 +238,13 @@ def publish_image(image, singularity_rootfs, registry, doauth):
         repo_name = image[0]
         repo_tag = "latest"
 
+    return namespace, repo_name, repo_tag
+
+def publish_image(image, singularity_rootfs, registry, doauth):
+
     # Tell the user the namespace, repo name and tag
-    print("Docker image to publish: %s/%s:%s" %(namespace, repo_name, repo_tag))
+    namespace, repo_name, repo_tag = parse_image(image)
+    print("Docker image to publish: %s/%s:%s" % (namespace, repo_name, repo_tag))
 
 
 # IMAGE METADATA -------------------------------------------
