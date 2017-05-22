@@ -30,11 +30,24 @@ perform publicly and display publicly, and to permit other to do so.
 '''
 
 import sys
-if '/usr/libexec/singularity/python' not in sys.path:
-    sys.path.append('/usr/libexec/singularity/python')
+import platform
+
+# enable cross-platform/multi-distro support by setting singularity_path
+# to appropriate location or to None
+singularity_path = None
+if platform.system() == 'Linux':
+    distro,version,id = platform.linux_distribution(full_distribution_name=False)
+    if distro == 'debian':
+        singularity_path = '/usr/lib/x86_64-linux-gnu/singularity/python'
+    elif distro == 'redhat':
+        singularity_path = '/usr/libexec/singularity/python'
+
+if singularity_path not in sys.path and singularity_path is not None:
+    sys.path.insert(0,singularity_path)
 
 from docker.api import get_layer, create_runscript, get_manifest, get_config, get_images, get_tags
 from utils import extract_tar, change_permissions
+
 import argparse
 import os
 import re
