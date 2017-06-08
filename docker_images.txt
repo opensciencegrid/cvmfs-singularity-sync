@@ -71,3 +71,6 @@ bbockelm/cms:rhel7
 
 # ATLAS worker node
 lincolnbryant/atlas-wn
+
+# Gluex worker image
+rjones30/gluex
