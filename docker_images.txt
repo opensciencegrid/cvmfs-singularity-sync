@@ -61,7 +61,8 @@ biocontainers/blast
 cyverse/rsem-prepare
 
 # LIGO worker node
-ligo/ligo-wn
+ligo/software:jessie
+ligo/software:jessie-proposed
 
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v*
