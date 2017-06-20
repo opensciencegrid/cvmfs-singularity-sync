@@ -43,8 +43,6 @@ opensciencegrid/osgvo:el6
 opensciencegrid/osgvo:el7
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu
-rynge/osgvo:el6
-rynge/osgvo:el7
 rynge/einsteintoolkit:latest
 rynge/osg-tensorflow-gpu:latest
 
