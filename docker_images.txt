@@ -41,10 +41,11 @@ opensciencegrid/osg-wn:3.3-devel-el7
 # OSGVO
 opensciencegrid/osgvo:el6
 opensciencegrid/osgvo:el7
+opensciencegrid/osgvo-el6
+opensciencegrid/osgvo-el7
+opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu
-rynge/osgvo:el6
-rynge/osgvo:el7
 rynge/einsteintoolkit:latest
 rynge/osg-tensorflow-gpu:latest
 
