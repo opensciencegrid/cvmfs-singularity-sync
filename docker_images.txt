@@ -41,6 +41,8 @@ opensciencegrid/osg-wn:3.3-devel-el7
 # OSGVO
 opensciencegrid/osgvo:el6
 opensciencegrid/osgvo:el7
+opensciencegrid/tensorflow
+opensciencegrid/tensorflow-gpu
 rynge/osgvo:el6
 rynge/osgvo:el7
 rynge/einsteintoolkit:latest
@@ -59,7 +61,8 @@ biocontainers/blast
 cyverse/rsem-prepare
 
 # LIGO worker node
-ligo/ligo-wn
+ligo/software:jessie
+ligo/software:jessie-proposed
 
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v*
@@ -72,6 +75,6 @@ bbockelm/cms:rhel7
 # ATLAS worker node
 lincolnbryant/atlas-wn
 
-# Gluex worker images
+# Gluex worker node
 rjones30/gluex
 rjones30/gluex6
