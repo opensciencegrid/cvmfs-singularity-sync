@@ -61,6 +61,7 @@ cyverse/rsem-prepare
 # LIGO worker node
 ligo/software:jessie
 ligo/software:jessie-proposed
+ligo/software:el7
 
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v*
