@@ -44,6 +44,7 @@ opensciencegrid/osgvo:el7
 opensciencegrid/osgvo-el6
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-ubuntu-xenial
+opensciencegrid/osgvo-blaylockbk
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu
 rynge/einsteintoolkit:latest
