@@ -56,7 +56,7 @@ alpine
 
 # Electron Ion Collider images
 whit2333/eic-slic:latest
-dbcooper/fpadsim:singularity
+argonneeic/fpadsim:flat
 
 # Common biology tools
 biocontainers/blast
