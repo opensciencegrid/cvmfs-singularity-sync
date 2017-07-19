@@ -52,6 +52,7 @@ rynge/osg-tensorflow-gpu:latest
 
 # OSGVO - user defined images
 shilpac/my_mindboggle
+nipy/mindboggle
 
 # Lightweight images
 busybox
