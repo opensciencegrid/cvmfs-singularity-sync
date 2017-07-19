@@ -50,6 +50,9 @@ opensciencegrid/tensorflow-gpu
 rynge/einsteintoolkit:latest
 rynge/osg-tensorflow-gpu:latest
 
+# OSGVO - user defined images
+shilpac/my_mindboggle
+
 # Lightweight images
 busybox
 alpine
