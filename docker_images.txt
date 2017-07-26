@@ -60,7 +60,8 @@ alpine
 
 # Electron Ion Collider images
 whit2333/eic-slic:latest
-argonneeic/fpadsim:flat
+argonneeic/evochain:v*
+argonneeic/fpadsim:v*
 
 # Common biology tools
 biocontainers/blast
