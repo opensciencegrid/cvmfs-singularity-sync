@@ -41,12 +41,20 @@ opensciencegrid/osg-wn:3.3-devel-el7
 # OSGVO
 opensciencegrid/osgvo:el6
 opensciencegrid/osgvo:el7
+opensciencegrid/osgvo-el6
+opensciencegrid/osgvo-el7
+opensciencegrid/osgvo-ubuntu-xenial
+opensciencegrid/osgvo-blaylockbk
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu
-rynge/osgvo:el6
-rynge/osgvo:el7
 rynge/einsteintoolkit:latest
 rynge/osg-tensorflow-gpu:latest
+
+# OSGVO - user defined images
+shilpac/my_mindboggle
+nipy/mindboggle
+nkern/21cmfast
+nkern/21cmfast_env
 
 # Lightweight images
 busybox
@@ -54,7 +62,8 @@ alpine
 
 # Electron Ion Collider images
 whit2333/eic-slic:latest
-dbcooper/fpadsim:singularity
+argonneeic/evochain:v*
+argonneeic/fpadsim:v*
 
 # Common biology tools
 biocontainers/blast
@@ -63,6 +72,7 @@ cyverse/rsem-prepare
 # LIGO worker node
 ligo/software:jessie
 ligo/software:jessie-proposed
+ligo/software:el7
 
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v*
@@ -79,3 +89,4 @@ lincolnbryant/atlas-wn
 rjones30/gluex
 rjones30/gluex6
 rjones30/gluextest
+djw8605/gluexprod
