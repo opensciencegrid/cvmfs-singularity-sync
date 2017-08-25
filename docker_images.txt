@@ -53,7 +53,6 @@ rynge/osg-tensorflow-gpu:latest
 # OSGVO - user defined images
 shilpac/my_mindboggle
 nipy/mindboggle
-nkern/21cmfast
 nkern/21cmfast_env
 
 # Lightweight images
