@@ -93,6 +93,9 @@ lincolnbryant/atlas-wn
 atlas/analysisbase:21.2.4
 atlas/athanalysis:21.2.4
 
+# ATLAS related images
+dbcooper/centos7hepsim:latest
+
 # ATLAS image with xAODAnaHelpers framework
 #  version should follow above ATLAS standalone images
 ucatlas/xah:21.2.4-latest
