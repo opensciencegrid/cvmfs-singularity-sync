@@ -94,7 +94,7 @@ atlas/analysisbase:21.2.4
 atlas/athanalysis:21.2.4
 
 # ATLAS related images
-dbcooper/centos7hepsim:latest
+chekanov/centos7hepsim
 
 # ATLAS image with xAODAnaHelpers framework
 #  version should follow above ATLAS standalone images
