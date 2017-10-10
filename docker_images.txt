@@ -103,5 +103,6 @@ ucatlas/xah:21.2.4-latest
 # Gluex worker node
 rjones30/gluex
 rjones30/gluex6
+rjones30/gluextest
 djw8605/gluexprod
 
