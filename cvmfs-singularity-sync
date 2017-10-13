@@ -30,10 +30,6 @@ perform publicly and display publicly, and to permit other to do so.
 '''
 
 import sys
-#if '/usr/libexec/singularity/python' not in sys.path:
-#    sys.path.append('/usr/libexec/singularity/python')
-
-#from docker.api import get_layer, create_runscript, get_manifest, get_config, get_images, get_tags
 import dockerhub
 import docker
 import argparse
