@@ -30,24 +30,8 @@ perform publicly and display publicly, and to permit other to do so.
 '''
 
 import sys
-import platform
-
-# enable cross-platform/multi-distro support by setting singularity_path
-# to appropriate location or to None
-singularity_path = None
-if platform.system() == 'Linux':
-    distro,version,id = platform.linux_distribution(full_distribution_name=False)
-    if distro == 'debian':
-        singularity_path = '/usr/lib/x86_64-linux-gnu/singularity/python'
-    elif distro == 'redhat':
-        singularity_path = '/usr/libexec/singularity/python'
-
-if singularity_path not in sys.path and singularity_path is not None:
-    sys.path.insert(0,singularity_path)
-
-from docker.api import get_layer, create_runscript, get_manifest, get_config, get_images, get_tags
-from utils import extract_tar, change_permissions
-
+import dockerhub
+import docker
 import argparse
 import os
 import re
@@ -58,7 +42,7 @@ import fnmatch
 import urllib2
 import hashlib
 import tempfile
-
+import tarfile
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
@@ -176,6 +160,13 @@ def start_txn(singularity_rootfs):
                 raise
 
 
+def get_tags(username, repo, registry, auth):
+    hub = dockerhub.DockerHub()
+    tag_names = []
+    for tag in hub.tags(username, repo):
+        tag_names.append(tag['name'])
+    return tag_names
+
 def publish_txn():
     global _in_txn
     if _in_txn:
@@ -265,17 +256,8 @@ def publish_image(image, singularity_rootfs, registry, doauth):
 
     # Get an image manifest - has image ids to parse, and will be
     # used later to get Cmd
-    manifest = get_manifest(repo_name=repo_name,
-                            namespace=namespace,
-                            repo_tag=repo_tag,
-                            registry=registry,
-                            auth=doauth)
-
-    # Get images from manifest using version 2.0 of Docker Registry API
-    images = get_images(manifest=manifest,
-                        registry=registry,
-                        auth=doauth)
-    images = images[::-1]
+    hub = dockerhub.DockerHub(url="https://registry.hub.docker.com")
+    manifest = hub.manifest(namespace, repo_name, repo_tag)
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
     # for the final image.
@@ -310,47 +292,62 @@ def publish_image(image, singularity_rootfs, registry, doauth):
 # Each is a .tar.gz file, obtained from registry with curl
 
     # Create a temporary directory for targzs
-    tmpdir = tempfile.mkdtemp(prefix="singularity-image-", dir="/var/tmp")
+    tmphandle, tmpfilename = tempfile.mkstemp(prefix="singularity-image-", dir="/var/tmp")
+    
+    # Use docker to pull the image
+    client = docker.from_env()
+    print "Pulling image from DockerHub"
+    client.images.pull(image)
+    
+    print "Creating the container to export"
+    container = client.containers.create(image)
+    resp = container.export()
+    f = os.fdopen(tmphandle, 'w')
+    
+    print "Exporting container"
+    for chunk in resp.stream():
+        f.write(chunk)
+    f.close()
+    
+    # Remove the file from docker
+    container.remove()
+    client.images.remove(image)
+    
+    # Untar the image
+    tar = tarfile.open(tmpfilename)
+    tar.extractall(image_dir)
+    tar.close()
+    
+    # Remove the original tar file
+    os.remove(tmpfilename)
 
-    for image_id in images:
+    # Walk the path, fixing file permissions
+    for (dirpath, dirnames, filenames) in os.walk(image_dir):
+        for fname in filenames:
+            full_fname = os.path.join(dirpath, fname)
+            st = os.lstat(full_fname)
+            old_mode = stat.S_IMODE(st.st_mode)
+            if (old_mode & 0444) == 0000:
+                new_mode = old_mode | 0400
+                print "Fixing mode of", full_fname, "to", oct(new_mode)
+                os.chmod(full_fname, new_mode)
+        for dname in dirnames:
+            full_dname = os.path.join(dirpath, dname)
+            st = os.lstat(full_dname)
+            if not stat.S_ISDIR(st.st_mode):
+                continue
+            old_mode = stat.S_IMODE(st.st_mode)
+            if old_mode & 0111 == 0:
+                new_mode = old_mode | 0100
+                print "Fixing mode of", full_dname, "to", oct(new_mode)
+                os.chmod(full_dname, new_mode)
+            if old_mode & 0222 == 0:
+                new_mode = old_mode | 0200
+                print "Fixing mode of", full_dname, "to", oct(new_mode)
+                os.chmod(full_dname, new_mode)
 
-        # Download the layer
-        targz = get_layer(image_id=image_id,
-                          namespace=namespace,
-                          repo_name=repo_name,
-                          download_folder=tmpdir,
-                          registry=registry,
-                          auth=doauth) 
-
-        # Extract image and remove tar
-        extract_tar(targz, image_dir)
-        os.remove(targz)
-
-        for (dirpath, dirnames, filenames) in os.walk(image_dir):
-            for fname in filenames:
-                full_fname = os.path.join(dirpath, fname)
-                st = os.lstat(full_fname)
-                old_mode = stat.S_IMODE(st.st_mode)
-                if (old_mode & 0444) == 0000:
-                    new_mode = old_mode | 0400
-                    print "Fixing mode of", full_fname, "to", oct(new_mode)
-                    os.chmod(full_fname, new_mode)
-            for dname in dirnames:
-                full_dname = os.path.join(dirpath, dname)
-                st = os.lstat(full_dname)
-                if not stat.S_ISDIR(st.st_mode):
-                    continue
-                old_mode = stat.S_IMODE(st.st_mode)
-                if old_mode & 0111 == 0:
-                    new_mode = old_mode | 0100
-                    print "Fixing mode of", full_dname, "to", oct(new_mode)
-                    os.chmod(full_dname, new_mode)
-                if old_mode & 0222 == 0:
-                    new_mode = old_mode | 0200
-                    print "Fixing mode of", full_dname, "to", oct(new_mode)
-                    os.chmod(full_dname, new_mode)
-
-    os.rmdir(tmpdir)
+    # Make sure the image_dir is writable by us!
+    os.chmod(image_dir, 0755)
 
     # Various fixups to make the image compatible with CVMFS and singularity.
     srv = os.path.join(image_dir, "srv")
