@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # NOTE:
 # This file is forked from singularity 2.2's "cli.py".  I have left the
@@ -314,7 +314,7 @@ def publish_image(image, singularity_rootfs, registry, doauth):
     client.images.remove(image)
     
     # Untar the image
-    tar = tarfile.open(tmpfilename)
+    tar = tarfile.open(tmpfilename, errorlevel=0)
     tar.extractall(image_dir)
     tar.close()
     
