@@ -58,7 +58,8 @@ nkern/21cmfast_env
 dmbala/r-3.4.1
 dmbala/r-ebcrimage
 leofang/cthyb-ohmic
-agladstein/simprily
+agladstein/simprily:latest
+agladstein/simprily:version1
 
 # Lightweight images
 busybox
