@@ -42,6 +42,7 @@ opensciencegrid/osg-wn:3.3-devel-el7
 opensciencegrid/osgvo:el6
 opensciencegrid/osgvo:el7
 opensciencegrid/osgvo-el6
+opensciencegrid/osgvo-el6-cuda
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/osgvo-blaylockbk
