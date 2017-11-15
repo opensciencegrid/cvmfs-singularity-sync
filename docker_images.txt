@@ -42,6 +42,8 @@ opensciencegrid/osg-wn:3.3-devel-el7
 opensciencegrid/osgvo:el6
 opensciencegrid/osgvo:el7
 opensciencegrid/osgvo-el6
+opensciencegrid/osgvo-el6-cuda
+opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/osgvo-blaylockbk
@@ -58,7 +60,8 @@ nkern/21cmfast_env
 dmbala/r-3.4.1
 dmbala/r-ebcrimage
 leofang/cthyb-ohmic
-agladstein/simprily
+agladstein/simprily:latest
+agladstein/simprily:version1
 
 # Lightweight images
 busybox
@@ -85,6 +88,7 @@ pycbc/pycbc-el7:latest
 # CMS worker node
 bbockelm/cms:rhel6
 bbockelm/cms:rhel7
+efajardo/docker-cms:cuda
 
 # ATLAS worker node
 lincolnbryant/atlas-wn
