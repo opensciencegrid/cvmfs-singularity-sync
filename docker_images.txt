@@ -62,6 +62,7 @@ dmbala/r-ebcrimage
 leofang/cthyb-ohmic
 agladstein/simprily:latest
 agladstein/simprily:version1
+agladstein/simprily_autobuild
 
 # Lightweight images
 busybox
