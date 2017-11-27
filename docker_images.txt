@@ -43,6 +43,7 @@ opensciencegrid/osgvo:el6
 opensciencegrid/osgvo:el7
 opensciencegrid/osgvo-el6
 opensciencegrid/osgvo-el6-cuda
+opensciencegrid/osgvo-el6-cuda:cuda9
 opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-ubuntu-xenial
@@ -90,6 +91,7 @@ pycbc/pycbc-el7:latest
 bbockelm/cms:rhel6
 bbockelm/cms:rhel7
 efajardo/docker-cms:cuda
+efajardo/docker-cms:cuda9
 
 # ATLAS worker node
 lincolnbryant/atlas-wn
