@@ -300,7 +300,7 @@ def publish_image(image, singularity_rootfs, registry, doauth):
     client.images.pull(image)
     
     print "Creating the container to export"
-    container = client.containers.create(image)
+    container = client.containers.create(image, command="/bin/bash")
     resp = container.export()
     f = os.fdopen(tmphandle, 'w')
     

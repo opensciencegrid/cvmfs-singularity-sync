@@ -43,6 +43,7 @@ opensciencegrid/osgvo:el6
 opensciencegrid/osgvo:el7
 opensciencegrid/osgvo-el6
 opensciencegrid/osgvo-el6-cuda
+opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/osgvo-blaylockbk
@@ -61,6 +62,7 @@ dmbala/r-ebcrimage
 leofang/cthyb-ohmic
 agladstein/simprily:latest
 agladstein/simprily:version1
+agladstein/simprily_autobuild
 
 # Lightweight images
 busybox
