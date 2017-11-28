@@ -52,6 +52,7 @@ opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu
 rynge/einsteintoolkit:latest
 rynge/osg-tensorflow-gpu:latest
+rynge/osgvo-el7-testing:latest
 
 # OSGVO - user defined images
 shilpac/my_mindboggle
