@@ -65,6 +65,7 @@ leofang/cthyb-ohmic
 agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
+cathrine98/bbmap
 
 # Lightweight images
 busybox
