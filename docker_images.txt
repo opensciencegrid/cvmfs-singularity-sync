@@ -66,6 +66,7 @@ agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
 cathrine98/bbmap
+drtmfigy/hjets_herwig7
 
 # Lightweight images
 busybox
