@@ -92,7 +92,7 @@ pycbc/pycbc-el7:latest
 # CMS worker node
 bbockelm/cms:rhel6
 bbockelm/cms:rhel7
-efajardo/docker-cms:cuda
+efajardo/tensorflow
 
 # ATLAS worker node
 lincolnbryant/atlas-wn
