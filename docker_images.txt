@@ -112,6 +112,7 @@ djw8605/gluexprod
 
 # WIPAC (IceCube)
 wipac/fasig_scalable_radio_array
+wipac/npx-el6
 
 #fMRI Prep
 poldracklab/fmriprep
