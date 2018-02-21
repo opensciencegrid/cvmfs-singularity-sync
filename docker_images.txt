@@ -109,6 +109,7 @@ chekanov/centos7hepsim
 rjones30/gluex
 rjones30/gluex6
 rjones30/gluextest
+JeffersonLab/gluex_docker_devel
 djw8605/gluexprod
 
 # WIPAC (IceCube)
