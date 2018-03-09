@@ -121,3 +121,11 @@ wipac/skylab_smancina:1.0.0
 
 #fMRI Prep
 poldracklab/fmriprep
+
+# cyverse container camp
+evolinc/rmta:1.6
+evolinc/evolinc-i:1.6
+dajunluo/deepvariant
+bioedge/edge_dev
+
+
