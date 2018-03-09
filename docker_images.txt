@@ -127,6 +127,5 @@ poldracklab/fmriprep
 evolinc/rmta:1.6
 evolinc/evolinc-i:1.6
 dajunluo/deepvariant
-bioedge/edge_dev
 
 
