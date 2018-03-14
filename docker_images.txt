@@ -67,6 +67,8 @@ agladstein/simprily_autobuild
 cathrine98/bbmap
 drtmfigy/hjets_herwig7
 adwasser/slomo
+jamessaxon/postgres-routing:latest
+jamessaxon/postgres-routing:a0
 
 # Lightweight images
 busybox
