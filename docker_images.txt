@@ -120,7 +120,6 @@ wipac/fasig_scalable_radio_array
 wipac/npx-el6:latest
 wipac/npx-el6:test
 wipac/skylab:1.0.0
-wipac/skylab_smancina:1.0.0
 
 #fMRI Prep
 poldracklab/fmriprep
