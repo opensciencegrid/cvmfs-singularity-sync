@@ -49,6 +49,7 @@ opensciencegrid/osgvo-torch
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu:latest
 opensciencegrid/tensorflow-gpu:1.4
+opensciencegrid/npjoodi
 rynge/einsteintoolkit:latest
 rynge/osg-tensorflow-gpu:latest
 rynge/osgvo-el6-testing:latest
