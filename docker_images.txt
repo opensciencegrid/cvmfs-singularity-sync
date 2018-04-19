@@ -129,4 +129,5 @@ evolinc/rmta:1.6
 evolinc/evolinc-i:1.6
 dajunluo/deepvariant
 
-
+# Images for Testing the Integration Between the CyVerse Discovery Environment and OSG
+discoenv/osg-word-count:1.0.0
