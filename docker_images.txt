@@ -1,4 +1,3 @@
-
 # This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
 
 # First, some generic CentOS images:
@@ -130,4 +129,4 @@ evolinc/evolinc-i:1.6
 dajunluo/deepvariant
 
 # Images for Testing the Integration Between the CyVerse Discovery Environment and OSG
-discoenv/osg-word-count:1.0.0
+discoenv/osg-word-count
