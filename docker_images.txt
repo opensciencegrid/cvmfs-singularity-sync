@@ -110,7 +110,7 @@ rjones30/gluex
 rjones30/gluex6
 rjones30/gluextest
 markito3/gluex_docker_devel
-djw8605/gluexprod
+markito3/gluex_docker_prod
 
 # WIPAC (IceCube)
 wipac/fasig_scalable_radio_array
