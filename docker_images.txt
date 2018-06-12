@@ -68,6 +68,7 @@ agladstein/simprily:version1
 agladstein/simprily_autobuild
 cathrine98/bbmap
 drtmfigy/hjets_herwig7
+drtmfigy/herwig_hjets
 adwasser/slomo
 anniesoft/toolanalysis
 jamessaxon/postgres-routing:latest
