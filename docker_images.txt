@@ -74,6 +74,9 @@ anniesoft/toolanalysis
 jamessaxon/postgres-routing:latest
 jamessaxon/postgres-routing:a0
 
+# MINT project (rynge)
+ankushumn/rsatest
+
 # Lightweight images
 busybox
 alpine
