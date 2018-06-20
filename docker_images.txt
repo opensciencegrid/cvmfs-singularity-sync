@@ -75,6 +75,11 @@ jamessaxon/postgres-routing:latest
 jamessaxon/postgres-routing:a0
 
 # MINT project (rynge)
+mintproject/ankush:latest
+mintproject/cycles:latest
+mintproject/dssat:latest
+mintproject/kimetrica:latest
+mintproject/pihm:latest
 ankushumn/rsatest
 
 # Lightweight images
