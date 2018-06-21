@@ -73,6 +73,7 @@ adwasser/slomo
 anniesoft/toolanalysis
 jamessaxon/postgres-routing:latest
 jamessaxon/postgres-routing:a0
+econtal/numpy-mkl:latest
 
 # MINT project (rynge)
 mintproject/ankush:latest
