@@ -54,6 +54,7 @@ rynge/osg-tensorflow-gpu:latest
 rynge/osgvo-el6-testing:latest
 rynge/osgvo-el7-testing:latest
 rynge/osg-mcf10-mod:latest
+ssthapa/freesurferosg:latest
 dcshrum/singularity:cowsay
 
 # OSGVO - user defined images
