@@ -55,6 +55,9 @@ rynge/osgvo-el6-testing:latest
 rynge/osgvo-el7-testing:latest
 rynge/osg-mcf10-mod:latest
 ssthapa/freesurferosg:latest
+ssthapa/freesurferosg:6.0
+ssthapa/freesurferosg:5.3
+ssthapa/freesurferosg:5.1
 dcshrum/singularity:cowsay
 
 # OSGVO - user defined images
