@@ -113,6 +113,9 @@ pycbc/pycbc-el7:latest
 bbockelm/cms:rhel6
 bbockelm/cms:rhel7
 efajardo/docker-cms:tensorflow
+# CMS worker node with hadoop
+kreczko/workernode:centos6
+kreczko/workernode:centos7
 
 # ATLAS worker node
 lincolnbryant/atlas-wn
