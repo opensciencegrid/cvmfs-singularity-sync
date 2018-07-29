@@ -78,6 +78,7 @@ anniesoft/toolanalysis
 jamessaxon/postgres-routing:latest
 jamessaxon/postgres-routing:a0
 econtal/numpy-mkl:latest
+blaylockbk/miniconda3_osg:latest
 
 # MINT project (rynge)
 mintproject/ankush:latest
