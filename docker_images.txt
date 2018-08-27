@@ -37,18 +37,19 @@ opensciencegrid/osg-wn:3.3-testing-el7
 opensciencegrid/osg-wn:3.3-devel-el7
 
 # OSGVO
+opensciencegrid/npjoodi
+opensciencegrid/osgvo-beagle
+opensciencegrid/osgvo-blaylockbk
 opensciencegrid/osgvo-el6
 opensciencegrid/osgvo-el6-cuda
 opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-r:3.5
-opensciencegrid/osgvo-ubuntu-xenial
-opensciencegrid/osgvo-blaylockbk
 opensciencegrid/osgvo-torch
+opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/tensorflow
-opensciencegrid/tensorflow-gpu:latest
 opensciencegrid/tensorflow-gpu:1.4
-opensciencegrid/npjoodi
+opensciencegrid/tensorflow-gpu:latest
 rynge/einsteintoolkit:latest
 rynge/osg-tensorflow-gpu:latest
 rynge/osgvo-el6-testing:latest
