@@ -74,6 +74,7 @@ agladstein/simprily_autobuild
 cathrine98/bbmap
 drtmfigy/hjets_herwig7
 drtmfigy/herwig_hjets
+drtmfigy/fbps
 adwasser/slomo
 anniesoft/toolanalysis
 jamessaxon/postgres-routing:latest
