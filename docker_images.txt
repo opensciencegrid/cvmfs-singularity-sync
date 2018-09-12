@@ -154,3 +154,6 @@ dajunluo/deepvariant
 # Images for Testing the Integration Between the CyVerse Discovery Environment and OSG
 discoenv/osg-word-count:1.0.0
 cyverse/osg-gl:1.0
+
+# JLab CLAS12 Simulations
+maureeungaro/clas12simulations:production
