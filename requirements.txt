@@ -1,3 +1,5 @@
 docker==2.0.0
 furl
 requests
+python-dateutil
+
