@@ -26,21 +26,21 @@ json_location = "/cvmfs/singularity.opensciencegrid.org/.missing_links.json"
 # }
 
 def cleanup(delay=2):
-    
+
     # Read in the old json, if it exists
     json_missing_links = {}
     if os.path.exists(json_location):
         with open(json_location) as json_file:
             json_missing_links = json.loads(json_file.read())['missing_links']
-    
+
     # Get all the images in the repo
-    
+
     # Walk the directory /cvmfs/singularity.opensciencegrid.org/.images/*
     image_dirs = glob.glob("/cvmfs/singularity.opensciencegrid.org/.images/*/*")
-    
+
     # Walk the named image dirs
     named_image_dir = glob.glob("/cvmfs/singularity.opensciencegrid.org/*/*")
-    
+
     # For named image dir, look at the what the symlink points at 
     for named_image in named_image_dir:
         link_target = os.readlink(named_image)
@@ -49,7 +49,7 @@ def cleanup(delay=2):
             print "%s not in list of image directories from %s" % (link_target, named_image)
         else:
             image_dirs.remove(link_target)
-    
+
     # Now, for each image, see if it's in the json
     for image_dir in image_dirs:
         if image_dir in json_missing_links:
@@ -58,7 +58,7 @@ def cleanup(delay=2):
             # Add it to the json
             print "Newly found missing link: %s" % (image_dir)
             json_missing_links[image_dir] = str(datetime.datetime.now())
-    
+
     # Loop through the json missing links, removing directories if over the `delay` days
     for image_dir, last_linked in json_missing_links.items():
         date_last_linked = dateutil.parser.parse(last_linked)
@@ -67,15 +67,15 @@ def cleanup(delay=2):
             print "Removing missing link: %s" % image_dir
             shutil.rmtree(image_dir)
             del json_missing_links[image_dir]
-    
+
     # Write out the end json
     with open(json_location, 'w') as json_file:
         json_file.write(json.dumps({"missing_links": json_missing_links}, default=str))
-    
+
 
 
 def main():
-    
+
     cleanup()
 
 
