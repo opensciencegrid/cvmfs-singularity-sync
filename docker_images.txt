@@ -81,6 +81,7 @@ jamessaxon/postgres-routing:latest
 jamessaxon/postgres-routing:a0
 econtal/numpy-mkl:latest
 blaylockbk/miniconda3_osg:latest
+researchcomputing/namd_212_multicore_osgvo-el6:latest
 
 # MINT project (rynge)
 mintproject/ankush:latest
