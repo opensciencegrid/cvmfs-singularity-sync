@@ -60,6 +60,7 @@ ssthapa/freesurferosg:6.0
 ssthapa/freesurferosg:5.3
 ssthapa/freesurferosg:5.1
 dcshrum/singularity:cowsay
+pegasus/osg-el7:latest
 
 # OSGVO - user defined images
 shilpac/my_mindboggle
