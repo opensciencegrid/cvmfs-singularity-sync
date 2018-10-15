@@ -10,10 +10,10 @@ Maintains state in a file in the root singularity directory named .missing_links
 import glob
 import os
 import json
-import datetime
-import dateutil.parser
 import shutil
 import argparse
+import time
+from datetime import datetime, timedelta
 
 SINGULARITY_BASE = '/cvmfs/singularity.opensciencegrid.org'
 
@@ -63,12 +63,13 @@ def cleanup(delay=2, test=False):
         else:
             # Add it to the json
             print("Newly found missing link: %s" % (image_dir))
-            json_missing_links[image_dir] = str(datetime.datetime.now())
+            json_missing_links[image_dir] = int(time.time())
 
     # Loop through the json missing links, removing directories if over the `delay` days
+    expiry = datetime.now() - timedelta(days=delay)
     for image_dir, last_linked in json_missing_links.items():
-        date_last_linked = dateutil.parser.parse(last_linked)
-        if date_last_linked < (datetime.datetime.now() - datetime.timedelta(days=delay)):
+        date_last_linked = datetime.fromtimestamp(last_linked)
+        if date_last_linked < expiry:
             # Remove the directory
             print("Removing missing link: %s" % image_dir)
             if not test:
