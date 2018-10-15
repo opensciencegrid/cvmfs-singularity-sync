@@ -50,17 +50,14 @@ def cleanup(delay=2, test=False):
     # For named image dir, look at the what the symlink points at 
     for named_image in named_image_dir:
         link_target = os.readlink(named_image)
-        # Multiple images can point to the same image_dir
-        if link_target not in image_dirs:
-            print("%s not in list of image directories from %s" % (link_target, named_image))
-        else:
+        while link_target in image_dirs:
             image_dirs.remove(link_target)
+        # Remove linked image from json (in case link is restored)
+        json_missing_links.pop(link_target, None)
 
     # Now, for each image, see if it's in the json
     for image_dir in image_dirs:
-        if image_dir in json_missing_links:
-            image_dirs.remove(image_dir)
-        else:
+        if image_dir not in json_missing_links:
             # Add it to the json
             print("Newly found missing link: %s" % (image_dir))
             json_missing_links[image_dir] = int(time.time())
@@ -70,6 +67,9 @@ def cleanup(delay=2, test=False):
     for image_dir, last_linked in json_missing_links.items():
         date_last_linked = datetime.fromtimestamp(last_linked)
         if date_last_linked < expiry:
+            # Confirm that we're inside the managed directory
+            if not image_dir.startswith(SINGULARITY_BASE):
+                continue
             # Remove the directory
             print("Removing missing link: %s" % image_dir)
             if not test:
