@@ -13,6 +13,7 @@ import json
 import datetime
 import dateutil.parser
 import shutil
+import argparse
 
 json_location = "/cvmfs/singularity.opensciencegrid.org/.missing_links.json"
 #json_location = "missing_links.json"
@@ -25,8 +26,8 @@ json_location = "/cvmfs/singularity.opensciencegrid.org/.missing_links.json"
 #   }
 # }
 
-def cleanup(delay=2):
-
+def cleanup(delay=2, test=False):
+    '''Clean up unlinked singularity images'''
     # Read in the old json, if it exists
     json_missing_links = {}
     if os.path.exists(json_location):
@@ -65,8 +66,9 @@ def cleanup(delay=2):
         if date_last_linked < (datetime.datetime.now() - datetime.timedelta(days=delay)):
             # Remove the directory
             print("Removing missing link: %s" % image_dir)
-            shutil.rmtree(image_dir)
-            del json_missing_links[image_dir]
+            if not test:
+                shutil.rmtree(image_dir)
+                del json_missing_links[image_dir]
 
     # Write out the end json
     with open(json_location, 'w') as json_file:
@@ -75,9 +77,17 @@ def cleanup(delay=2):
 
 
 def main():
+    '''Main function'''
+    args = parse_args()
+    cleanup(test=args.test)
 
-    cleanup()
+def parse_args():
+    '''Parse CLI options'''
+    parser = argparse.ArgumentParser()
 
+    parser.add_argument('--test', action='store_true',
+                        help="Don't remove files, but go through the motions of removing them.")
+    return parser.parse_args()
 
 if __name__ == "__main__":
     main()
