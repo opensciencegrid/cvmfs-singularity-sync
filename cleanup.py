@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 Cleanup for Singularity container
 
