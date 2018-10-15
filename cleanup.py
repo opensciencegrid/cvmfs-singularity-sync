@@ -15,8 +15,10 @@ import dateutil.parser
 import shutil
 import argparse
 
-json_location = "/cvmfs/singularity.opensciencegrid.org/.missing_links.json"
-#json_location = "missing_links.json"
+SINGULARITY_BASE = '/cvmfs/singularity.opensciencegrid.org'
+
+# /cvmfs/singularity.opensciencegrid.org/.missing_links.json
+JSON_LOCATION = os.path.join(SINGULARITY_BASE, '.missing_links.json')
 
 # JSON structure:
 # {
@@ -30,17 +32,20 @@ def cleanup(delay=2, test=False):
     '''Clean up unlinked singularity images'''
     # Read in the old json, if it exists
     json_missing_links = {}
-    if os.path.exists(json_location):
-        with open(json_location) as json_file:
-            json_missing_links = json.loads(json_file.read())['missing_links']
+    try:
+        with open(JSON_LOCATION) as json_file:
+            json_missing_links = json.load(json_file)['missing_links']
+    except (IOError, ValueError):
+        # File is missing, unreadable, or damaged
+        pass
 
     # Get all the images in the repo
 
     # Walk the directory /cvmfs/singularity.opensciencegrid.org/.images/*
-    image_dirs = glob.glob("/cvmfs/singularity.opensciencegrid.org/.images/*/*")
+    image_dirs = glob.glob(os.path.join(SINGULARITY_BASE, '.images/*/*'))
 
     # Walk the named image dirs
-    named_image_dir = glob.glob("/cvmfs/singularity.opensciencegrid.org/*/*")
+    named_image_dir = glob.glob(os.path.join(SINGULARITY_BASE, '*/*'))
 
     # For named image dir, look at the what the symlink points at 
     for named_image in named_image_dir:
@@ -71,10 +76,8 @@ def cleanup(delay=2, test=False):
                 del json_missing_links[image_dir]
 
     # Write out the end json
-    with open(json_location, 'w') as json_file:
-        json_file.write(json.dumps({"missing_links": json_missing_links}, default=str))
-
-
+    with open(JSON_LOCATION, 'w') as json_file:
+        json.dump({"missing_links": json_missing_links}, json_file)
 
 def main():
     '''Main function'''
