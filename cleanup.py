@@ -46,7 +46,7 @@ def cleanup(delay=2):
         link_target = os.readlink(named_image)
         # Multiple images can point to the same image_dir
         if link_target not in image_dirs:
-            print "%s not in list of image directories from %s" % (link_target, named_image)
+            print("%s not in list of image directories from %s" % (link_target, named_image))
         else:
             image_dirs.remove(link_target)
 
@@ -56,7 +56,7 @@ def cleanup(delay=2):
             image_dirs.remove(image_dir)
         else:
             # Add it to the json
-            print "Newly found missing link: %s" % (image_dir)
+            print("Newly found missing link: %s" % (image_dir))
             json_missing_links[image_dir] = str(datetime.datetime.now())
 
     # Loop through the json missing links, removing directories if over the `delay` days
@@ -64,7 +64,7 @@ def cleanup(delay=2):
         date_last_linked = dateutil.parser.parse(last_linked)
         if date_last_linked < (datetime.datetime.now() - datetime.timedelta(days=delay)):
             # Remove the directory
-            print "Removing missing link: %s" % image_dir
+            print("Removing missing link: %s" % image_dir)
             shutil.rmtree(image_dir)
             del json_missing_links[image_dir]
 
