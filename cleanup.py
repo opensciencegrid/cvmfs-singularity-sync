@@ -16,11 +16,6 @@ import argparse
 import time
 from datetime import datetime, timedelta
 
-SINGULARITY_BASE = '/cvmfs/singularity.opensciencegrid.org'
-
-# /cvmfs/singularity.opensciencegrid.org/.missing_links.json
-JSON_LOCATION = os.path.join(SINGULARITY_BASE, '.missing_links.json')
-
 # JSON structure:
 # {
 #   "missing_links": {
@@ -29,12 +24,14 @@ JSON_LOCATION = os.path.join(SINGULARITY_BASE, '.missing_links.json')
 #   }
 # }
 
-def cleanup(delay=2, test=False):
+def cleanup(delay=2, test=False,
+            singularity_base='/cvmfs/singularity.opensciencegrid.org'):
     '''Clean up unlinked singularity images'''
+    json_location = os.path.join(singularity_base, '.missing_links.json')
     # Read in the old json, if it exists
     json_missing_links = {}
     try:
-        with open(JSON_LOCATION) as json_file:
+        with open(json_location) as json_file:
             json_missing_links = json.load(json_file)['missing_links']
     except (IOError, ValueError):
         # File is missing, unreadable, or damaged
@@ -43,10 +40,10 @@ def cleanup(delay=2, test=False):
     # Get all the images in the repo
 
     # Walk the directory /cvmfs/singularity.opensciencegrid.org/.images/*
-    image_dirs = glob.glob(os.path.join(SINGULARITY_BASE, '.images/*/*'))
+    image_dirs = glob.glob(os.path.join(singularity_base, '.images/*/*'))
 
     # Walk the named image dirs
-    named_image_dir = glob.glob(os.path.join(SINGULARITY_BASE, '*/*'))
+    named_image_dir = glob.glob(os.path.join(singularity_base, '*/*'))
 
     # For named image dir, look at the what the symlink points at 
     for named_image in named_image_dir:
@@ -69,7 +66,7 @@ def cleanup(delay=2, test=False):
         date_last_linked = datetime.fromtimestamp(last_linked)
         if date_last_linked < expiry:
             # Confirm that we're inside the managed directory
-            if not image_dir.startswith(SINGULARITY_BASE):
+            if not image_dir.startswith(singularity_base):
                 continue
             # Remove the directory
             print("Removing missing link: %s" % image_dir)
@@ -78,7 +75,7 @@ def cleanup(delay=2, test=False):
                 del json_missing_links[image_dir]
 
     # Write out the end json
-    with open(JSON_LOCATION, 'w') as json_file:
+    with open(json_location, 'w') as json_file:
         json.dump({"missing_links": json_missing_links}, json_file)
 
 def main():
