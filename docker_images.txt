@@ -39,6 +39,7 @@ opensciencegrid/osg-wn:3.3-devel-el7
 # OSGVO
 opensciencegrid/npjoodi
 opensciencegrid/osgvo-beagle
+opensciencegrid/osgvo-biomedinfo
 opensciencegrid/osgvo-blaylockbk
 opensciencegrid/osgvo-el6
 opensciencegrid/osgvo-el6-cuda
