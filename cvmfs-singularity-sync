@@ -69,13 +69,19 @@ def main():
                         type=str, 
                         default=None)
 
+    # Socket to local docker engine
+    parser.add_argument("--docker-socket",
+                        dest='socket',
+                        help="connect to specified docker socket rather than using docker.from_env()",
+                        type=str,
+                        default=None)
+
     # Docker registry (default is registry-1.docker.io)
     parser.add_argument("--registry", 
                         dest='registry', 
                         help="the registry path to use, to replace registry-1.docker.io", 
                         type=str, 
                         default=None)
-
 
     # Flag to indicate a token is not required
     parser.add_argument("--no-token", 
@@ -108,7 +114,7 @@ def main():
 
     if args.docker:
         image = args.docker
-        return publish_image(image, singularity_rootfs, args.registry, doauth)
+        return publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
     else:
         final_retval = 0
         fp = urllib2.urlopen(args.filelist)
@@ -126,7 +132,7 @@ def main():
 
             for tag in repo_tag:
                 image = '%s/%s:%s' % (namespace, repo_name, tag)
-                retval = publish_image(image, singularity_rootfs, args.registry, doauth)
+                retval = publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
                 if retval:
                     final_retval = retval
         print "All requested images have been attempted; final return code: %d" % final_retval
@@ -246,7 +252,7 @@ def parse_image(image):
 
     return namespace, repo_name, repo_tag
 
-def publish_image(image, singularity_rootfs, registry, doauth):
+def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
     # Tell the user the namespace, repo name and tag
     namespace, repo_name, repo_tag = parse_image(image)
@@ -297,7 +303,10 @@ def publish_image(image, singularity_rootfs, registry, doauth):
     tmphandle, tmpfilename = tempfile.mkstemp(prefix="singularity-image-", dir="/var/tmp")
     
     # Use docker to pull the image
-    client = docker.from_env()
+    if socket:
+        client = docker.DockerClient(base_url=socket)
+    else:
+        client = docker.from_env()
     print "Pulling image from DockerHub"
     client.images.pull(image)
     
