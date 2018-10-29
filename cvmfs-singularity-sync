@@ -130,7 +130,7 @@ def main():
                 if retval:
                     final_retval = retval
         print "All requested images have been attempted; final return code: %d" % final_retval
-        cleanup.cleanup()
+        cleanup.cleanup(singularity_base=singularity_rootfs)
         return final_retval
 
 
