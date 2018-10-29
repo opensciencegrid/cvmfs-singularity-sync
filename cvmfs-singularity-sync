@@ -304,7 +304,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     
     # Use docker to pull the image
     if socket:
-        client = docker.DockerClient(base_url=socket)
+        client = docker.DockerClient(base_url=socket,timeout=240)
     else:
         client = docker.from_env()
     print "Pulling image from DockerHub"
