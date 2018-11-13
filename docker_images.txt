@@ -161,6 +161,7 @@ dajunluo/deepvariant
 discoenv/osg-word-count:1.0.0
 cyverse/osg-gl:1.0
 jbustamante35/testphytoshell:phytoshell
+evolinc/osg-rmta:2.1
 
 # JLab CLAS12 Simulations
 maureeungaro/clas12simulations:production
