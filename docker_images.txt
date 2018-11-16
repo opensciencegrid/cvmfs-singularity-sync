@@ -106,7 +106,8 @@ argonneeic/evochain:v*
 argonneeic/fpadsim:v*
 
 # Common biology tools
-biocontainers/blast
+# Biocontainers :latest doesn't exist any longer.
+#biocontainers/blast
 cyverse/rsem-prepare
 
 # LIGO worker node
