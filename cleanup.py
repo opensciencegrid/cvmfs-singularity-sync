@@ -25,7 +25,8 @@ from datetime import datetime, timedelta
 # }
 
 def cleanup(delay=2, test=False,
-            singularity_base='/cvmfs/singularity.opensciencegrid.org'):
+            singularity_base='/cvmfs/singularity.opensciencegrid.org',
+            max_per_cycle=50):
     '''Clean up unlinked singularity images'''
     json_location = os.path.join(singularity_base, '.missing_links.json')
     # Read in the old json, if it exists
@@ -62,6 +63,7 @@ def cleanup(delay=2, test=False,
 
     # Loop through the json missing links, removing directories if over the `delay` days
     expiry = datetime.now() - timedelta(days=delay)
+    images_removed = 0
     for image_dir, last_linked in json_missing_links.items():
         date_last_linked = datetime.fromtimestamp(last_linked)
         if date_last_linked < expiry:
@@ -71,8 +73,16 @@ def cleanup(delay=2, test=False,
             # Remove the directory
             print("Removing missing link: %s" % image_dir)
             if not test:
-                shutil.rmtree(image_dir)
-                del json_missing_links[image_dir]
+                try:
+                    shutil.rmtree(image_dir)
+                    del json_missing_links[image_dir]
+                except OSError as e:
+                    print("Failed to remove missing link: %s" % e)
+
+            images_removed += 1
+            if images_removed >= max_per_cycle:
+                print("Reached limit of cleaning %d images. Stopping cleanup cycle." % images_removed)
+                break
 
     # Write out the end json
     with open(json_location, 'w') as json_file:
