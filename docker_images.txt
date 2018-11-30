@@ -95,6 +95,7 @@ mintproject/base-ubuntu16:latest
 mintproject/base-ubuntu18:latest
 mintproject/cycles:latest
 mintproject/dssat:latest
+mintproject/economic:latest
 mintproject/kimetrica:latest
 mintproject/pihm:latest
 
