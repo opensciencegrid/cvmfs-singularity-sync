@@ -165,6 +165,7 @@ dajunluo/deepvariant
 
 # Images for Testing the Integration Between the CyVerse Discovery Environment and OSG
 discoenv/osg-word-count:1.0.0
+discoenv/osg-test:latest
 cyverse/osg-gl:1.0
 jbustamante35/testphytoshell:phytoshell
 evolinc/osg-rmta:2.1
