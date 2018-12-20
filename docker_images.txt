@@ -101,6 +101,7 @@ mintproject/dssat:latest
 mintproject/economic:latest
 mintproject/kimetrica:latest
 mintproject/pihm:latest
+mintproject/sentinel:latest
 
 # Lightweight images
 busybox
