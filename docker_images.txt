@@ -102,6 +102,7 @@ mintproject/economic:latest
 mintproject/kimetrica:latest
 mintproject/pihm:latest
 mintproject/sentinel:latest
+mintproject/pihm2cycles:1.0
 
 # Lightweight images
 busybox
