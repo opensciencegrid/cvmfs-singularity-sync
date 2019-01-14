@@ -174,4 +174,4 @@ jbustamante35/testphytoshell:phytoshell
 evolinc/osg-rmta:2.1
 
 # JLab CLAS12 Simulations
-maureeungaro/clas12simulations:production
+jeffersonlab/clas12simulations:production
