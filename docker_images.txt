@@ -102,6 +102,7 @@ mintproject/economic:latest
 mintproject/kimetrica:latest
 mintproject/pihm:latest
 mintproject/sentinel:latest
+mintproject/weather-generator:latest
 
 # Lightweight images
 busybox
