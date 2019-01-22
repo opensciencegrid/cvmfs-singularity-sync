@@ -103,6 +103,7 @@ mintproject/kimetrica:latest
 mintproject/pihm:latest
 mintproject/sentinel:latest
 mintproject/pihm2cycles:1.1
+mintproject/weather-generator:latest
 
 # Lightweight images
 busybox
@@ -173,6 +174,7 @@ discoenv/osg-test:latest
 cyverse/osg-gl:1.0
 jbustamante35/testphytoshell:phytoshell
 evolinc/osg-rmta:2.1
+evolinc/osg-evolinc-i:1.7.4
 
 # JLab CLAS12 Simulations
-maureeungaro/clas12simulations:production
+jeffersonlab/clas12simulations:production
