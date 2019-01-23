@@ -46,6 +46,7 @@ opensciencegrid/osgvo-el6
 opensciencegrid/osgvo-el6-cuda
 opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
+opensciencegrid/osgvo-el7-cuda10
 opensciencegrid/osgvo-r:3.5
 opensciencegrid/osgvo-torch
 opensciencegrid/osgvo-ubuntu-xenial
