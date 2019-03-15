@@ -37,6 +37,7 @@ opensciencegrid/osg-wn:3.3-testing-el7
 opensciencegrid/osg-wn:3.3-devel-el7
 
 # OSGVO
+dcshrum/singularity:cowsay
 opensciencegrid/npjoodi
 opensciencegrid/osgvo-ants
 opensciencegrid/osgvo-beagle
@@ -49,23 +50,23 @@ opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-el7-cuda10
 opensciencegrid/osgvo-r:3.5
 opensciencegrid/osgvo-torch
-opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/osgvo-ubuntu-18.04
+opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu:1.4
 opensciencegrid/tensorflow-gpu:latest
+paesanilab/psi4:latest
+pegasus/osg-el7:latest
 rynge/einsteintoolkit:latest
+rynge/osg-mcf10-mod:latest
 rynge/osg-tensorflow-gpu:latest
 rynge/osgvo-el6-testing:latest
 rynge/osgvo-el7-testing:latest
 rynge/osgvo-ubuntu-18.04-testing:latest
-rynge/osg-mcf10-mod:latest
-ssthapa/freesurferosg:latest
-ssthapa/freesurferosg:6.0
-ssthapa/freesurferosg:5.3
 ssthapa/freesurferosg:5.1
-dcshrum/singularity:cowsay
-pegasus/osg-el7:latest
+ssthapa/freesurferosg:5.3
+ssthapa/freesurferosg:6.0
+ssthapa/freesurferosg:latest
 
 # OSGVO - user defined images
 shilpac/my_mindboggle
