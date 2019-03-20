@@ -185,3 +185,7 @@ evolinc/osg-evolinc-i:1.7.4
 
 # JLab CLAS12 Simulations
 jeffersonlab/clas12simulations:production
+
+# JLab Parity Simulations and Analysis
+jeffersonlab/remoll:latest
+jeffersonlab/japan:latest
