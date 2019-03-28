@@ -97,6 +97,7 @@ jasoncpatton/qutip_kwant:v1.2
 kai2019/osg-fsl:latest
 efajardo/osgvo-nsides:latest
 christinalk/slim:latest
+jonlam/osg_ubuntu:latest
 
 # MINT project (rynge)
 ankushumn/rsatest
@@ -189,3 +190,8 @@ jeffersonlab/clas12simulations:production
 # JLab Parity Simulations and Analysis
 jeffersonlab/remoll:latest
 jeffersonlab/japan:latest
+
+# Syracuse University Gravitational Wave Group
+sugwg/dbrown:*
+sugwg/dfinstad:*
+
