@@ -48,6 +48,7 @@ opensciencegrid/osgvo-el6-cuda
 opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-el7-cuda10
+opensciencegrid/osgvo-julia:latest
 opensciencegrid/osgvo-psi4:latest
 opensciencegrid/osgvo-r:3.5
 opensciencegrid/osgvo-torch
