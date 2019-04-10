@@ -114,6 +114,7 @@ mintproject/pihm:latest
 mintproject/sentinel:latest
 mintproject/pihm2cycles:1.1
 mintproject/weather-generator:latest
+mintproject/mintviz:latest
 
 # Lightweight images
 busybox
