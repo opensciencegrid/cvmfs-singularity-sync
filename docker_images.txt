@@ -203,3 +203,4 @@ sugwg/dfinstad:*
 
 # brainlife.io - An online platform for reproducible neuroscience.
 brainlife/mrtrix3:3.0_RC3
+brainlife/mcr:neurodebian1604-r2017a
