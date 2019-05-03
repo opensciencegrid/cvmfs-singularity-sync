@@ -110,6 +110,8 @@ mintproject/cycles:latest
 mintproject/dssat:latest
 mintproject/economic:latest
 mintproject/kimetrica:latest
+mintproject/pihm:v2
+mintproject/pihm:v4
 mintproject/pihm:latest
 mintproject/sentinel:latest
 mintproject/pihm2cycles:1.1
