@@ -29,6 +29,7 @@ import requests
 from furl import furl
 from requests.auth import AuthBase
 import traceback
+import re
 
 
 class TimeoutError(Exception):
@@ -90,12 +91,17 @@ class DockerHubAuth(AuthBase):
         r.headers['Authorization'] = "Bearer {}".format(self._token)
         return r
     
-    def updateToken(self, scope):
+    def updateToken(self, scope, service=None, realm=None, **kwargs):
         if scope:
             params = {'service': 'registry.docker.io', 'scope': scope}
         else:
             params = {'service': 'registry.docker.io'}
-        r = requests.get("https://auth.docker.io/token", params = params)
+        if service:
+            params['service'] = service
+        if realm:
+            r = requests.get(realm, params = params)
+        else:
+            r = requests.get("https://auth.docker.io/token", params = params)
         self._token = r.json()['token']
 
     def _get_authorization_token(self):
@@ -278,14 +284,15 @@ class DockerHub(object):
             raise ConnectionError('Connection Error. Download failed: {0}'.format(e))
         else:
             if resp.status_code == 401 and ttl > 0:
-                scope = None
                 # Update the auth token with the scope, and try again
                 try:
-                    scope = resp.headers['Www-Authenticate'].split(',')[2]
-                    scope = scope.split('=')[1].replace("\"", "")
+                    # Parse the Www-Authenticate line, looks like:
+                    # Bearer realm="https://git.ligo.org/jwt/auth",service="container_registry",scope="repository:lscsoft/lalsuite/lalsuite-v6.53:pull",error="invalid_token"
+                    reg=re.compile('(\w+)[=] ?"?([\w\:\/\.\-]+)"?')
+                    values = dict(reg.findall(resp.headers['Www-Authenticate']))
                 except:
                     pass
-                self._auth.updateToken(scope)
+                self._auth.updateToken(**values)
                 kwargs['ttl'] = ttl-1
                 return self._do_request(method, address, **kwargs)
             try:
