@@ -122,17 +122,17 @@ def main():
             image = image.strip()
             if image.startswith("#") or not image:
                 continue
-            namespace, repo_name, repo_tag = parse_image(image)
+            registry, namespace, repo_name, repo_tag = parse_image(image)
 
             if '*' in repo_tag: # Treat wildcards as a glob
-                tag_names = get_tags(namespace, repo_name, registry=args.registry, auth=doauth)
+                tag_names = get_tags(namespace, repo_name, registry=registry, auth=doauth)
                 repo_tag = fnmatch.filter(tag_names, repo_tag)
             else:
                 repo_tag = [repo_tag]
 
             for tag in repo_tag:
-                image = '%s/%s:%s' % (namespace, repo_name, tag)
-                retval = publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
+                image = '%s/%s/%s:%s' % (registry, namespace, repo_name, tag)
+                retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
                 if retval:
                     final_retval = retval
         print "All requested images have been attempted; final return code: %d" % final_retval
@@ -223,24 +223,34 @@ def make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo
 def parse_image(image):
     """
     Parse an image string into image components, setting appropriate defaults.
-    Returns a tuple of (namespace, repo_name, repo_tag).
+    Returns a tuple of (registry, namespace, repo_name, repo_tag).
     """
 
-# INPUT PARSING -------------------------------------------
-# Parse image name, repo name, and namespace
-
+    # INPUT PARSING -------------------------------------------
+    # Parse registry, image name, repo name, and namespace
+    # Support different formats:
+    # opensciencegrid/osgvo-julia:latest
+    # opensciencegrid/osgvo-ants
+    # openjdk:8
+    # containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.53:stretch
+    registry = "https://registry.hub.docker.com"
     # First split the docker image name by /
-    image = image.split('/')
+    split_image = image.split('/')
 
     # If there are two parts, we have namespace with repo (and maybe tab)
-    if len(image) == 2:
-        namespace = image[0]
-        image = image[1]
-
+    if len(split_image) == 2:
+        namespace = split_image[0]
+        image = split_image[1]
+    elif len(split_image) > 2:
+        # We have a custom registry
+        registry = split_image[0]
+        print("Custom registry:", registry)
+        namespace = split_image[1]
+        image = "/".join(split_image[2:])
     # Otherwise, we must be using library namespace
     else:
         namespace = "library"
-        image = image[0]
+        image = split_image[0]
 
     # Now split the docker image name by :
     image = image.split(':')
@@ -253,13 +263,13 @@ def parse_image(image):
         repo_name = image[0]
         repo_tag = "latest"
 
-    return namespace, repo_name, repo_tag
+    return registry, namespace, repo_name, repo_tag
 
 def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
     # Tell the user the namespace, repo name and tag
-    namespace, repo_name, repo_tag = parse_image(image)
-    print("Docker image to publish: %s/%s:%s" % (namespace, repo_name, repo_tag))
+    registry, namespace, repo_name, repo_tag = parse_image(image)
+    print("Docker image to publish: %s/%s/%s:%s" % (registry, namespace, repo_name, repo_tag))
 
 
 # IMAGE METADATA -------------------------------------------
@@ -267,7 +277,9 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
     # Get an image manifest - has image ids to parse, and will be
     # used later to get Cmd
-    hub = dockerhub.DockerHub(url="https://registry.hub.docker.com")
+    # Prepend "https://" to the registry
+    registry = "https://%s" % registry 
+    hub = dockerhub.DockerHub(url=registry)
     manifest = hub.manifest(namespace, repo_name, repo_tag)
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
