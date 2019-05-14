@@ -278,7 +278,8 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     # Get an image manifest - has image ids to parse, and will be
     # used later to get Cmd
     # Prepend "https://" to the registry
-    registry = "https://%s" % registry 
+    if not registry.startswith("https://"):
+        registry = "https://%s" % registry
     hub = dockerhub.DockerHub(url=registry)
     manifest = hub.manifest(namespace, repo_name, repo_tag)
 
