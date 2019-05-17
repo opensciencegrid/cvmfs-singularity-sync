@@ -203,6 +203,7 @@ jeffersonlab/japan:latest
 # Syracuse University Gravitational Wave Group
 sugwg/dbrown:*
 sugwg/dfinstad:*
+sugwg/prp:*
 
 # brainlife.io - An online platform for reproducible neuroscience.
 brainlife/mrtrix3:3.0_RC3
