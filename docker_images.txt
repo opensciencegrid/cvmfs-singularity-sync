@@ -55,7 +55,7 @@ opensciencegrid/osgvo-r:3.5
 opensciencegrid/osgvo-torch
 opensciencegrid/osgvo-ubuntu-18.04
 opensciencegrid/osgvo-ubuntu-xenial
-opensciencegrid/osgvo-xenon:latest
+opensciencegrid/osgvo-xenon:*
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu:1.4
 opensciencegrid/tensorflow-gpu:latest
@@ -206,3 +206,7 @@ sugwg/prp:*
 # brainlife.io - An online platform for reproducible neuroscience.
 brainlife/mrtrix3:3.0_RC3
 brainlife/mcr:neurodebian1604-r2017a
+
+# Fermilab VO - Fermigrid worker nodes
+fermilab/fnal-wn-sl7
+fermilab/fnal-wn-sl6
