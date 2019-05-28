@@ -107,19 +107,15 @@ ankushumn/rsatest
 mintproject/ankush:latest
 mintproject/base-ubuntu16:latest
 mintproject/base-ubuntu18:latest
-mintproject/cycles:latest
-mintproject/dssat:latest
-mintproject/economic:v2
-mintproject/economic:v5
-mintproject/economic:latest
-mintproject/kimetrica:latest
-mintproject/pihm:v2
-mintproject/pihm:v4
-mintproject/pihm:latest
-mintproject/sentinel:latest
-mintproject/pihm2cycles:1.1
-mintproject/weather-generator:latest
-mintproject/mintviz:latest
+mintproject/cycles:*
+mintproject/dssat:*
+mintproject/economic:*
+mintproject/kimetrica:*
+mintproject/pihm:*
+mintproject/sentinel:*
+mintproject/pihm2cycles:*
+mintproject/weather-generator:*
+mintproject/mintviz:*
 
 # Lightweight images
 busybox
