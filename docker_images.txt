@@ -210,3 +210,7 @@ sugwg/prp:*
 # brainlife.io - An online platform for reproducible neuroscience.
 brainlife/mrtrix3:3.0_RC3
 brainlife/mcr:neurodebian1604-r2017a
+
+# Fermilab VO - Fermigrid worker nodes
+fermilab/fnal-wn-sl7
+fermilab/fnal-wn-sl6
