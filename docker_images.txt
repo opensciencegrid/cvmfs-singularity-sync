@@ -1,6 +1,8 @@
 
 # This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
 
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.53:stretch
+
 # First, some generic CentOS images:
 centos:latest
 centos:centos6
