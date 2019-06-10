@@ -285,13 +285,10 @@ class DockerHub(object):
         else:
             if resp.status_code == 401 and ttl > 0:
                 # Update the auth token with the scope, and try again
-                try:
-                    # Parse the Www-Authenticate line, looks like:
-                    # Bearer realm="https://git.ligo.org/jwt/auth",service="container_registry",scope="repository:lscsoft/lalsuite/lalsuite-v6.53:pull",error="invalid_token"
-                    reg=re.compile('(\w+)[=] ?"?([\w\:\/\.\-]+)"?')
-                    values = dict(reg.findall(resp.headers['Www-Authenticate']))
-                except:
-                    pass
+                # Parse the Www-Authenticate line, looks like:
+                # Bearer realm="https://git.ligo.org/jwt/auth",service="container_registry",scope="repository:lscsoft/lalsuite/lalsuite-v6.53:pull",error="invalid_token"
+                reg=re.compile('(\w+)[=] ?"?([\w\:\/\.\-]+)"?')
+                values = dict(reg.findall(resp.headers['Www-Authenticate']))
                 self._auth.updateToken(**values)
                 kwargs['ttl'] = ttl-1
                 return self._do_request(method, address, **kwargs)
