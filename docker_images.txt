@@ -198,7 +198,9 @@ jeffersonlab/clas12simulations:production
 
 # JLab Parity Simulations and Analysis
 jeffersonlab/remoll:latest
+jeffersonlab/remoll:develop
 jeffersonlab/japan:latest
+jeffersonlab/japan:develop
 
 # Syracuse University Gravitational Wave Group
 sugwg/dbrown:*
