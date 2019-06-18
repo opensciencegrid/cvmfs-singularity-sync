@@ -233,7 +233,7 @@ def parse_image(image):
     # opensciencegrid/osgvo-ants
     # openjdk:8
     # containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.53:stretch
-    registry = "https://registry.hub.docker.com"
+    registry = "registry.hub.docker.com"
     # First split the docker image name by /
     split_image = image.split('/')
 
