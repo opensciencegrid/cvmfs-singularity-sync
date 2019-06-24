@@ -115,6 +115,7 @@ mintproject/dssat:*
 mintproject/economic:*
 mintproject/kimetrica:*
 mintproject/pihm:*
+mintproject/hand:*
 mintproject/sentinel:*
 mintproject/pihm2cycles:*
 mintproject/weather-generator:*
