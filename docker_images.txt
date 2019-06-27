@@ -45,6 +45,7 @@ opensciencegrid/osgvo-ants
 opensciencegrid/osgvo-beagle
 opensciencegrid/osgvo-biomedinfo
 opensciencegrid/osgvo-blaylockbk
+opensciencegrid/osgvo-debian-10:latest
 opensciencegrid/osgvo-el6
 opensciencegrid/osgvo-el6-cuda
 opensciencegrid/osgvo-el6-feltus
