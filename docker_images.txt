@@ -39,7 +39,6 @@ opensciencegrid/osg-wn:3.3-testing-el7
 opensciencegrid/osg-wn:3.3-devel-el7
 
 # OSGVO
-dcshrum/singularity:cowsay
 opensciencegrid/npjoodi
 opensciencegrid/osgvo-ants
 opensciencegrid/osgvo-beagle
