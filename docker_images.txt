@@ -218,4 +218,5 @@ fermilab/fnal-wn-sl7
 fermilab/fnal-wn-sl6
 
 # NOvA Experiment
+novaexperiment/el7-tensorflow-gpu:*
 novaexperiment/slf67:*
