@@ -64,6 +64,7 @@ opensciencegrid/tensorflow-gpu:latest
 paesanilab/psi4:latest
 pegasus/osg-el7:latest
 rynge/einsteintoolkit:latest
+rynge/sra:latest
 rynge/osg-mcf10-mod:latest
 rynge/osg-tensorflow-gpu:latest
 rynge/osgvo-el6-testing:latest
