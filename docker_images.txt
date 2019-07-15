@@ -133,6 +133,9 @@ whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
 
+# Geospacial Images
+rocker/geospatial:*
+
 # Common biology tools
 # Biocontainers :latest doesn't exist any longer.
 #biocontainers/blast
