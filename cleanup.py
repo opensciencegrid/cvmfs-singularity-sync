@@ -44,10 +44,20 @@ def cleanup(delay=2, test=False,
     image_dirs = glob.glob(os.path.join(singularity_base, '.images/*/*'))
 
     # Walk the named image dirs
-    named_image_dir = glob.glob(os.path.join(singularity_base, '*/*'))
+    named_image_dirs = []
+    for subdir, dirs, files in os.walk(singularity_base):
+        try:
+            images_index = dirs.index(".images")
+            del dirs[images_index]
+        except ValueError as ve:
+            pass
+        for directory in dirs:
+            path = os.path.join(subdir, directory)
+            if os.path.islink(path):
+                named_image_dirs.append(path)
 
     # For named image dir, look at the what the symlink points at 
-    for named_image in named_image_dir:
+    for named_image in named_image_dirs:
         link_target = os.readlink(named_image)
         while link_target in image_dirs:
             image_dirs.remove(link_target)
