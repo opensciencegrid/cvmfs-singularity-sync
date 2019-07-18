@@ -77,6 +77,7 @@ ssthapa/freesurferosg:6.0
 ssthapa/freesurferosg:latest
 
 # OSGVO - user defined images
+weiminghu123/panen
 shilpac/my_mindboggle
 nipy/mindboggle
 nkern/21cmfast_env
