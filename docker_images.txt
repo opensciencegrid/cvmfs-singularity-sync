@@ -77,6 +77,7 @@ ssthapa/freesurferosg:6.0
 ssthapa/freesurferosg:latest
 
 # OSGVO - user defined images
+weiminghu123/panen
 shilpac/my_mindboggle
 nipy/mindboggle
 nkern/21cmfast_env
@@ -133,6 +134,9 @@ alpine
 whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
+
+# Geospacial Images
+rocker/geospatial:*
 
 # Common biology tools
 # Biocontainers :latest doesn't exist any longer.
@@ -224,3 +228,6 @@ fermilab/fnal-wn-sl6
 # NOvA Experiment
 novaexperiment/el7-tensorflow-gpu:*
 novaexperiment/slf67:*
+
+#holosim (tree migration)
+astrand/holosim1
