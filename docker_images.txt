@@ -107,6 +107,7 @@ christinalk/slim:latest
 jonlam/osg_ubuntu:latest
 yxfu93/julia:latest
 npcooley/heron:latest
+showmic09/dream3d:6.5.121
 
 # MINT project (rynge)
 ankushumn/rsatest
