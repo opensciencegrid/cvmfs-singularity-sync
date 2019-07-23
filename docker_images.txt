@@ -88,7 +88,6 @@ agladstein/msprime:latest
 agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
-cathrine98/bbmap
 drtmfigy/hjets_herwig7
 drtmfigy/herwig_hjets
 drtmfigy/fbps
@@ -134,9 +133,6 @@ alpine
 whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
-
-# Geospacial Images
-rocker/geospatial:*
 
 # Common biology tools
 # Biocontainers :latest doesn't exist any longer.
