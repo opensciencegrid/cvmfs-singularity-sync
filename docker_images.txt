@@ -230,4 +230,4 @@ novaexperiment/slf67:*
 astrand/holosim1
 
 # HTMap
-htcondor/htmap-exec:v0.4.1
+htcondor/htmap-exec:*
