@@ -112,6 +112,7 @@ def main():
         print >> sys.stderr, "No docker image or file list specified.."
         return 1
 
+    currentImages = []
     if args.docker:
         image = args.docker
         return publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
@@ -132,12 +133,14 @@ def main():
 
             for tag in repo_tag:
                 image = '%s/%s/%s:%s' % (registry, namespace, repo_name, tag)
+                currentImages.append(image)
                 retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
                 if retval:
                     final_retval = retval
         print "All requested images have been attempted; final return code: %d" % final_retval
         print "Cleaning up unlinked images"
         start_txn(singularity_rootfs)
+        cleanup.remove_unlisted_images(currentImages, singularity_rootfs)
         cleanup.cleanup(singularity_base=singularity_rootfs)
         publish_txn()
         return final_retval

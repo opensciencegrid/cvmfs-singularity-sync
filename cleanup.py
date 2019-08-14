@@ -24,6 +24,43 @@ from datetime import datetime, timedelta
 #   }
 # }
 
+def remove_unlisted_images(current_images, singularity_base, test=False):
+    """
+    Remove the images that are not in the current list
+    """
+    # Get all the image paths
+    named_image_dirs = set()
+    for subdir, dirs, files in os.walk(singularity_base):
+        try:
+            images_index = dirs.index(".images")
+            del dirs[images_index]
+        except ValueError as ve:
+            pass
+        for directory in dirs:
+            path = os.path.join(subdir, directory)
+            if os.path.islink(path):
+                named_image_dirs.add(path)
+
+    # Compare the list of current images with the list of images from the FS
+    for image in current_images:
+        # Always has the registry as the first entry, remove it
+        image_dir = image.split('/', 1)[-1]
+        full_image_dir = os.path.join(singularity_base, image_dir)
+        if full_image_dir in named_image_dirs:
+            named_image_dirs.remove(full_image_dir)
+
+    # named_image_dirs should now only contain containers that are
+    # not in the images
+    for image_dir in named_image_dirs:
+        print("Removing deleted image: %s" % image_dir)
+        if not test:
+            try:
+                os.unlink(image_dir)
+            except OSError as e:
+                print("Failed to remove deleted image: %s" % e)
+
+
+
 def cleanup(delay=2, test=False,
             singularity_base='/cvmfs/singularity.opensciencegrid.org',
             max_per_cycle=50):
