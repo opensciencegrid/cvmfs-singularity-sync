@@ -229,3 +229,6 @@ astrand/holosim1
 
 # HTMap
 htcondor/htmap-exec:*
+
+# LIGO/VIRGO/KAGRA containers
+containers.ligo.org/lscsoft/lalsuite/*
