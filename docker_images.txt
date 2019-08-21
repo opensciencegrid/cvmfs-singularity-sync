@@ -231,4 +231,7 @@ astrand/holosim1
 htcondor/htmap-exec:*
 
 # LIGO/VIRGO/KAGRA containers
-containers.ligo.org/lscsoft/lalsuite/*
+containers.ligo.org/lscsoft/lalsuite/nightly:*
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:*
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:*
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:*
