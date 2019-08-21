@@ -1,8 +1,6 @@
 
 # This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
 
-containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.53:stretch
-
 # First, some generic CentOS images:
 centos:latest
 centos:centos6
@@ -232,3 +230,9 @@ astrand/holosim1
 
 # HTMap
 htcondor/htmap-exec:*
+
+# LIGO/VIRGO/KAGRA containers
+containers.ligo.org/lscsoft/lalsuite/nightly:*
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:*
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:*
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:*
