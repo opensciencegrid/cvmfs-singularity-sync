@@ -236,3 +236,6 @@ containers.ligo.org/lscsoft/lalsuite/nightly:*
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:*
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:*
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:*
+
+# Lancaster U Muon g-2 Beamline Simulations
+valetov/g4bl:*
