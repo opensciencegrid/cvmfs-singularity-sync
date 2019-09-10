@@ -231,8 +231,20 @@ astrand/holosim1
 # HTMap
 htcondor/htmap-exec:*
 
+
+# LIGO - user defined images
+containers.ligo.org/joshua.willis/pycbc:latest
+
 # LIGO/VIRGO/KAGRA containers
-containers.ligo.org/lscsoft/lalsuite/nightly:*
-containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:*
-containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:*
-containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:*
+containers.ligo.org/lscsoft/lalsuite/nightly:el7
+containers.ligo.org/lscsoft/lalsuite/nightly:stretch
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:stretch
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:el7
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:stretch
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:el7
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:stretch
+
+# Lancaster U Muon g-2 Beamline Simulations
+valetov/g4bl:*
+
