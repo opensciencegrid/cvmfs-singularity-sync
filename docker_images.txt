@@ -235,6 +235,7 @@ htcondor/htmap-exec:*
 # LIGO - user defined images
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/james-clark/gwrucio:latest
+containers.ligo.org/james-clark/bayeswave:*
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
@@ -245,6 +246,7 @@ containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:el7
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:stretch
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:el7
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:stretch
+containers.ligo.org/lscsoft/bayeswave:*
 
 # Lancaster U Muon g-2 Beamline Simulations
 valetov/g4bl:*
