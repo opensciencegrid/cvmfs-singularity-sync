@@ -251,3 +251,8 @@ containers.ligo.org/lscsoft/bayeswave:*
 # Lancaster U Muon g-2 Beamline Simulations
 valetov/g4bl:*
 
+# Mu2e
+egstern/ubuntu1804-synergia2:*
+
+
+
