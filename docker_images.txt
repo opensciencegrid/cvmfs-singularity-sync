@@ -255,3 +255,6 @@ valetov/beam_track:*
 
 # Mu2e
 egstern/ubuntu1804-synergia2:*
+mu2e/synergia:v0
+
+
