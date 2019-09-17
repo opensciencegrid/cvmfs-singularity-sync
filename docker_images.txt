@@ -108,6 +108,7 @@ npcooley/heron:latest
 showmic09/dream3d:6.5.121
 chunshen1987/iebe-music:latest
 npavlovikj/bacteria_db:latest
+cathrine98/r-bglr
 
 # MINT project (rynge)
 ankushumn/rsatest
@@ -235,6 +236,7 @@ htcondor/htmap-exec:*
 # LIGO - user defined images
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/james-clark/bayeswave:latest
+containers.ligo.org/james-clark/gwrucio:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
@@ -251,4 +253,10 @@ containers.ligo.org/lscsoft/bayeswave:v1.0.4
 
 # Lancaster U Muon g-2 Beamline Simulations
 valetov/g4bl:*
+valetov/beam_track:*
+
+# Mu2e
+egstern/ubuntu1804-synergia2:*
+mu2e/synergia:v0
+
 
