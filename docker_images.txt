@@ -25,6 +25,7 @@ gcc:latest
 julia:latest
 r-base:latest
 continuumio/anaconda
+gromacs/gromacs
 
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
