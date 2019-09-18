@@ -257,7 +257,9 @@ valetov/g4bl:*
 valetov/beam_track:*
 
 # Mu2e
+egstern/centos7-synergia2:*
 egstern/ubuntu1804-synergia2:*
 mu2e/synergia:v0
+
 
 
