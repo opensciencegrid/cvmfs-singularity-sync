@@ -230,6 +230,7 @@ novaexperiment/slf67:*
 
 #holosim (tree migration)
 astrand/holosim1
+astrand/popassemble
 
 # HTMap
 htcondor/htmap-exec:*
