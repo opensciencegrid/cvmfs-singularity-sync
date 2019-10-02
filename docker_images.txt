@@ -49,6 +49,7 @@ opensciencegrid/osgvo-el6-cuda
 opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-el7-cuda10
+opensciencegrid/osgvo-el8
 opensciencegrid/osgvo-gromacs
 opensciencegrid/osgvo-julia:latest
 opensciencegrid/osgvo-neuroimaging:latest
