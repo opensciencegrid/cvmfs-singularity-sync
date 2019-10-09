@@ -113,6 +113,7 @@ showmic09/dream3d:6.5.121
 chunshen1987/iebe-music:latest
 npavlovikj/bacteria_db:latest
 cathrine98/r-bglr
+cathrine98/osg-clarkson_mondal:latest
 
 # MINT project (rynge)
 ankushumn/rsatest
