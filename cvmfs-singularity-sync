@@ -44,6 +44,7 @@ import hashlib
 import tempfile
 import tarfile
 import cleanup
+import traceback
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
@@ -124,9 +125,17 @@ def main():
             if image.startswith("#") or not image:
                 continue
             registry, namespace, repo_name, repo_tag = parse_image(image)
+            print("Working on image: {}".format(image))
 
             if '*' in repo_tag: # Treat wildcards as a glob
-                tag_names = get_tags(namespace, repo_name, registry=registry, auth=doauth)
+                try:
+                    tag_names = get_tags(namespace, repo_name, registry=registry, auth=doauth)
+                except Exception as ex:
+                    image = '%s/%s/%s' % (registry, namespace, repo_name)
+                    print("Failed to get tags for image: {}".format(image))
+                    traceback.print_exc()
+                    print(ex)
+                    continue
                 repo_tag = fnmatch.filter(tag_names, repo_tag)
             else:
                 repo_tag = [repo_tag]
@@ -134,7 +143,13 @@ def main():
             for tag in repo_tag:
                 image = '%s/%s/%s:%s' % (registry, namespace, repo_name, tag)
                 currentImages.append(image)
-                retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
+                retval = 1
+                try: 
+                    retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
+                except Exception as ex:
+                    print("Failed to publish image: {}".format(image))
+                    traceback.print_exc()
+                  
                 if retval:
                     final_retval = retval
         print "All requested images have been attempted; final return code: %d" % final_retval
@@ -174,8 +189,13 @@ def start_txn(singularity_rootfs):
                 raise
 
 
-def get_tags(username, repo, registry, auth):
-    hub = dockerhub.DockerHub()
+def get_tags(username, repo, registry=None, auth=None):
+    if registry != "registry.hub.docker.com":
+        if "://" not in registry:
+            registry = "https://%s" % registry
+        hub = dockerhub.DockerHub(url=registry)
+    else:
+        hub = dockerhub.DockerHub()
     tag_names = []
     for tag in hub.tags(username, repo):
         tag_names.append(tag['name'])

@@ -102,7 +102,12 @@ class DockerHubAuth(AuthBase):
             r = requests.get(realm, params = params)
         else:
             r = requests.get("https://auth.docker.io/token", params = params)
-        self._token = r.json()['token']
+        try:
+            self._token = r.json()['token']
+        except KeyError as ke:
+            print("Unable to get token from json")
+            print(r.json())
+            raise ke
 
     def _get_authorization_token(self):
         """Actually gets the authentication token
@@ -277,6 +282,8 @@ class DockerHub(object):
                 kwargs['params'] = query
 
             resp = self._session.request(method, address, **kwargs)
+            print(address)
+            print(kwargs)
 
         except requests.exceptions.Timeout as e:
             raise TimeoutError('Connection Timeout. Download failed: {0}'.format(e))
@@ -295,7 +302,10 @@ class DockerHub(object):
             try:
                 resp.raise_for_status()
             except:
-                print(resp.json())
+                try:
+                    print(resp.json())
+                except:
+                    print(resp.content)
                 print(resp.headers)
                 raise
             return resp
