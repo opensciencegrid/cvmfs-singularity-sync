@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 
-from __future__ import print_function
+
 
 import json
 
@@ -72,7 +72,7 @@ class DockerHubAuth(AuthBase):
                 self._username = None
                 self._password = None
             return
-        
+
         # Otherwise, do anonymous login
         self._get_authorization_token()
         #raise ValueError("Need either username and password or token for authentication")
@@ -90,7 +90,7 @@ class DockerHubAuth(AuthBase):
     def __call__(self, r):
         r.headers['Authorization'] = "Bearer {}".format(self._token)
         return r
-    
+
     def updateToken(self, scope, service=None, realm=None, **kwargs):
         if scope:
             params = {'service': 'registry.docker.io', 'scope': scope}
@@ -102,7 +102,12 @@ class DockerHubAuth(AuthBase):
             r = requests.get(realm, params = params)
         else:
             r = requests.get("https://auth.docker.io/token", params = params)
-        self._token = r.json()['token']
+        try:
+            self._token = r.json()['token']
+        except KeyError as ke:
+            print("Unable to get token from json")
+            print(r.json())
+            raise ke
 
     def _get_authorization_token(self):
         """Actually gets the authentication token
@@ -113,9 +118,9 @@ class DockerHubAuth(AuthBase):
         """
 
         if self._username == None and self._password == None and self._token == None:
-            
+
             r = self._requests_post(self._api_url, noPage=True)
-            
+
         else:
             r = self._requests_post(
                     self._api_url,
@@ -254,7 +259,7 @@ class DockerHub(object):
         try:
             if 'timeout' not in kwargs:
                 kwargs['timeout'] = (5, 15)
-                
+
             if 'ttl' not in kwargs:
                 ttl = 1
             else:
@@ -277,7 +282,7 @@ class DockerHub(object):
                 kwargs['params'] = query
 
             resp = self._session.request(method, address, **kwargs)
-
+            
         except requests.exceptions.Timeout as e:
             raise TimeoutError('Connection Timeout. Download failed: {0}'.format(e))
         except requests.exceptions.RequestException as e:
@@ -295,7 +300,10 @@ class DockerHub(object):
             try:
                 resp.raise_for_status()
             except:
-                print(resp.json())
+                try:
+                    print(resp.json())
+                except:
+                    print(resp.content)
                 print(resp.headers)
                 raise
             return resp
@@ -462,17 +470,17 @@ class DockerHub(object):
         url = self._api_url('repositories/{0}/{1}/tags'.format(user, repository))
         self._auth = None
         return self._iter_requests_get(url, **kwargs)
-    
+
     def manifest(self, user, image, tag, **kwargs):
         """
-        
+
         Args:
             user:
             repository:
             **kwargs:
-            
+
         Returns:
-        
+
         """
         url = self._api_url('{0}/{1}/manifests/{2}'.format(user, image, tag))
         return self._do_requests_get(url, **kwargs).json()
