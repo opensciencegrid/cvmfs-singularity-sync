@@ -146,10 +146,13 @@ argonneeic/fpadsim:v*
 #biocontainers/blast
 cyverse/rsem-prepare
 
-# LIGO worker node
-ligo/software:jessie
-ligo/software:jessie-proposed
-ligo/software:el7
+# IGWN (Internation Gravitational Wave Network) worker nodes
+igwn/lalsuite-dev:el7
+igwn/lalsuite-dev:stretch
+igwn/software:el7
+igwn/software:el7-testing
+igwn/software:stretch
+igwn/software:stretch-proposed
 
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v*
