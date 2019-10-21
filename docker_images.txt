@@ -269,4 +269,8 @@ egstern/ubuntu1804-synergia2:*
 mu2e/synergia:v0
 egstern/wn-synergia2:latest
 
+#NEURON+Brian2+Python
+rtikid/python2-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
+rtikid/python3-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
+
 
