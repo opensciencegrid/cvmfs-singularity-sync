@@ -130,6 +130,7 @@ mintproject/sentinel:*
 mintproject/pihm2cycles:*
 mintproject/weather-generator:*
 mintproject/mintviz:*
+mintproject/modflow-2005:*
 
 # Lightweight images
 busybox
