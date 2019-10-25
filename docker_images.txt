@@ -259,7 +259,7 @@ containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:el7
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:stretch
 containers.ligo.org/lscsoft/bayeswave:nightly
 containers.ligo.org/lscsoft/bayeswave:latest
-containers.ligo.org/lscsoft/bayeswave:v1.0.4
+containers.ligo.org/lscsoft/bayeswave:v1.0.5
 
 # Lancaster U Muon g-2 Beamline Simulations
 valetov/g4bl:*
