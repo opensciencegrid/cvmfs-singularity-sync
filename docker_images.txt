@@ -131,6 +131,7 @@ mintproject/pihm2cycles:*
 mintproject/weather-generator:*
 mintproject/mintviz:*
 mintproject/modflow-2005:*
+mintproject/topoflow:*
 
 # Lightweight images
 busybox
