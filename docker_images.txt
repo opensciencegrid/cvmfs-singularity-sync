@@ -59,6 +59,7 @@ opensciencegrid/osgvo-r:3.5
 opensciencegrid/osgvo-torch
 opensciencegrid/osgvo-ubuntu-18.04
 opensciencegrid/osgvo-ubuntu-xenial
+opensciencegrid/osgvo-ucsd-grover:latest
 opensciencegrid/osgvo-xenon:*
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu:1.4
