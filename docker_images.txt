@@ -165,6 +165,8 @@ bbockelm/cms:rhel6
 bbockelm/cms:rhel7
 cmssw/cms:rhel6
 cmssw/cms:rhel7
+cmssw/cms:rhel6-m*
+cmssw/cms:rhel7-m*
 efajardo/docker-cms:tensorflow
 # CMS worker node with hadoop
 kreczko/workernode:centos6
