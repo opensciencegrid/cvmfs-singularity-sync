@@ -280,4 +280,5 @@ egstern/wn-synergia2:latest
 rtikid/python2-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
 rtikid/python3-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
 
-
+# WRENNCH project (rynge)
+wrenchproject/task-clustering:*
