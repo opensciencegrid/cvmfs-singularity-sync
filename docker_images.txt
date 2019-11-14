@@ -115,6 +115,7 @@ chunshen1987/iebe-music:latest
 npavlovikj/bacteria_db:latest
 cathrine98/r-bglr
 cathrine98/osg-clarkson_mondal:latest
+xevra/sparse_kernel_docker:latest
 
 # MINT project (rynge)
 ankushumn/rsatest
