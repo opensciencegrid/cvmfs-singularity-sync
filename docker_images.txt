@@ -227,6 +227,7 @@ jeffersonlab/japan:develop
 sugwg/dbrown:*
 sugwg/dfinstad:*
 sugwg/prp:*
+sugwg/sdreyes:*
 
 # brainlife.io - An online platform for reproducible neuroscience.
 brainlife/mrtrix3:3.0_RC3
