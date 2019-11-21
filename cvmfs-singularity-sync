@@ -9,22 +9,22 @@
 
 bootstrap.py: python helper for Singularity command line tool
 
-Copyright (c) 2016, Vanessa Sochat. All rights reserved. 
+Copyright (c) 2016, Vanessa Sochat. All rights reserved.
 
 "Singularity" Copyright (c) 2016, The Regents of the University of California,
 through Lawrence Berkeley National Laboratory (subject to receipt of any
 required approvals from the U.S. Dept. of Energy).  All rights reserved.
- 
+
 This software is licensed under a customized 3-clause BSD license.  Please
 consult LICENSE file distributed with the sources of this project regarding
 your rights to use or distribute this software.
- 
+
 NOTICE.  This Software was developed under funding from the U.S. Department of
 Energy and the U.S. Government consequently retains certain rights. As such,
 the U.S. Government has been granted for itself and others acting on its
 behalf a paid-up, nonexclusive, irrevocable, worldwide license in the Software
 to reproduce, distribute copies to the public, prepare derivative works, and
-perform publicly and display publicly, and to permit other to do so. 
+perform publicly and display publicly, and to permit other to do so.
 
 
 '''
@@ -50,10 +50,10 @@ def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
 
     # Name of the docker image, required
-    parser.add_argument("--docker", 
-                        dest='docker', 
-                        help="name of Docker image to bootstrap, in format library/ubuntu:latest", 
-                        type=str, 
+    parser.add_argument("--docker",
+                        dest='docker',
+                        help="name of Docker image to bootstrap, in format library/ubuntu:latest",
+                        type=str,
                         default=None)
 
     # Name of the docker image, required
@@ -64,10 +64,10 @@ def main():
                         default=None)
 
     # root file system of singularity image
-    parser.add_argument("--rootfs", 
-                        dest='rootfs', 
-                        help="the path for the root filesystem to extract to", 
-                        type=str, 
+    parser.add_argument("--rootfs",
+                        dest='rootfs',
+                        help="the path for the root filesystem to extract to",
+                        type=str,
                         default=None)
 
     # Socket to local docker engine
@@ -78,20 +78,20 @@ def main():
                         default=None)
 
     # Docker registry (default is registry-1.docker.io)
-    parser.add_argument("--registry", 
-                        dest='registry', 
-                        help="the registry path to use, to replace registry-1.docker.io", 
-                        type=str, 
+    parser.add_argument("--registry",
+                        dest='registry',
+                        help="the registry path to use, to replace registry-1.docker.io",
+                        type=str,
                         default=None)
 
     # Flag to indicate a token is not required
-    parser.add_argument("--no-token", 
-                        dest='notoken', 
+    parser.add_argument("--no-token",
+                        dest='notoken',
                         action="store_true",
                         help="Indicate that auth is not required",
                         default=False)
 
-    
+
     try:
         args = parser.parse_args()
     except:
@@ -144,12 +144,12 @@ def main():
                 image = '%s/%s/%s:%s' % (registry, namespace, repo_name, tag)
                 currentImages.append(image)
                 retval = 1
-                try: 
+                try:
                     retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
                 except Exception as ex:
                     print("Failed to publish image: {}".format(image))
                     traceback.print_exc()
-                  
+
                 if retval:
                     final_retval = retval
         print("All requested images have been attempted; final return code: %d" % final_retval)
@@ -340,7 +340,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
     # Create a temporary directory for targzs
     tmphandle, tmpfilename = tempfile.mkstemp(prefix="singularity-image-", dir="/var/tmp")
-    
+
     # Use docker to pull the image
     if socket:
         client = docker.DockerClient(base_url=socket,timeout=240)
@@ -348,7 +348,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
         client = docker.from_env()
     print("Pulling image from DockerHub")
     client.images.pull(image)
-    
+
     print("Creating the container to export")
     container = client.containers.create(image, command="/bin/bash")
     resp = container.export()
@@ -358,16 +358,16 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     for chunk in resp:
         f.write(chunk)
     f.close()
-    
+
     # Remove the file from docker
     container.remove(force=True)
     client.images.remove(image, force=True)
-    
+
     # Untar the image
     tar = tarfile.open(tmpfilename, errorlevel=0)
     tar.extractall(image_dir)
     tar.close()
-    
+
     # Remove the original tar file
     os.remove(tmpfilename)
 

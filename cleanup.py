@@ -2,7 +2,7 @@
 """
 Cleanup for Singularity container
 
-Scan the images in the singularity CVMFS.  If an image directory has not been "linked" to for 2 days, 
+Scan the images in the singularity CVMFS.  If an image directory has not been "linked" to for 2 days,
 remove the image directory.
 
 Maintains state in a file in the root singularity directory named .missing_links.json
@@ -93,7 +93,7 @@ def cleanup(delay=2, test=False,
             if os.path.islink(path):
                 named_image_dirs.append(path)
 
-    # For named image dir, look at the what the symlink points at 
+    # For named image dir, look at the what the symlink points at
     for named_image in named_image_dirs:
         link_target = os.readlink(named_image)
         while link_target in image_dirs:
