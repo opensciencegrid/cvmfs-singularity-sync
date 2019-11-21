@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # NOTE:
 # This file is forked from singularity 2.2's "cli.py".  I have left the
@@ -39,7 +39,7 @@ import sys
 import stat
 import errno
 import fnmatch
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import hashlib
 import tempfile
 import tarfile
@@ -110,7 +110,7 @@ def main():
 
     # Do we have a docker image specified?
     if not args.docker and not args.filelist:
-        print >> sys.stderr, "No docker image or file list specified.."
+        print("No docker image or file list specified..", file=sys.stderr)
         return 1
 
     currentImages = []
@@ -119,7 +119,7 @@ def main():
         return publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
     else:
         final_retval = 0
-        fp = urllib2.urlopen(args.filelist)
+        fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
         for image in fp:
             image = image.strip()
             if image.startswith("#") or not image:
@@ -152,8 +152,8 @@ def main():
                   
                 if retval:
                     final_retval = retval
-        print "All requested images have been attempted; final return code: %d" % final_retval
-        print "Cleaning up unlinked images"
+        print("All requested images have been attempted; final return code: %d" % final_retval)
+        print("Cleaning up unlinked images")
         start_txn(singularity_rootfs)
         cleanup.remove_unlisted_images(currentImages, singularity_rootfs)
         cleanup.cleanup(singularity_base=singularity_rootfs)
@@ -171,11 +171,11 @@ def start_txn(singularity_rootfs):
     if os.path.exists("/var/spool/cvmfs/singularity.opensciencegrid.org/in_transaction.lock"):
         result = os.system("cvmfs_server abort -f singularity.opensciencegrid.org")
         if result:
-            print >> sys.stderr, "Failed to abort lingering transaction (exit status %d)."
+            print("Failed to abort lingering transaction (exit status %d)." % result, file=sys.stderr)
             return 1
     result = os.system("cvmfs_server transaction singularity.opensciencegrid.org")
     if result:
-        print >> sys.stderr, "Transaction start failed (exit status %d); will not attempt update." % result
+        print("Transaction start failed (exit status %d); will not attempt update." % result, file=sys.stderr)
         return 1
     _in_txn = True
 
@@ -228,7 +228,7 @@ def make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo
         # Final symlink exists and is already correct.
         link_value = os.readlink(final_path)
         if link_value == image_dir:
-            print "Image is already latest revision."
+            print("Image is already latest revision.")
             return 0
         # Otherwise, clear the symlink; we will recreate.  Since CVMFS is transactional,
         # we don't care that an unlink / symlink is not atomic.
@@ -310,7 +310,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     # for the final image.
     hasher = hashlib.sha256()
     for layerinfo in manifest['fsLayers']:
-        layer_hash = layerinfo['blobSum'].split(":")[-1]
+        layer_hash = layerinfo['blobSum'].split(":")[-1].encode('utf-8')
         hasher.update(layer_hash)
     image_hash = hasher.hexdigest()
 
@@ -322,7 +322,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
         make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
         return publish_txn()
     else:
-        print "Image dir, %s, does not exist; triggering CVMFS mount." % image_dir
+        print("Image dir, %s, does not exist; triggering CVMFS mount." % image_dir)
         retval = start_txn(singularity_rootfs)
         if os.path.exists(image_dir):   # Same as above
             make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
@@ -346,22 +346,22 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
         client = docker.DockerClient(base_url=socket,timeout=240)
     else:
         client = docker.from_env()
-    print "Pulling image from DockerHub"
+    print("Pulling image from DockerHub")
     client.images.pull(image)
     
-    print "Creating the container to export"
+    print("Creating the container to export")
     container = client.containers.create(image, command="/bin/bash")
     resp = container.export()
-    f = os.fdopen(tmphandle, 'w')
+    f = os.fdopen(tmphandle, 'wb')
     
-    print "Exporting container"
-    for chunk in resp.stream():
+    print("Exporting container")
+    for chunk in resp:
         f.write(chunk)
     f.close()
     
     # Remove the file from docker
-    container.remove()
-    client.images.remove(image)
+    container.remove(force=True)
+    client.images.remove(image, force=True)
     
     # Untar the image
     tar = tarfile.open(tmpfilename, errorlevel=0)
@@ -377,9 +377,9 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
             full_fname = os.path.join(dirpath, fname)
             st = os.lstat(full_fname)
             old_mode = stat.S_IMODE(st.st_mode)
-            if (old_mode & 0444) == 0000:
-                new_mode = old_mode | 0400
-                print "Fixing mode of", full_fname, "to", oct(new_mode)
+            if (old_mode & 0o444) == 0000:
+                new_mode = old_mode | 0o400
+                print("Fixing mode of", full_fname, "to", oct(new_mode))
                 os.chmod(full_fname, new_mode)
         for dname in dirnames:
             full_dname = os.path.join(dirpath, dname)
@@ -387,17 +387,17 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
             if not stat.S_ISDIR(st.st_mode):
                 continue
             old_mode = stat.S_IMODE(st.st_mode)
-            if old_mode & 0111 == 0:
-                new_mode = old_mode | 0100
-                print "Fixing mode of", full_dname, "to", oct(new_mode)
+            if old_mode & 0o111 == 0:
+                new_mode = old_mode | 0o100
+                print("Fixing mode of", full_dname, "to", oct(new_mode))
                 os.chmod(full_dname, new_mode)
-            if old_mode & 0222 == 0:
-                new_mode = old_mode | 0200
-                print "Fixing mode of", full_dname, "to", oct(new_mode)
+            if old_mode & 0o222 == 0:
+                new_mode = old_mode | 0o200
+                print("Fixing mode of", full_dname, "to", oct(new_mode))
                 os.chmod(full_dname, new_mode)
 
     # Make sure the image_dir is writable by us!
-    os.chmod(image_dir, 0755)
+    os.chmod(image_dir, 0o755)
 
     # Various fixups to make the image compatible with CVMFS and singularity.
     srv = os.path.join(image_dir, "srv")

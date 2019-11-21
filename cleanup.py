@@ -111,7 +111,7 @@ def cleanup(delay=2, test=False,
     # Loop through the json missing links, removing directories if over the `delay` days
     expiry = datetime.now() - timedelta(days=delay)
     images_removed = 0
-    for image_dir, last_linked in json_missing_links.items():
+    for image_dir, last_linked in list(json_missing_links.items()):
         date_last_linked = datetime.fromtimestamp(last_linked)
         if date_last_linked < expiry:
             # Confirm that we're inside the managed directory
