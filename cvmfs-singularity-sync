@@ -294,7 +294,7 @@ def parse_image(image):
     elif len(split_image) > 2:
         # We have a custom registry
         registry = split_image[0]
-        print("Custom registry:", registry)
+        #print("Custom registry:", registry)
         namespace = split_image[1]
         image = "/".join(split_image[2:])
     # Otherwise, we must be using library namespace
@@ -375,7 +375,6 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
         client = docker.from_env()
     print("Pulling image from DockerHub")
     client.images.pull(image)
-
     print("Creating the container to export")
     container = client.containers.create(image, command="/bin/bash")
     resp = container.export()
@@ -389,7 +388,6 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     # Remove the file from docker
     container.remove(force=True)
     client.images.remove(image, force=True)
-
     # Untar the image
     tar = tarfile.open(tmpfilename, errorlevel=0)
     tar.extractall(image_dir)
