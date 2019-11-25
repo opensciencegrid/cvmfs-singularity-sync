@@ -1,6 +1,5 @@
 tokenfile
 __pycache__/
-docker_images.txt
 cleanup.py.bak
 cleanup.pyc
 cvmfs-singularity-sync.bak
