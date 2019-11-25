@@ -106,6 +106,7 @@ jborrel00/pyccx-ubuntu16:development
 jasoncpatton/qutip_kwant:v1.2
 kai2019/osg-fsl:latest
 efajardo/osgvo-nsides:latest
+efajardo/astroflow:latest
 christinalk/slim:latest
 jonlam/osg_ubuntu:latest
 yxfu93/julia:latest
