@@ -123,6 +123,7 @@ ankushumn/rsatest
 mintproject/ankush:latest
 mintproject/base-ubuntu16:latest
 mintproject/base-ubuntu18:latest
+mintproject/floodseverityindex:*
 mintproject/cycles:*
 mintproject/dssat:*
 mintproject/economic:*
