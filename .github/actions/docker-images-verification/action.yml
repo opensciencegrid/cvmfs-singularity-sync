@@ -1,0 +1,15 @@
+name: 'Docker images verification'
+description: 'Verify docker images by requesting their manifests'
+#inputs:
+#  docker-images-file:  
+#    description: 'Docker images file to be verified'
+#    required: true
+#    default: './docker_images.txt'
+#outputs:
+#  time: # id of output
+#    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+#  args:
+#    - ${{ inputs.docker-images-file }}
