@@ -4,7 +4,7 @@ FROM python
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python get-pip.py
-RUN pip install requests furl
+RUN pip install requests furl docker
 # Copies your code file from your action repository to the filesystem path `/` of the container
 
 COPY entrypoint.sh /entrypoint.sh
