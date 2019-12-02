@@ -10,5 +10,4 @@ COPY entrypoint.sh /entrypoint.sh
 COPY docker_images.txt /docker_images.txt
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-#ENTRYPOINT ["/entrypoint.sh"]
-ENTRYPOINT [ "docker-images-verify --images-file ./docker_images.txt" ]
+ENTRYPOINT ["/entrypoint.sh"]
