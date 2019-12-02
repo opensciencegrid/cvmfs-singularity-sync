@@ -11,7 +11,7 @@ jobs:
 #      docker_images_path: ./docker_images.txt
     steps:
 #      - name: Hello world
-#       - uses: actions/checkout@v1
+       - uses: actions/checkout@v1
        - uses: ./.github/actions/docker-images-verification
 #         with:
 #           docker-images-file: './docker_images.txt'
