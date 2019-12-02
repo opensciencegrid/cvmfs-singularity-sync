@@ -7,7 +7,7 @@ FROM python
 COPY docker-images-verify /docker-images-verify
 COPY dockerhub.py /dockerhub.py
 COPY entrypoint.sh /entrypoint.sh
-COPY ../../../docker_images.txt /docker_images.txt
+COPY docker_images.txt /docker_images.txt
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]

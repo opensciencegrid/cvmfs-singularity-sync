@@ -1,3 +1,0 @@
-
-# Lancaster U Muon g-2 Beamline Simulations
-valetov/g4bl:8

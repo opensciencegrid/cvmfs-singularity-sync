@@ -8,6 +8,9 @@ description: 'Verify docker images by requesting their manifests'
 #outputs:
 #  time: # id of output
 #    description: 'The time we greeted you'
+steps:
+- uses: actions/checkout@v1
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
