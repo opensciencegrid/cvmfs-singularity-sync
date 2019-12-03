@@ -93,6 +93,7 @@ def main():
     # Flag to indicate dry-run
     parser.add_argument("--dry-run",
                         dest='dryrun',
+                        action="store_true",
                         help="Indicate that this is a dry-run",
                         default=False)
 
