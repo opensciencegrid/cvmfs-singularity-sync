@@ -131,7 +131,7 @@ def main():
         if not args.dryrun:
             return publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
         else:
-            return verify_image(image, singularity_rootfs, args.registry, doauth, args.socket)
+            return verify_image(image, args.registry, doauth, args.socket)
     else:
         final_retval = 0
         #fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
@@ -172,7 +172,7 @@ def main():
                         traceback.print_exc()
                 else:
                     try:
-                        retval = verify_image(image, singularity_rootfs, registry, doauth, args.socket)
+                        retval = verify_image(image, registry, doauth, args.socket)
                     except Exception as ex:
                         print("Failed to verify image: {}".format(image))
                         traceback.print_exc()
