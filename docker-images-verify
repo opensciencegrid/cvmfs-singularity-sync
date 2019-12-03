@@ -34,15 +34,9 @@ import dockerhub
 import docker
 import argparse
 import os
-import re
-import sys
-import stat
 import errno
 import fnmatch
 import urllib.request, urllib.error, urllib.parse
-import hashlib
-import tempfile
-import tarfile
 import traceback
 
 def main():
