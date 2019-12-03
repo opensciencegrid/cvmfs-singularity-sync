@@ -3,5 +3,5 @@
 This action verifies wheather the images in docker_iamges.txt file is valid, by requesting their manifests.
 
 ```yaml
-uses: ./actions/docker-images-verification@master
+uses: ./.github/actions/docker-images-verification@master
 ```
