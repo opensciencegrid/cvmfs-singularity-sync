@@ -282,6 +282,8 @@ class DockerHub(object):
                 kwargs['params'] = query
 
             resp = self._session.request(method, address, **kwargs)
+            print(address)
+            print(kwargs)
             
         except requests.exceptions.Timeout as e:
             raise TimeoutError('Connection Timeout. Download failed: {0}'.format(e))

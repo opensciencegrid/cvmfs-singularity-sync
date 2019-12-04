@@ -35,7 +35,6 @@ import docker
 import argparse
 import os
 import re
-import sys
 import stat
 import errno
 import fnmatch
@@ -60,6 +59,13 @@ def main():
     parser.add_argument("--images-url",
                         dest='filelist',
                         help="URL to download a list of Docker images from",
+                        type=str,
+                        default=None)
+    
+    # Name of the docker image file, required
+    parser.add_argument("--images-file",
+                        dest='filelist_path',
+                        help="Local file path to a list of Docker images",
                         type=str,
                         default=None)
 
@@ -91,6 +97,12 @@ def main():
                         help="Indicate that auth is not required",
                         default=False)
 
+    # Flag to indicate dry-run
+    parser.add_argument("--dry-run",
+                        dest='dryrun',
+                        action="store_true",
+                        help="Indicate that this is a dry-run",
+                        default=False)
 
     try:
         args = parser.parse_args()
@@ -109,17 +121,25 @@ def main():
     doauth = not args.notoken
 
     # Do we have a docker image specified?
-    if not args.docker and not args.filelist:
+    if not args.docker and not (args.filelist or args.filelist_path):
         print("No docker image or file list specified..", file=sys.stderr)
         return 1
 
     currentImages = []
     if args.docker:
         image = args.docker
-        return publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
+        if not args.dryrun:
+            return publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
+        else:
+            return verify_image(image, args.registry, doauth, args.socket)
     else:
         final_retval = 0
-        fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
+        #fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
+        if args.filelist:
+            fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
+        else: 
+            if args.filelist_path:
+                fp = open(args.filelist_path, "r").read().split('\n')
         for image in fp:
             image = image.strip()
             if image.startswith("#") or not image:
@@ -144,20 +164,27 @@ def main():
                 image = '%s/%s/%s:%s' % (registry, namespace, repo_name, tag)
                 currentImages.append(image)
                 retval = 1
-                try:
-                    retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
-                except Exception as ex:
-                    print("Failed to publish image: {}".format(image))
-                    traceback.print_exc()
-
+                if not args.dryrun:
+                    try:
+                        retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
+                    except Exception as ex:
+                        print("Failed to publish image: {}".format(image))
+                        traceback.print_exc()
+                else:
+                    try:
+                        retval = verify_image(image, registry, doauth, args.socket)
+                    except Exception as ex:
+                        print("Failed to verify image: {}".format(image))
+                        traceback.print_exc()
                 if retval:
                     final_retval = retval
         print("All requested images have been attempted; final return code: %d" % final_retval)
-        print("Cleaning up unlinked images")
-        start_txn(singularity_rootfs)
-        cleanup.remove_unlisted_images(currentImages, singularity_rootfs)
-        cleanup.cleanup(singularity_base=singularity_rootfs)
-        publish_txn()
+        if not args.dryrun:
+            print("Cleaning up unlinked images")
+            start_txn(singularity_rootfs)
+            cleanup.remove_unlisted_images(currentImages, singularity_rootfs)
+            cleanup.cleanup(singularity_base=singularity_rootfs)
+            publish_txn()
         return final_retval
 
 
@@ -353,7 +380,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     container = client.containers.create(image, command="/bin/bash")
     resp = container.export()
     f = os.fdopen(tmphandle, 'wb')
-
+    
     print("Exporting container")
     for chunk in resp:
         f.write(chunk)
@@ -421,6 +448,29 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
     # Publish CVMFS as necessary.
     return publish_txn()
+
+def verify_image(image, registry, doauth, socket=None):
+
+    # Tell the user the namespace, repo name and tag
+    registry, namespace, repo_name, repo_tag = parse_image(image)
+    print("Docker image to verify: %s/%s/%s:%s" % (registry, namespace, repo_name, repo_tag))
+
+# IMAGE METADATA -------------------------------------------
+# Use Docker Registry API (version 2.0) to get images ids, manifest
+
+    # Get an image manifest - has image ids to parse, and will be
+    # used later to get Cmd
+    # Prepend "https://" to the registry
+    if "://" not in registry:
+        registry = "https://%s" % registry
+    hub = dockerhub.DockerHub(url=registry)
+    try: 
+        hub.manifest(namespace, repo_name, repo_tag)
+        print(repo_name + ":" + repo_tag + " manifest found")
+        return 0
+    except Exception as ex:
+        print(repo_name + ":" + repo_tag + " manifest not found")
+        return 1
 
 
 if __name__ == '__main__':
