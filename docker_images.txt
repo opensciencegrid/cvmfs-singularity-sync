@@ -117,6 +117,7 @@ npavlovikj/bacteria_db:latest
 cathrine98/r-bglr
 cathrine98/osg-clarkson_mondal:latest
 xevra/sparse_kernel_docker:latest
+molssi/qcarchive_worker_openff:*
 
 # MINT project (rynge)
 ankushumn/rsatest
