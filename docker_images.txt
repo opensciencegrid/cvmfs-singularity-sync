@@ -92,6 +92,7 @@ agladstein/msprime:latest
 agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
+agladstein/data_science_popgen_notebook:1.0.4
 drtmfigy/hjets_herwig7
 drtmfigy/herwig_hjets
 drtmfigy/fbps
