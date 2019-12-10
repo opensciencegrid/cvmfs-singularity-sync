@@ -31,19 +31,16 @@ perform publicly and display publicly, and to permit other to do so.
 
 import sys
 import dockerhub
-import docker
 import argparse
 import os
-import re
 import stat
 import errno
 import fnmatch
 import urllib.request, urllib.error, urllib.parse
 import hashlib
-import tempfile
-import tarfile
 import cleanup
 import traceback
+import subprocess
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
@@ -362,39 +359,9 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
             if oe.errno != errno.EEXIST:
                 raise
 
-#  DOWNLOAD LAYERS -------------------------------------------
-# Each is a .tar.gz file, obtained from registry with curl
-
-    # Create a temporary directory for targzs
-    tmphandle, tmpfilename = tempfile.mkstemp(prefix="singularity-image-", dir="/var/tmp")
-
-    # Use docker to pull the image
-    if socket:
-        client = docker.DockerClient(base_url=socket,timeout=240)
-    else:
-        client = docker.from_env()
-    print("Pulling image from DockerHub")
-    client.images.pull(image)
-    print("Creating the container to export")
-    container = client.containers.create(image, command="/bin/bash")
-    resp = container.export()
-    f = os.fdopen(tmphandle, 'wb')
-    
-    print("Exporting container")
-    for chunk in resp:
-        f.write(chunk)
-    f.close()
-
-    # Remove the file from docker
-    container.remove(force=True)
-    client.images.remove(image, force=True)
-    # Untar the image
-    tar = tarfile.open(tmpfilename, errorlevel=0)
-    tar.extractall(image_dir)
-    tar.close()
-
-    # Remove the original tar file
-    os.remove(tmpfilename)
+#  DOWNLOAD IMAGE --------------------------------------------
+    print("Calling singularity to build sandbox from image")
+    subprocess.check_call(['singularity', 'build', '--disable-cache=true', '--sandbox', image_dir, 'docker://' + image])
 
     # Walk the path, fixing file permissions
     for (dirpath, dirnames, filenames) in os.walk(image_dir):
