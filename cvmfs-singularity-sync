@@ -44,6 +44,7 @@ import tempfile
 import tarfile
 import cleanup
 import traceback
+import subprocess
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
@@ -315,6 +316,12 @@ def parse_image(image):
 
     return registry, namespace, repo_name, repo_tag
 
+def make_singularity_base(image_dir):
+    '''Make singularity base directory with /.singularity.d and other files'''
+    scratch_spec = tempfile.NamedTemporaryFile(buffering=0)
+    scratch_spec.write(b'Bootstrap: scratch')
+    subprocess.check_call(['singularity', 'build', '--fakeroot', '--sandbox', image_dir, scratch_spec.name])
+
 def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
     # Tell the user the namespace, repo name and tag
@@ -388,6 +395,10 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     # Remove the file from docker
     container.remove(force=True)
     client.images.remove(image, force=True)
+
+    # Create base environment with /.singularity.d
+    make_singularity_base(image_dir)
+
     # Untar the image
     tar = tarfile.open(tmpfilename, errorlevel=0)
     tar.extractall(image_dir)
