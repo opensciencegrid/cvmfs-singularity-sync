@@ -30,16 +30,16 @@ perform publicly and display publicly, and to permit other to do so.
 '''
 
 import sys
-import dockerhub
 import argparse
 import os
 import errno
 import fnmatch
 import urllib.request, urllib.error, urllib.parse
 import hashlib
-import cleanup
 import traceback
 import subprocess
+import dockerhub
+import cleanup
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
@@ -57,7 +57,7 @@ def main():
                         help="URL to download a list of Docker images from",
                         type=str,
                         default=None)
-    
+
     # Name of the docker image file, required
     parser.add_argument("--images-file",
                         dest='filelist_path',
@@ -108,9 +108,9 @@ def main():
 
     # Find root filesystem location
     if args.rootfs:
-       singularity_rootfs = args.rootfs
+        singularity_rootfs = args.rootfs
     else:
-       singularity_rootfs = '/cvmfs/singularity.opensciencegrid.org'
+        singularity_rootfs = '/cvmfs/singularity.opensciencegrid.org'
     singularity_rootfs = os.path.abspath(singularity_rootfs)
 
     # Does the registry require a token?
@@ -133,7 +133,7 @@ def main():
         #fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
         if args.filelist:
             fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
-        else: 
+        else:
             if args.filelist_path:
                 fp = open(args.filelist_path, "r").read().split('\n')
         for image in fp:
@@ -404,7 +404,7 @@ def verify_image(image, registry, doauth, socket=None):
     if "://" not in registry:
         registry = "https://%s" % registry
     hub = dockerhub.DockerHub(url=registry)
-    try: 
+    try:
         hub.manifest(namespace, repo_name, repo_tag)
         print(repo_name + ":" + repo_tag + " manifest found")
         return 0
