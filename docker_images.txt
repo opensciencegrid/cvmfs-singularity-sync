@@ -258,7 +258,7 @@ htcondor/htmap-exec:*
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/james-clark/bayeswave:latest
 containers.ligo.org/james-clark/gwrucio:latest
-containers.ligo.org/james-clark/bilby_pipe:latest
+containers.ligo.org/james-clark/bilby_pipe_public:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
