@@ -33,7 +33,6 @@ import sys
 import dockerhub
 import argparse
 import os
-import stat
 import errno
 import fnmatch
 import urllib.request, urllib.error, urllib.parse
@@ -339,7 +338,8 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     image_hash = hasher.hexdigest()
 
     # The image is staged to $ROOTFS/.images/$HASH
-    image_dir = os.path.join(singularity_rootfs, ".images", image_hash[0:2], image_hash[2:])
+    image_parentdir = os.path.join(singularity_rootfs, ".images", image_hash[0:2])
+    image_dir = os.path.join(image_parentdir, image_hash[2:])
 
     # If the image has already been staged, simply return.
     if os.path.exists(image_dir):
@@ -354,60 +354,35 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
         if retval:
             return retval
         try:
-            os.makedirs(image_dir)
+            # Create the parent directory, but not the image directory itself
+            # Singularity will create the image directory on successful conversion
+            os.makedirs(image_parentdir)
         except OSError as oe:
             if oe.errno != errno.EEXIST:
                 raise
 
 #  DOWNLOAD IMAGE --------------------------------------------
+    # Use /var/tmp for singularity temporary files
+    singularity_env = os.environ.copy()
+    singularity_env['TMPDIR'] = '/var/tmp'
+
     print("Calling singularity to build sandbox from image")
-    subprocess.check_call(['singularity', 'build', '--disable-cache=true', '--sandbox', image_dir, 'docker://' + image])
-
-    # Walk the path, fixing file permissions
-    for (dirpath, dirnames, filenames) in os.walk(image_dir):
-        for fname in filenames:
-            full_fname = os.path.join(dirpath, fname)
-            st = os.lstat(full_fname)
-            old_mode = stat.S_IMODE(st.st_mode)
-            if (old_mode & 0o444) == 0000:
-                new_mode = old_mode | 0o400
-                print("Fixing mode of", full_fname, "to", oct(new_mode))
-                os.chmod(full_fname, new_mode)
-        for dname in dirnames:
-            full_dname = os.path.join(dirpath, dname)
-            st = os.lstat(full_dname)
-            if not stat.S_ISDIR(st.st_mode):
-                continue
-            old_mode = stat.S_IMODE(st.st_mode)
-            if old_mode & 0o111 == 0:
-                new_mode = old_mode | 0o100
-                print("Fixing mode of", full_dname, "to", oct(new_mode))
-                os.chmod(full_dname, new_mode)
-            if old_mode & 0o222 == 0:
-                new_mode = old_mode | 0o200
-                print("Fixing mode of", full_dname, "to", oct(new_mode))
-                os.chmod(full_dname, new_mode)
-
-    # Make sure the image_dir is writable by us!
-    os.chmod(image_dir, 0o755)
+    subprocess.check_call(
+        ['singularity', '--silent', 'build',
+         '--disable-cache=true', # Images are only downloaded once
+         '--force',              # Don't get stuck at a prompt if the target somehow exists
+         '--fix-perms',
+         '--sandbox',
+         image_dir, 'docker://' + image],
+        env=singularity_env)
 
     # Various fixups to make the image compatible with CVMFS and singularity.
     srv = os.path.join(image_dir, "srv")
     cvmfs = os.path.join(image_dir, "cvmfs")
-    dev = os.path.join(image_dir, "dev")
-    proc = os.path.join(image_dir, "proc")
-    sys_dir = os.path.join(image_dir, "sys")
     if not os.path.exists(srv):
         os.makedirs(srv)
     if not os.path.exists(cvmfs):
         os.makedirs(cvmfs)
-    if not os.path.exists(dev):
-        os.makedirs(dev)
-    if not os.path.exists(proc):
-        os.makedirs(proc)
-    if not os.path.exists(sys_dir):
-        os.makedirs(sys_dir)
-
 
     make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
 
