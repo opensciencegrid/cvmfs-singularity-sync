@@ -121,6 +121,8 @@ cathrine98/osg-clarkson_mondal:latest
 xevra/sparse_kernel_docker:latest
 molssi/qcarchive_worker_openff:*
 rafaelnalin/r-ver-openblas:latest
+xevra/sparse_kernel_docker:RIFT
+xevra/sparse_kernel_docker:stable
 
 # MINT project (rynge)
 ankushumn/rsatest
