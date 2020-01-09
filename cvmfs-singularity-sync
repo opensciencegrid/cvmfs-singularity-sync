@@ -182,7 +182,7 @@ def main():
                     failed_images.append("{}".format(image))
         print("All requested images have been attempted; final return code: %d" % final_retval)
         if final_retval:
-            print("Failed images:)
+            print("Failed images:")
             print(*failed_images, sep = "\n") 
         if not args.dryrun:
             print("Cleaning up unlinked images")
