@@ -134,6 +134,7 @@ def main():
             return verify_image(image, args.registry, doauth, args.socket)
     else:
         final_retval = 0
+        failed_images = []
         #fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
         if args.filelist:
             fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
@@ -178,7 +179,11 @@ def main():
                         traceback.print_exc()
                 if retval:
                     final_retval = retval
+                    failed_images.append("{}".format(image))
         print("All requested images have been attempted; final return code: %d" % final_retval)
+        if final_retval:
+            print("Failed images: \n")
+            print(*failed_images, sep = "\n") 
         if not args.dryrun:
             print("Cleaning up unlinked images")
             start_txn(singularity_rootfs)
