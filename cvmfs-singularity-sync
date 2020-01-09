@@ -61,7 +61,7 @@ def main():
                         help="URL to download a list of Docker images from",
                         type=str,
                         default=None)
-    
+
     # Name of the docker image file, required
     parser.add_argument("--images-file",
                         dest='filelist_path',
@@ -134,10 +134,11 @@ def main():
             return verify_image(image, args.registry, doauth, args.socket)
     else:
         final_retval = 0
+        failed_images = []
         #fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
         if args.filelist:
             fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
-        else: 
+        else:
             if args.filelist_path:
                 fp = open(args.filelist_path, "r").read().split('\n')
         for image in fp:
@@ -178,7 +179,11 @@ def main():
                         traceback.print_exc()
                 if retval:
                     final_retval = retval
+                    failed_images.append("{}".format(image))
         print("All requested images have been attempted; final return code: %d" % final_retval)
+        if final_retval:
+            print("Failed images:")
+            print(*failed_images, sep = "\n")
         if not args.dryrun:
             print("Cleaning up unlinked images")
             start_txn(singularity_rootfs)
@@ -379,7 +384,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     container = client.containers.create(image, command="/bin/bash")
     resp = container.export()
     f = os.fdopen(tmphandle, 'wb')
-    
+
     print("Exporting container")
     for chunk in resp:
         f.write(chunk)
@@ -462,7 +467,7 @@ def verify_image(image, registry, doauth, socket=None):
     if "://" not in registry:
         registry = "https://%s" % registry
     hub = dockerhub.DockerHub(url=registry)
-    try: 
+    try:
         hub.manifest(namespace, repo_name, repo_tag)
         print(repo_name + ":" + repo_tag + " manifest found")
         return 0

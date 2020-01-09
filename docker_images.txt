@@ -26,6 +26,7 @@ julia:latest
 r-base:latest
 continuumio/anaconda
 gromacs/gromacs
+rocker/r-ver:latest
 
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
@@ -91,6 +92,7 @@ agladstein/msprime:latest
 agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
+agladstein/data_science_popgen_notebook:*
 drtmfigy/hjets_herwig7
 drtmfigy/herwig_hjets
 drtmfigy/fbps
@@ -117,6 +119,10 @@ npavlovikj/bacteria_db:latest
 cathrine98/r-bglr
 cathrine98/osg-clarkson_mondal:latest
 xevra/sparse_kernel_docker:latest
+molssi/qcarchive_worker_openff:*
+rafaelnalin/r-ver-openblas:latest
+xevra/sparse_kernel_docker:RIFT
+xevra/sparse_kernel_docker:stable
 
 # MINT project (rynge)
 ankushumn/rsatest
@@ -215,6 +221,7 @@ jbustamante35/testphytoshell:phytoshell
 evolinc/osg-rmta:2.1
 evolinc/osg-evolinc-i:1.7.4
 evolinc/osg-rmta:2.5
+evolinc/osg-rmta:2.6.3
 
 # JLab CLAS12 Simulations
 jeffersonlab/clas12simulations:production
@@ -256,6 +263,7 @@ htcondor/htmap-exec:*
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/james-clark/bayeswave:latest
 containers.ligo.org/james-clark/gwrucio:latest
+containers.ligo.org/james-clark/bilby_pipe_public:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
@@ -287,3 +295,6 @@ rtikid/python3-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
 
 # WRENNCH project (rynge)
 wrenchproject/task-clustering:*
+
+# FAST-HEP images
+fasthep/fast-hep-docker:version-0.2.0
