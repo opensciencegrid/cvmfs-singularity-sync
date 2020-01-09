@@ -295,3 +295,6 @@ rtikid/python3-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
 
 # WRENNCH project (rynge)
 wrenchproject/task-clustering:*
+
+# FAST-HEP images
+fasthep/fast-hep-docker:version-0.2.0
