@@ -267,6 +267,7 @@ containers.ligo.org/james-clark/gwrucio:latest
 containers.ligo.org/james-clark/bilby_pipe_public:latest
 containers.ligo.org/james-clark/research-projects-rit/rift:latest
 containers.ligo.org/james-clark/research-projects-rit/rift:production
+containers.ligo.org/tessa.carver/pygrb_o3a:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
