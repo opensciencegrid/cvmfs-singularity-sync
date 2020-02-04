@@ -302,3 +302,9 @@ wrenchproject/task-clustering:*
 
 # FAST-HEP images
 fasthep/fast-hep-docker:version-0.2.0
+
+# PIRE
+eventhorizontelescope/hops:*
+#casavlbi_ehtproduction:latest
+mjanssen2308/symba:latest
+ttrent808/ray:*
