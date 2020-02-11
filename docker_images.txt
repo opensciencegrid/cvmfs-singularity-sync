@@ -309,3 +309,6 @@ eventhorizontelescope/hops:*
 #casavlbi_ehtproduction:latest
 mjanssen2308/symba:latest
 ttrent808/ray:*
+
+# Caltech_Rusholme
+nrstickley/jsp_apps:*
