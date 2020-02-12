@@ -124,6 +124,7 @@ molssi/qcarchive_worker_openff:*
 rafaelnalin/r-ver-openblas:latest
 xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
+whitelab/plumed-gromacs:*
 
 # MINT project (rynge)
 ankushumn/rsatest
