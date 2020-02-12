@@ -53,6 +53,7 @@ opensciencegrid/osgvo-el7-cuda10
 opensciencegrid/osgvo-el8
 opensciencegrid/osgvo-freesurfer:latest
 opensciencegrid/osgvo-gromacs
+opensciencegrid/osgvo-gromacs-plumed
 opensciencegrid/osgvo-julia:latest
 opensciencegrid/osgvo-opensim:latest
 opensciencegrid/osgvo-psi4:latest
@@ -124,7 +125,6 @@ molssi/qcarchive_worker_openff:*
 rafaelnalin/r-ver-openblas:latest
 xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
-whitelab/plumed-gromacs:*
 
 # MINT project (rynge)
 ankushumn/rsatest
