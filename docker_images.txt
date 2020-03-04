@@ -265,7 +265,6 @@ htcondor/htmap-exec:*
 # LIGO - user defined images
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/james-clark/bayeswave:latest
-containers.ligo.org/james-clark/gwrucio:latest
 containers.ligo.org/james-clark/bilby_pipe_public:latest
 containers.ligo.org/james-clark/research-projects-rit/rift:latest
 containers.ligo.org/james-clark/research-projects-rit/rift:production
@@ -283,6 +282,7 @@ containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:stretch
 containers.ligo.org/lscsoft/bayeswave:nightly
 containers.ligo.org/lscsoft/bayeswave:latest
 containers.ligo.org/lscsoft/bayeswave:v1.0.5
+containers.ligo.org/rucio/igwn-rucio-client/rucio-clients:latest
 
 # Lancaster U Muon g-2 Beamline Simulations
 valetov/g4bl:*
