@@ -313,3 +313,6 @@ ttrent808/ray:*
 
 # Caltech_Rusholme
 nrstickley/jsp_apps:*
+
+#AMNH
+amnh/osgimages:*
