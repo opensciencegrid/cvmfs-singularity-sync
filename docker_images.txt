@@ -315,4 +315,4 @@ ttrent808/ray:*
 nrstickley/jsp_apps:*
 
 #AMNH
-amnh/osgimages:pipemaster_initial
+amnh/osgimages:*
