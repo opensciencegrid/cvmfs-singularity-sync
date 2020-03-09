@@ -252,6 +252,7 @@ fermilab/fnal-wn-sl6
 
 # NOvA Experiment
 novaexperiment/el7-tensorflow-gpu:*
+novaexperiment/nova-sl7-novat2k:*
 novaexperiment/slf67:*
 
 #holosim (tree migration)
