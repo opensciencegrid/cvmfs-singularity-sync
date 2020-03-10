@@ -315,5 +315,5 @@ ttrent808/ray:*
 # Caltech_Rusholme
 nrstickley/jsp_apps:*
 
-#AMNH
+#American Museum of Natural History (AMNH)
 amnh/osgimages:*
