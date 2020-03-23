@@ -146,6 +146,8 @@ mintproject/weather-generator:*
 mintproject/mintviz:*
 mintproject/modflow-2005:*
 mintproject/topoflow:*
+mintproject/droughtindices:*
+
 
 # Lightweight images
 busybox
