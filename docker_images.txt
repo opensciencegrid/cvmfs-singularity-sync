@@ -325,3 +325,6 @@ amnh/osgimages:*
 
 # Single-cell Inference of Networks using Granger Ensembles (SINGE)
 agitter/singe:latest
+
+# Notre Dame images
+notredamedulac/el7-tensorflow-pytorch:latest
