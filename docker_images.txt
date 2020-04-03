@@ -80,6 +80,7 @@ ssthapa/freesurferosg:5.1
 ssthapa/freesurferosg:5.3
 ssthapa/freesurferosg:6.0
 ssthapa/freesurferosg:latest
+lukasheinrich/folding:*
 
 # OSGVO - user defined images
 weiminghu123/panen
