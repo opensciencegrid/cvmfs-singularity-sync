@@ -330,3 +330,6 @@ agitter/singe:latest
 
 # Notre Dame images
 notredamedulac/el7-tensorflow-pytorch:latest
+
+# Neural Architecture Search for 2d-UNet
+jinnian/automl:2dunet
