@@ -330,3 +330,6 @@ agitter/singe:latest
 
 # Notre Dame images
 notredamedulac/el7-tensorflow-pytorch:latest
+
+# LSST DESC stackvana
+beckermr/stackvana:latest
