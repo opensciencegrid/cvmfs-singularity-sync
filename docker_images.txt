@@ -295,6 +295,7 @@ containers.ligo.org/rucio/igwn-rucio-client/rucio-clients:latest
 # Lancaster U Muon g-2 Beamline Simulations
 valetov/g4bl:*
 valetov/beam_track:*
+valetov/gm2dev:*
 
 # Mu2e
 egstern/centos7-synergia2:*
