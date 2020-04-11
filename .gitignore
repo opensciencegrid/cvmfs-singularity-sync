@@ -1,1 +1,11 @@
 tokenfile
+__pycache__/
+cleanup.py.bak
+cleanup.pyc
+cvmfs-singularity-sync.bak
+cvmfs-singularity-syncc
+dockerhub.py.bak
+dockerhub.pyc
+johntest
+johntest2
+venv/

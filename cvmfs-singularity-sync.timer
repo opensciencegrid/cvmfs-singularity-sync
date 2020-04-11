@@ -1,0 +1,12 @@
+[Unit]
+Description=restart cvmfs-singularity-sync every 15 minutes
+After=syslog.target network.target
+Wants=network.target
+
+[Timer]
+OnActiveSec=0s
+OnUnitActiveSec=15m
+RandomizedDelaySec=1m
+
+[Install]
+WantedBy=timers.target
