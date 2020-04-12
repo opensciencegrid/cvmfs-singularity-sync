@@ -336,3 +336,4 @@ beckermr/stackvana:latest
 
 # Neural Architecture Search for 2d-UNet
 jinnian/automl:2dunet
+jinnian/automl-osg:2dunet
