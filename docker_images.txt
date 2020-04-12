@@ -110,6 +110,7 @@ yxfu93/julia:latest
 npcooley/heron:latest
 showmic09/dream3d:6.5.121
 chunshen1987/iebe-music:latest
+chunshen1987/iebe-music:dev
 
 # MINT project (rynge)
 ankushumn/rsatest
