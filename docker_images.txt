@@ -1,8 +1,6 @@
 
 # This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
 
-containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.53:stretch
-
 # First, some generic CentOS images:
 centos:latest
 centos:centos6
@@ -27,6 +25,8 @@ gcc:latest
 julia:latest
 r-base:latest
 continuumio/anaconda
+gromacs/gromacs
+rocker/r-ver:latest
 
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
@@ -50,20 +50,25 @@ opensciencegrid/osgvo-el6-cuda
 opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-el7-cuda10
+opensciencegrid/osgvo-el8
+opensciencegrid/osgvo-freesurfer:latest
+opensciencegrid/osgvo-gromacs
+opensciencegrid/osgvo-gromacs-plumed
 opensciencegrid/osgvo-julia:latest
-opensciencegrid/osgvo-neuroimaging:latest
 opensciencegrid/osgvo-opensim:latest
 opensciencegrid/osgvo-psi4:latest
 opensciencegrid/osgvo-r:3.5
 opensciencegrid/osgvo-torch
 opensciencegrid/osgvo-ubuntu-18.04
 opensciencegrid/osgvo-ubuntu-xenial
+opensciencegrid/osgvo-ucsd-grover:latest
 opensciencegrid/osgvo-xenon:*
 opensciencegrid/tensorflow
 opensciencegrid/tensorflow-gpu:1.4
 opensciencegrid/tensorflow-gpu:latest
 paesanilab/psi4:latest
 pegasus/osg-el7:latest
+rinnocente/qe-full-6.2.1:latest
 rynge/einsteintoolkit:latest
 rynge/sra:latest
 rynge/osg-mcf10-mod:latest
@@ -75,6 +80,7 @@ ssthapa/freesurferosg:5.1
 ssthapa/freesurferosg:5.3
 ssthapa/freesurferosg:6.0
 ssthapa/freesurferosg:latest
+lukasheinrich/folding:*
 
 # OSGVO - user defined images
 weiminghu123/panen
@@ -88,7 +94,7 @@ agladstein/msprime:latest
 agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
-cathrine98/bbmap
+agladstein/data_science_popgen_notebook:*
 drtmfigy/hjets_herwig7
 drtmfigy/herwig_hjets
 drtmfigy/fbps
@@ -96,6 +102,7 @@ adwasser/slomo
 anniesoft/toolanalysis
 jamessaxon/postgres-routing:latest
 jamessaxon/postgres-routing:a0
+jml230/osg-amber:*
 econtal/numpy-mkl:latest
 blaylockbk/miniconda3_osg:latest
 researchcomputing/namd_212_multicore_osgvo-el6:latest
@@ -104,19 +111,32 @@ jborrel00/pyccx-ubuntu16:development
 jasoncpatton/qutip_kwant:v1.2
 kai2019/osg-fsl:latest
 efajardo/osgvo-nsides:latest
+efajardo/astroflow:latest
 christinalk/slim:latest
 jonlam/osg_ubuntu:latest
 yxfu93/julia:latest
 npcooley/heron:latest
+npcooley/deepec:latest
 showmic09/dream3d:6.5.121
 chunshen1987/iebe-music:latest
 chunshen1987/iebe-music:dev
+npavlovikj/bacteria_db:latest
+cathrine98/r-bglr:latest
+cathrine98/r-vmanthena:latest
+cathrine98/osg-clarkson_mondal:latest
+xevra/sparse_kernel_docker:latest
+molssi/qcarchive_worker_openff:*
+rafaelnalin/r-ver-openblas:latest
+xevra/sparse_kernel_docker:RIFT
+xevra/sparse_kernel_docker:stable
+relugzosiraba/kwant_adaptive:v1
 
 # MINT project (rynge)
 ankushumn/rsatest
 mintproject/ankush:latest
 mintproject/base-ubuntu16:latest
 mintproject/base-ubuntu18:latest
+mintproject/floodseverityindex:*
 mintproject/cycles:*
 mintproject/dssat:*
 mintproject/economic:*
@@ -127,6 +147,10 @@ mintproject/sentinel:*
 mintproject/pihm2cycles:*
 mintproject/weather-generator:*
 mintproject/mintviz:*
+mintproject/modflow-2005:*
+mintproject/topoflow:*
+mintproject/droughtindices:*
+
 
 # Lightweight images
 busybox
@@ -137,18 +161,18 @@ whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
 
-# Geospacial Images
-rocker/geospatial:*
-
 # Common biology tools
 # Biocontainers :latest doesn't exist any longer.
 #biocontainers/blast
 cyverse/rsem-prepare
 
-# LIGO worker node
-ligo/software:jessie
-ligo/software:jessie-proposed
-ligo/software:el7
+# IGWN (Internation Gravitational Wave Network) worker nodes
+igwn/lalsuite-dev:el7
+igwn/lalsuite-dev:stretch
+igwn/software:el7
+igwn/software:el7-testing
+igwn/software:stretch
+igwn/software:stretch-proposed
 
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v*
@@ -159,6 +183,8 @@ bbockelm/cms:rhel6
 bbockelm/cms:rhel7
 cmssw/cms:rhel6
 cmssw/cms:rhel7
+cmssw/cms:rhel6-m*
+cmssw/cms:rhel7-m*
 efajardo/docker-cms:tensorflow
 # CMS worker node with hadoop
 kreczko/workernode:centos6
@@ -204,6 +230,8 @@ jbustamante35/testphytoshell:phytoshell
 evolinc/osg-rmta:2.1
 evolinc/osg-evolinc-i:1.7.4
 evolinc/osg-rmta:2.5
+evolinc/osg-rmta:2.6.3
+cyverse/ngmlr:0.2.7
 
 # JLab CLAS12 Simulations
 jeffersonlab/clas12simulations:production
@@ -218,10 +246,12 @@ jeffersonlab/japan:develop
 sugwg/dbrown:*
 sugwg/dfinstad:*
 sugwg/prp:*
+sugwg/sdreyes:*
 
 # brainlife.io - An online platform for reproducible neuroscience.
 brainlife/mrtrix3:3.0_RC3
 brainlife/mcr:neurodebian1604-r2017a
+brainlife/mcr:r2019a
 
 # Fermilab VO - Fermigrid worker nodes
 fermilab/fnal-wn-sl7
@@ -229,7 +259,83 @@ fermilab/fnal-wn-sl6
 
 # NOvA Experiment
 novaexperiment/el7-tensorflow-gpu:*
+novaexperiment/nova-sl7-novat2k:*
 novaexperiment/slf67:*
 
 #holosim (tree migration)
 astrand/holosim1
+astrand/popassemble
+
+# HTMap
+htcondor/htmap-exec:*
+
+
+# LIGO - user defined images
+containers.ligo.org/joshua.willis/pycbc:latest
+containers.ligo.org/james-clark/bayeswave:latest
+containers.ligo.org/james-clark/bilby_pipe_public:latest
+containers.ligo.org/james-clark/research-projects-rit/rift:latest
+containers.ligo.org/james-clark/research-projects-rit/rift:production
+containers.ligo.org/tessa.carver/pygrb_o3a:latest
+atanasi/matlab:v97
+
+# LIGO/VIRGO/KAGRA containers
+containers.ligo.org/lscsoft/lalsuite/nightly:el7
+containers.ligo.org/lscsoft/lalsuite/nightly:stretch
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:stretch
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:el7
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:stretch
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:el7
+containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:stretch
+containers.ligo.org/lscsoft/bayeswave:nightly
+containers.ligo.org/lscsoft/bayeswave:latest
+containers.ligo.org/lscsoft/bayeswave:v1.0.5
+containers.ligo.org/rucio/igwn-rucio-client/rucio-clients:latest
+
+# Lancaster U Muon g-2 Beamline Simulations
+valetov/g4bl:*
+valetov/beam_track:*
+valetov/gm2dev:*
+
+# Mu2e
+egstern/centos7-synergia2:*
+egstern/sl7-synergia2:*
+egstern/ubuntu1804-synergia2:*
+mu2e/synergia:v0
+egstern/wn-synergia2:latest
+
+#NEURON+Brian2+Python
+rtikid/python2-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
+rtikid/python3-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
+
+# WRENNCH project (rynge)
+wrenchproject/task-clustering:*
+
+# FAST-HEP images
+fasthep/fast-hep-docker:version-0.2.0
+
+# PIRE
+eventhorizontelescope/hops:*
+#casavlbi_ehtproduction:latest
+mjanssen2308/symba:latest
+ttrent808/ray:*
+
+# Caltech_Rusholme
+nrstickley/jsp_apps:*
+
+#American Museum of Natural History (AMNH)
+amnh/osgimages:*
+
+# Single-cell Inference of Networks using Granger Ensembles (SINGE)
+agitter/singe:latest
+
+# Notre Dame images
+notredamedulac/el7-tensorflow-pytorch:latest
+
+# LSST DESC stackvana
+beckermr/stackvana:latest
+
+# Neural Architecture Search for 2d-UNet
+jinnian/automl:2dunet
+jinnian/automl-osg:2dunet
