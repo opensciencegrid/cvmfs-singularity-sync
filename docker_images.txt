@@ -25,7 +25,7 @@ gcc:latest
 julia:latest
 r-base:latest
 continuumio/anaconda
-gromacs/gromacs
+gromacs/gromacs:*
 rocker/r-ver:latest
 
 # OSG-specific worker node images
