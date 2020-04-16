@@ -340,3 +340,6 @@ beckermr/stackvana:latest
 # Neural Architecture Search for 2d-UNet
 jinnian/automl:2dunet
 jinnian/automl-osg:2dunet
+
+# LUX-ZEPLIN (LZ) Base OS
+luxzeplin/base_os:centos7
