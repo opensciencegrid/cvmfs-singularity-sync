@@ -298,6 +298,7 @@ containers.ligo.org/rucio/igwn-rucio-client/rucio-clients:latest
 valetov/g4bl:*
 valetov/beam_track:*
 valetov/gm2dev:*
+valetov/cosy:*
 
 # Mu2e
 egstern/centos7-synergia2:*
