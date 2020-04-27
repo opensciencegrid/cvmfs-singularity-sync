@@ -61,6 +61,7 @@ opensciencegrid/osgvo-psi4:latest
 opensciencegrid/osgvo-r:3.5
 opensciencegrid/osgvo-torch
 opensciencegrid/osgvo-ubuntu-18.04
+opensciencegrid/osgvo-ubuntu-20.04
 opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/osgvo-ucsd-grover:latest
 opensciencegrid/osgvo-xenon:*
@@ -74,9 +75,6 @@ rynge/einsteintoolkit:latest
 rynge/sra:latest
 rynge/osg-mcf10-mod:latest
 rynge/osg-tensorflow-gpu:latest
-rynge/osgvo-el6-testing:latest
-rynge/osgvo-el7-testing:latest
-rynge/osgvo-ubuntu-18.04-testing:latest
 ssthapa/freesurferosg:5.1
 ssthapa/freesurferosg:5.3
 ssthapa/freesurferosg:6.0
