@@ -120,9 +120,9 @@ showmic09/dream3d:6.5.121
 chunshen1987/iebe-music:latest
 chunshen1987/iebe-music:dev
 npavlovikj/bacpopgen:latest
-cathrine98/r-bglr:latest
 cathrine98/r-vmanthena:latest
 cathrine98/osg-clarkson_mondal:latest
+cathrine98/osg-beast2
 xevra/sparse_kernel_docker:latest
 molssi/qcarchive_worker_openff:*
 rafaelnalin/r-ver-openblas:latest
