@@ -334,7 +334,6 @@ agitter/singe:latest
 notredamedulac/el7-tensorflow-pytorch:latest
 notredamedulac/el7-pytorch-gpu:latest
 notredamedulac/el7-tensorflow-keras-gpu:latest
-notredamedulac/amber:latest
 
 # LSST DESC stackvana
 beckermr/stackvana:latest
