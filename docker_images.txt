@@ -344,3 +344,6 @@ jinnian/automl-osg:2dunet
 
 # LUX-ZEPLIN (LZ) Base OS
 luxzeplin/base_os:centos7
+
+#jetscape
+bardelch/jetscape-deploy:amit-Scripts
