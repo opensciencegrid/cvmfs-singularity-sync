@@ -234,6 +234,7 @@ cyverse/ngmlr:0.2.7
 
 # JLab CLAS12 Simulations
 jeffersonlab/clas12simulations:production
+jeffersonlab/clas12software:devel
 
 # JLab Parity Simulations and Analysis
 jeffersonlab/remoll:latest
