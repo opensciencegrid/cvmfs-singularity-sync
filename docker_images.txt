@@ -65,9 +65,8 @@ opensciencegrid/osgvo-ubuntu-20.04
 opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/osgvo-ucsd-grover:latest
 opensciencegrid/osgvo-xenon:*
-opensciencegrid/tensorflow
-opensciencegrid/tensorflow-gpu:1.4
-opensciencegrid/tensorflow-gpu:latest
+opensciencegrid/tensorflow:*
+opensciencegrid/tensorflow-gpu:*
 paesanilab/psi4:latest
 pegasus/osg-el7:latest
 rinnocente/qe-full-6.2.1:latest
