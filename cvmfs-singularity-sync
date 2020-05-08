@@ -44,8 +44,6 @@ import tempfile
 import tarfile
 import cleanup
 import traceback
-import time
-import subprocess
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
@@ -57,7 +55,7 @@ def main():
                         type=str,
                         default=None)
 
-    # Name of the docker image, required
+    # Link to the file of the docker images, required
     parser.add_argument("--images-url",
                         dest='filelist',
                         help="URL to download a list of Docker images from",
@@ -205,7 +203,6 @@ def main():
             cleanup.remove_unlisted_images(currentImages, singularity_rootfs)
             cleanup.cleanup(singularity_base=singularity_rootfs)
             publish_txn()
-            garbage_collection(cvmfs_repo="singularity.opensciencegrid.org")
         return final_retval
 
 
@@ -394,17 +391,28 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
         client = docker.DockerClient(base_url=socket,timeout=240)
     else:
         client = docker.from_env(timeout=240)
-    print("Pulling image from DockerHub")
-    client.images.pull(image)
-    print("Creating the container to export")
-    container = client.containers.create(image, command="/bin/bash")
-    resp = container.export()
-    f = os.fdopen(tmphandle, 'wb')
+    try:
+        print("Pulling image from DockerHub")
+        client.images.pull(image)
+        print("Creating the container to export")
+        container = client.containers.create(image, command="/bin/bash")
+        resp = container.export()
+        f = os.fdopen(tmphandle, 'wb')
     
-    print("Exporting container")
-    for chunk in resp:
-        f.write(chunk)
-    f.close()
+        print("Exporting container")
+        for chunk in resp:
+            f.write(chunk)
+        f.close()
+    except:
+        print("Failed to publish %s." % image_dir)
+        #Abort transaction if started.
+        if os.path.exists("/var/spool/cvmfs/singularity.opensciencegrid.org/in_transaction.lock"):
+            print("Abort transaction")
+            result = os.system("cvmfs_server abort -f singularity.opensciencegrid.org")
+            if result:
+                print("Failed to abort lingering transaction (exit status %d)." % result, file=sys.stderr)
+            return 1
+        return 1
 
     # Remove the file from docker
     container.remove(force=True)
@@ -464,7 +472,6 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
 
     make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
-
     # Publish CVMFS as necessary.
     return publish_txn()
 
@@ -494,41 +501,6 @@ def verify_image(image, registry, doauth, socket=None):
         retval = 1
         raise
     return retval
-
-def garbage_collection(cvmfs_repo):
-    """
-    If sufficient time has passed since the last GC run, then run it now.
-    """
-    gc_dir = "/var/cache/cvmfs-sync"
-    gc_file = os.path.join(gc_dir, "%s.last_gc" % cvmfs_repo)
-    now = int(time.time())
-    gc_interval_mins = 24*60
-    should_gc = True
-    last_gc_time = 0
-    try:
-        with open(gc_file, "r+") as fp:
-            gc_time_str = fp.read()
-            try:
-                last_gc_time = int(gc_time_str)
-            except ValueError:
-                last_gc_time = 0
-            if now - last_gc_time < gc_interval_mins*60:
-                should_gc = False
-            else:
-                fp.seek(0)
-                fp.truncate()
-                fp.write(str(now))
-    except IOError:
-        with open(gc_file, "x") as fp:
-            fp.write(str(last_gc_time))
-    if should_gc:
-        print("Attempting to garbage collect", cvmfs_repo)
-        try:
-            subprocess.call(["cvmfs_server", "gc", "-f", "-t", "2 days ago", cvmfs_repo])
-        except subprocess.CalledProcessError:
-            print("Garbage collection of", cvmfs_repo, "failed.")
-    else:
-        print("Garbage collection of",cvmfs_repo, "not due.")
 
 if __name__ == '__main__':
     sys.exit(main())
