@@ -335,6 +335,7 @@ notredamedulac/el7-tensorflow-pytorch:latest
 notredamedulac/el7-pytorch-gpu:latest
 notredamedulac/el7-tensorflow-keras-gpu:latest
 notredamedulac/el7-jax-gpu:ubuntu
+notredamedulac/el7-deepshere-gpu:latest
 
 # LSST DESC stackvana
 beckermr/stackvana:latest
