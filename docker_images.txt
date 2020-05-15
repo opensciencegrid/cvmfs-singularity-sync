@@ -128,6 +128,7 @@ rafaelnalin/r-ver-openblas:latest
 xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
 relugzosiraba/kwant_adaptive:v1
+snirgaz/osg_julia:latest
 
 # MINT project (rynge)
 ankushumn/rsatest
