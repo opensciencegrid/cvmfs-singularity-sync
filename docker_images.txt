@@ -263,7 +263,7 @@ novaexperiment/nova-sl7-novat2k:*
 novaexperiment/slf67:*
 
 #holosim (tree migration)
-astrand/holosim1
+astrand/holosim
 astrand/popassemble
 
 # HTMap
