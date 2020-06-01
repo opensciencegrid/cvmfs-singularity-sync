@@ -159,6 +159,7 @@ alpine
 whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
+electronioncollider/escalate:latest
 
 # Common biology tools
 # Biocontainers :latest doesn't exist any longer.
