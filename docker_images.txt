@@ -356,3 +356,6 @@ bardelch/jetscape-deploy:*
 
 #osg.PortlandState_Feng
 mythril/myth
+
+# Greg Thain
+gthain/rtest
