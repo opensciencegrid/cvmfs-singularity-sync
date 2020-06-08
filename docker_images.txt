@@ -183,6 +183,8 @@ bbockelm/cms:rhel6
 bbockelm/cms:rhel7
 cmssw/cms:rhel6
 cmssw/cms:rhel7
+cmssw/cms:rhel6-itb
+cmssw/cms:rhel7-itb
 cmssw/cms:rhel6-m*
 cmssw/cms:rhel7-m*
 efajardo/docker-cms:tensorflow
