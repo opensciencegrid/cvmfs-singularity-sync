@@ -55,7 +55,7 @@ def main():
                         type=str,
                         default=None)
 
-    # Name of the docker image, required
+    # Link to the file of the docker images, required
     parser.add_argument("--images-url",
                         dest='filelist',
                         help="URL to download a list of Docker images from",
@@ -165,18 +165,31 @@ def main():
                 image = '%s/%s/%s:%s' % (registry, namespace, repo_name, tag)
                 currentImages.append(image)
                 retval = 1
-                if not args.dryrun:
-                    try:
-                        retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
-                    except Exception as ex:
-                        print("Failed to publish image: {}".format(image))
-                        traceback.print_exc()
-                else:
-                    try:
-                        retval = verify_image(image, registry, doauth, args.socket)
-                    except Exception as ex:
-                        print("Failed to verify image: {}".format(image))
-                        traceback.print_exc()
+                tries = 3
+                for i in range(tries):
+                    if not args.dryrun:
+                        try:
+                            retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
+                        except Exception as ex:
+               	            if i < tries -1:
+                                print("Failed to publish image: {}".format(image))
+                                traceback.print_exc()
+                                print("Retry image {}".format(image))
+                                continue
+                            else:
+                                print("Tried {} times ".format(tries) + "for image {}".format(image) + ", giving up")
+                    else:
+                        try:
+                            retval = verify_image(image, registry, doauth, args.socket)
+                        except Exception as ex:
+                            if i < tries -1:
+                                print("Failed to verify image: {}".format(image))
+                                traceback.print_exc()
+                                print("Retry image {}".format(image))
+                                continue
+                            else:
+                                print("Tried {} times ".format(tries) + "for image {}".format(image))
+                    break
                 if retval:
                     final_retval = retval
                     failed_images.append("{}".format(image))
@@ -377,18 +390,29 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     if socket:
         client = docker.DockerClient(base_url=socket,timeout=240)
     else:
-        client = docker.from_env()
-    print("Pulling image from DockerHub")
-    client.images.pull(image)
-    print("Creating the container to export")
-    container = client.containers.create(image, command="/bin/bash")
-    resp = container.export()
-    f = os.fdopen(tmphandle, 'wb')
+        client = docker.from_env(timeout=240)
+    try:
+        print("Pulling image from DockerHub")
+        client.images.pull(image)
+        print("Creating the container to export")
+        container = client.containers.create(image, command="/bin/bash")
+        resp = container.export()
+        f = os.fdopen(tmphandle, 'wb')
     
-    print("Exporting container")
-    for chunk in resp:
-        f.write(chunk)
-    f.close()
+        print("Exporting container")
+        for chunk in resp:
+            f.write(chunk)
+        f.close()
+    except:
+        print("Failed to publish %s." % image_dir)
+        #Abort transaction if started.
+        if os.path.exists("/var/spool/cvmfs/singularity.opensciencegrid.org/in_transaction.lock"):
+            print("Abort transaction")
+            result = os.system("cvmfs_server abort -f singularity.opensciencegrid.org")
+            if result:
+                print("Failed to abort lingering transaction (exit status %d)." % result, file=sys.stderr)
+            return 1
+        return 1
 
     # Remove the file from docker
     container.remove(force=True)
@@ -448,7 +472,6 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
 
     make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
-
     # Publish CVMFS as necessary.
     return publish_txn()
 
@@ -467,14 +490,17 @@ def verify_image(image, registry, doauth, socket=None):
     if "://" not in registry:
         registry = "https://%s" % registry
     hub = dockerhub.DockerHub(url=registry)
+    retval = 0
     try: 
         hub.manifest(namespace, repo_name, repo_tag)
         print(repo_name + ":" + repo_tag + " manifest found")
-        return 0
+        retval = 0
     except Exception as ex:
         print(repo_name + ":" + repo_tag + " manifest not found")
-        return 1
-
+        traceback.print_exc()
+        retval = 1
+        raise
+    return retval
 
 if __name__ == '__main__':
     sys.exit(main())

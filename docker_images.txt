@@ -25,7 +25,7 @@ gcc:latest
 julia:latest
 r-base:latest
 continuumio/anaconda
-gromacs/gromacs
+gromacs/gromacs:*
 rocker/r-ver:latest
 
 # OSG-specific worker node images
@@ -51,8 +51,9 @@ opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-el7-cuda10
 opensciencegrid/osgvo-el8
-opensciencegrid/osgvo-freesurfer:latest
+opensciencegrid/osgvo-freesurfer:*
 opensciencegrid/osgvo-gromacs
+opensciencegrid/osgvo-gromacs-gpu
 opensciencegrid/osgvo-gromacs-plumed
 opensciencegrid/osgvo-julia:latest
 opensciencegrid/osgvo-opensim:latest
@@ -60,12 +61,12 @@ opensciencegrid/osgvo-psi4:latest
 opensciencegrid/osgvo-r:3.5
 opensciencegrid/osgvo-torch
 opensciencegrid/osgvo-ubuntu-18.04
+opensciencegrid/osgvo-ubuntu-20.04
 opensciencegrid/osgvo-ubuntu-xenial
 opensciencegrid/osgvo-ucsd-grover:latest
 opensciencegrid/osgvo-xenon:*
-opensciencegrid/tensorflow
-opensciencegrid/tensorflow-gpu:1.4
-opensciencegrid/tensorflow-gpu:latest
+opensciencegrid/tensorflow:*
+opensciencegrid/tensorflow-gpu:*
 paesanilab/psi4:latest
 pegasus/osg-el7:latest
 rinnocente/qe-full-6.2.1:latest
@@ -73,9 +74,7 @@ rynge/einsteintoolkit:latest
 rynge/sra:latest
 rynge/osg-mcf10-mod:latest
 rynge/osg-tensorflow-gpu:latest
-rynge/osgvo-el6-testing:latest
-rynge/osgvo-el7-testing:latest
-rynge/osgvo-ubuntu-18.04-testing:latest
+rynge/respicio:latest
 ssthapa/freesurferosg:5.1
 ssthapa/freesurferosg:5.3
 ssthapa/freesurferosg:6.0
@@ -120,16 +119,17 @@ npcooley/deepec:latest
 showmic09/dream3d:6.5.121
 chunshen1987/iebe-music:latest
 chunshen1987/iebe-music:dev
-npavlovikj/bacteria_db:latest
-cathrine98/r-bglr:latest
+npavlovikj/bacpopgen:latest
 cathrine98/r-vmanthena:latest
 cathrine98/osg-clarkson_mondal:latest
+cathrine98/osg-beast2
 xevra/sparse_kernel_docker:latest
 molssi/qcarchive_worker_openff:*
 rafaelnalin/r-ver-openblas:latest
 xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
 relugzosiraba/kwant_adaptive:v1
+snirgaz/osg_julia:latest
 
 # MINT project (rynge)
 ankushumn/rsatest
@@ -160,6 +160,7 @@ alpine
 whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
+electronioncollider/escalate:latest
 
 # Common biology tools
 # Biocontainers :latest doesn't exist any longer.
@@ -183,6 +184,8 @@ bbockelm/cms:rhel6
 bbockelm/cms:rhel7
 cmssw/cms:rhel6
 cmssw/cms:rhel7
+cmssw/cms:rhel6-itb
+cmssw/cms:rhel7-itb
 cmssw/cms:rhel6-m*
 cmssw/cms:rhel7-m*
 efajardo/docker-cms:tensorflow
@@ -234,7 +237,8 @@ evolinc/osg-rmta:2.6.3
 cyverse/ngmlr:0.2.7
 
 # JLab CLAS12 Simulations
-jeffersonlab/clas12simulations:production
+jeffersonlab/clas12software:production
+jeffersonlab/clas12software:devel
 
 # JLab Parity Simulations and Analysis
 jeffersonlab/remoll:latest
@@ -263,7 +267,7 @@ novaexperiment/nova-sl7-novat2k:*
 novaexperiment/slf67:*
 
 #holosim (tree migration)
-astrand/holosim1
+astrand/holosim
 astrand/popassemble
 
 # HTMap
@@ -297,6 +301,7 @@ containers.ligo.org/rucio/igwn-rucio-client/rucio-clients:latest
 valetov/g4bl:*
 valetov/beam_track:*
 valetov/gm2dev:*
+valetov/cosy:*
 
 # Mu2e
 egstern/centos7-synergia2:*
@@ -332,6 +337,10 @@ agitter/singe:latest
 
 # Notre Dame images
 notredamedulac/el7-tensorflow-pytorch:latest
+notredamedulac/el7-pytorch-gpu:latest
+notredamedulac/el7-tensorflow-keras-gpu:latest
+notredamedulac/el7-jax-gpu:ubuntu
+notredamedulac/el7-deepshere-gpu:latest
 
 # LSST DESC stackvana
 beckermr/stackvana:latest
@@ -339,3 +348,15 @@ beckermr/stackvana:latest
 # Neural Architecture Search for 2d-UNet
 jinnian/automl:2dunet
 jinnian/automl-osg:2dunet
+
+# LUX-ZEPLIN (LZ) Base OS
+luxzeplin/base_os:centos7
+
+#Jetscape
+bardelch/jetscape-deploy:*
+
+#osg.PortlandState_Feng
+mythril/myth
+
+# Greg Thain
+gthain/rtest
