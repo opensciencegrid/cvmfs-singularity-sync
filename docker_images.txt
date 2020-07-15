@@ -369,3 +369,6 @@ gthain/rtest
 
 # Hieu Nguyen
 nguyenatrowan/pytorch
+
+# JLab CLAS Simulations
+tylern4/clas6:latest
