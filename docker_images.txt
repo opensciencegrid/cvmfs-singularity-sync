@@ -151,6 +151,9 @@ mintproject/modflow-2005:*
 mintproject/topoflow:*
 mintproject/droughtindices:*
 
+# XENONnT (rynge)
+xenonnt/base-environment:*
+xenonnt/montecarlo:*
 
 # Lightweight images
 busybox
