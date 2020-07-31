@@ -261,6 +261,7 @@ brainlife/mcr:neurodebian1604-r2017a
 brainlife/mcr:r2019a
 
 # Fermilab VO - Fermigrid worker nodes
+fermilab/fnal-wn-el8
 fermilab/fnal-wn-sl7
 fermilab/fnal-wn-sl6
 
