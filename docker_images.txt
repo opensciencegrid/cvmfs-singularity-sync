@@ -117,6 +117,7 @@ jonlam/osg_ubuntu:latest
 yxfu93/julia:latest
 npcooley/heron:latest
 npcooley/deepec:latest
+npcooley/phylosim:latest
 showmic09/dream3d:6.5.121
 chunshen1987/iebe-music:*
 npavlovikj/bacpopgen:latest
