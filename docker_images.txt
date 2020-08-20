@@ -377,3 +377,7 @@ nguyenatrowan/pytorch
 
 # JLab CLAS Simulations
 tylern4/clas6:latest
+
+# OpenGATE collaboration
+opengatecollaboration/gate:8.2
+opengatecollaboration/gate:9.0
