@@ -158,6 +158,7 @@ mintproject/droughtindices:*
 # XENONnT (rynge)
 xenonnt/base-environment:*
 xenonnt/montecarlo:*
+xenonnt/osg_dev:*
 
 # Lightweight images
 busybox
