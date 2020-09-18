@@ -389,3 +389,6 @@ tylern4/clas6:latest
 # OpenGATE collaboration
 opengatecollaboration/gate:8.2
 opengatecollaboration/gate:9.0
+
+# Snowmass21
+snowmass21software/delphes-osg:*
