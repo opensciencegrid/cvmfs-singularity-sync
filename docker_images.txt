@@ -395,3 +395,6 @@ opengatecollaboration/gate:9.0
 
 # Snowmass21
 snowmass21software/delphes-osg:*
+
+# Tidyverse and rstan
+syavuz/tidyrstan
