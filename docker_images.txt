@@ -291,6 +291,7 @@ htcondor/htmap-exec:*
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/james-clark/bayeswave:latest
 containers.ligo.org/james-clark/bilby_pipe_public:latest
+containers.ligo.org/james-clark/research-projects-rit/rift:test
 containers.ligo.org/james-clark/research-projects-rit/rift:latest
 containers.ligo.org/james-clark/research-projects-rit/rift:production
 containers.ligo.org/tessa.carver/pygrb_o3a:latest
