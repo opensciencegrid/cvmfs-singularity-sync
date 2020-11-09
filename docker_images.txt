@@ -135,8 +135,8 @@ relugzosiraba/kwant_adaptive:v1
 snirgaz/osg_julia:latest
 sjmay/zephyr:latest
 bpschenke/ipglasma:latest
-syavuz/tidyrstan:*
-syavuz/modelcomparison:*
+syavuz/tidyrstan:latest
+syavuz/modelcomparison:latest
 
 # MINT project (rynge)
 ankushumn/rsatest
