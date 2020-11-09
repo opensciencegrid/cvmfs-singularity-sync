@@ -136,6 +136,7 @@ snirgaz/osg_julia:latest
 sjmay/zephyr:latest
 bpschenke/ipglasma:latest
 syavuz/tidyrstan:*
+syavuz/modelcomparison:*
 
 # MINT project (rynge)
 ankushumn/rsatest
