@@ -122,7 +122,7 @@ npcooley/phylosim:latest
 npcooley/synextend:*
 showmic09/dream3d:6.5.121
 chunshen1987/iebe-music:*
-npavlovikj/bacpopgen:latest
+npavlovikj/prokevo:latest
 cathrine98/r-vmanthena:latest
 cathrine98/osg-clarkson_mondal:latest
 cathrine98/osg-beast2
