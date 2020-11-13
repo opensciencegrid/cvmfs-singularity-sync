@@ -139,6 +139,7 @@ bpschenke/ipglasma:latest
 syavuz/tidyrstan:latest
 syavuz/modelcomparison:v1
 ssrujanaa/catsanddogs:latest
+vedularaghu/unet_wf:latest
 
 # MINT project (rynge)
 ankushumn/rsatest
