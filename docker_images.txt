@@ -99,7 +99,7 @@ cathrine98/osg-beast2
 cathrine98/r-vmanthena:latest
 christinalk/slim:latest
 chunshen1987/iebe-music:*
-cnatzke/griffin_sim:*
+cnatzke/griffin_simulation:*
 dmbala/r-3.4.1
 dmbala/r-ebcrimage
 drtmfigy/hjets_herwig7
