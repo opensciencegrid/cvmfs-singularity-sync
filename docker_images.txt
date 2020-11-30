@@ -211,6 +211,9 @@ efajardo/docker-cms:tensorflow
 kreczko/workernode:centos6
 kreczko/workernode:centos7
 clelange/slc5-cms:latest
+# CMS L1 trigger analysis
+cmsl1tanalysis/cmsl1t-dev:*
+cmsl1tanalysis/cmsl1t:*
 
 # ATLAS worker node
 lincolnbryant/atlas-wn
