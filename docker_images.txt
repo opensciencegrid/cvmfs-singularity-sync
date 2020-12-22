@@ -336,6 +336,7 @@ valetov/g4bl:*
 valetov/beam_track:*
 valetov/gm2dev:*
 valetov/cosy:*
+engineren/calogan-docker:latest
 
 # Mu2e
 egstern/centos7-synergia2:*
