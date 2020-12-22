@@ -407,3 +407,6 @@ opengatecollaboration/gate:9.0
 
 # Snowmass21
 snowmass21software/delphes-osg:*
+
+# Zwicky Transient Facility
+michaelwcoughlin/ztfperiodic:latest
