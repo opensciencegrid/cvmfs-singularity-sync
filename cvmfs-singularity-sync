@@ -152,6 +152,15 @@ def main():
                     print("Failed to get tags for image: {}".format(image))
                     traceback.print_exc()
                     print(ex)
+                    glob_path = os.path.join(singularity_rootfs, namespace, repo_name + ":" + repo_tag)
+                    existing_images = glob.glob(glob_path)
+
+                    # Remove the prepended singularity_rootfs and slash
+                    existing_images = [x[len(singularity_rootfs)+1:] for x in existing_images]
+                    for existing_image in existing_images:
+                        registry, namespace, repo_name, repo_tag = parse_image(existing_image)
+                        currentImages.append('%s/%s/%s:%s' % (registry, namespace, repo_name, repo_tag))
+
                     continue
                 repo_tag = fnmatch.filter(tag_names, repo_tag)
             else:
