@@ -310,6 +310,7 @@ containers.ligo.org/james-clark/research-projects-rit/rift:production
 containers.ligo.org/tessa.carver/pygrb_o3a:latest
 atanasi/matlab:v97
 atanasi/darkmatter:latest
+lucarvirgo/tensorflowmatlab:latest
 containers.ligo.org/james-clark/tgr_images/testing_gr_fta:latest
 containers.ligo.org/james-clark/tgr_images/lalsuite-master:latest
 containers.ligo.org/alec.gunny/deepclean-prod:export-20.07
