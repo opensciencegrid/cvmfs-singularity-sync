@@ -61,6 +61,7 @@ opensciencegrid/osgvo-opensim:latest
 opensciencegrid/osgvo-psi4:latest
 opensciencegrid/osgvo-quantum-espresso:*
 opensciencegrid/osgvo-r:*
+opensciencegrid/osgvo-raspa2:*
 opensciencegrid/osgvo-torch
 opensciencegrid/osgvo-ubuntu-18.04
 opensciencegrid/osgvo-ubuntu-20.04
