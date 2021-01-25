@@ -396,6 +396,7 @@ luxzeplin/base_os:centos7
 #Jetscape
 bardelch/jetscape-deploy:*
 bardelch/jetscape-compiled:*
+amitkr2410/jetscape-compiled:*
 
 #osg.PortlandState_Feng
 mythril/myth
