@@ -84,6 +84,7 @@ ssthapa/freesurferosg:6.0
 ssthapa/freesurferosg:latest
 lukasheinrich/folding:*
 foldingathome/fah-gpu:*
+djw8605/fah-gpu:*
 krespicio/network-ga:*
 
 # OSGVO - user defined images
