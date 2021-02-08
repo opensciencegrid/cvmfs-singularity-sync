@@ -78,6 +78,7 @@ rynge/sra:latest
 rynge/osg-mcf10-mod:latest
 rynge/osg-tensorflow-gpu:latest
 rynge/respicio:latest
+rynge/tensorflow-cowsay:latest
 ssthapa/freesurferosg:5.1
 ssthapa/freesurferosg:5.3
 ssthapa/freesurferosg:6.0
