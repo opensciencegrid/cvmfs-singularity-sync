@@ -370,6 +370,7 @@ eventhorizontelescope/hops:*
 mjanssen2308/symba:latest
 ttrent808/ray:*
 ehtcon/img-env:*
+ehtcon/mcfe-env:*
 ehtcon/theory-env:*
 
 # Caltech_Rusholme
