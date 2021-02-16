@@ -364,11 +364,14 @@ wrenchproject/task-clustering:*
 # FAST-HEP images
 fasthep/fast-hep-docker:version-0.2.0
 
-# PIRE
+# EHT/PIRE
 eventhorizontelescope/hops:*
 #casavlbi_ehtproduction:latest
 mjanssen2308/symba:latest
 ttrent808/ray:*
+ehtcon/img-env:*
+ehtcon/mcfe-env:*
+ehtcon/theory-env:*
 
 # Caltech_Rusholme
 nrstickley/jsp_apps:*
