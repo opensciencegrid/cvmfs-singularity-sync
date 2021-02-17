@@ -120,6 +120,7 @@ jborrel00/pyccx-ubuntu16:latest
 jborrel00/pyccx-ubuntu16:development
 jonlam/osg_ubuntu:latest
 jml230/osg-amber:*
+justbennet/seas:lidar
 kai2019/osg-fsl:latest
 leofang/cthyb-ohmic
 molssi/qcarchive_worker_openff:*
