@@ -424,3 +424,6 @@ snowmass21software/delphes-osg:*
 
 # Zwicky Transient Facility
 michaelwcoughlin/ztfperiodic:latest
+
+#intel
+intel/oneapi-hpckit
