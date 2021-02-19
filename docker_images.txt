@@ -89,6 +89,7 @@ djw8605/fah-gpu:*
 krespicio/network-ga:*
 
 # OSGVO - user defined images
+aahong/osg_fcc_text
 adwasser/slomo
 agladstein/data_science_popgen_notebook:*
 agladstein/msprime:latest
