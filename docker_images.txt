@@ -55,7 +55,7 @@ opensciencegrid/osgvo-freesurfer:*
 opensciencegrid/osgvo-gromacs
 opensciencegrid/osgvo-gromacs-gpu
 opensciencegrid/osgvo-gromacs-plumed
-opensciencegrid/osgvo-julia:latest
+opensciencegrid/osgvo-julia:*
 opensciencegrid/osgvo-matlab-runtime:*
 opensciencegrid/osgvo-opensim:latest
 opensciencegrid/osgvo-psi4:latest
