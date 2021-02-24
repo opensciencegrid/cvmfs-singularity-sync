@@ -427,3 +427,6 @@ michaelwcoughlin/ztfperiodic:latest
 
 #intel
 intel/oneapi-hpckit
+
+# E1039/SpinQuest
+e1039/e1039-sl7
