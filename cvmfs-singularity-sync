@@ -358,11 +358,20 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
     # for the final image.
-    hasher = hashlib.sha256()
-    for layerinfo in manifest['fsLayers']:
-        layer_hash = layerinfo['blobSum'].split(":")[-1].encode('utf-8')
-        hasher.update(layer_hash)
-    image_hash = hasher.hexdigest()
+    if manifest['schemaVersion'] == 1:
+        hasher = hashlib.sha256()
+        for layerinfo in manifest['fsLayers']:
+            layer_hash = layerinfo['blobSum'].split(":")[-1].encode('utf-8')
+            hasher.update(layer_hash)
+        image_hash = hasher.hexdigest()
+    elif manifest['schemaVersion'] == 2:
+        hasher = hashlib.sha256()
+        for layerinfo in manifest['layers']:
+            layer_hash = layerinfo['digest'].split(":")[-1].encode('utf-8')
+            hasher.update(layer_hash)
+        image_hash = hasher.hexdigest()
+    else:
+        raise ValueError('Cannot handle schemaVersion: %s' % manifest['schemaVersion'])
 
     # The image is staged to $ROOTFS/.images/$HASH
     image_parentdir = os.path.join(singularity_rootfs, ".images", image_hash[0:2])
