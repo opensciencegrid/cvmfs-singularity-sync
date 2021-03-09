@@ -108,6 +108,7 @@ christinalk/slim:latest
 chunshen1987/iebe-music:*
 cnatzke/griffin_simulation:*
 cnatzke/ntuple:*
+cnatzke/prepare_files:*
 dmbala/r-3.4.1
 dmbala/r-ebcrimage
 drtmfigy/hjets_herwig7
