@@ -310,6 +310,7 @@ htcondor/htmap-exec:*
 
 
 # LIGO - user defined images
+containers.ligo.org/cody.messick/container:latest
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/james-clark/bayeswave:latest
 containers.ligo.org/james-clark/bayeswave:test
