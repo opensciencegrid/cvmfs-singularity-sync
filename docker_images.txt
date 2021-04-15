@@ -152,6 +152,7 @@ weiminghu123/panen
 xevra/sparse_kernel_docker:latest
 xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
+xwcl/xpipeline:latest
 yxfu93/julia:latest
 
 # MINT project (rynge)
