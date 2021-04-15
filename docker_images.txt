@@ -413,6 +413,7 @@ bardelch/jetscape-deploy:*
 bardelch/jetscape-compiled:*
 amitkr2410/jetscape-compiled:*
 dananjaya92/jetscape-compiled:*
+dananjaya92/jetscape-bulk:*
 
 #osg.PortlandState_Feng
 mythril/myth
