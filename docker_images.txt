@@ -137,7 +137,7 @@ npcooley/heron:latest
 npcooley/deepec:latest
 npcooley/phylosim:latest
 npcooley/synextend:*
-parabola505/geospatxgboost
+parabola505/geospatxgboost:*
 rafaelnalin/r-ver-openblas:latest
 relugzosiraba/kwant_adaptive:v1
 researchcomputing/namd_212_multicore_osgvo-el6:latest
