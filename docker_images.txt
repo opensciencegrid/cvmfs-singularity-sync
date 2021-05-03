@@ -442,4 +442,4 @@ intel/oneapi-hpckit
 e1039/e1039-sl7
 
 # University of Manchester/MicroBooNE uboonecode + gallery-fmwk
-lmlepin9/slf7-ubcode-gallery-fmwk
+lmlepin9/slf7-ubcode-gallery-fmwk:*
