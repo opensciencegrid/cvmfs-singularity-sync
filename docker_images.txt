@@ -443,3 +443,6 @@ e1039/e1039-sl7
 
 # University of Manchester/MicroBooNE uboonecode + gallery-fmwk
 lmlepin9/slf7-ubcode-gallery-fmwk:2.0
+
+# University of Guam - Bioinformatics
+jagault/evolution-photosymbiosis:rscriptv3.5.3
