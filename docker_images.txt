@@ -130,6 +130,7 @@ justbennet/seas:lidar
 kai2019/osg-fsl:latest
 leofang/cthyb-ohmic
 m8zeng/julia-packages
+mfrayer/perl-stats
 molssi/qcarchive_worker_openff:*
 nipy/mindboggle
 nkern/21cmfast_env
