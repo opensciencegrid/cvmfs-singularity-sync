@@ -336,7 +336,7 @@ containers.ligo.org/alec.gunny/deepclean-prod:server-20.07
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
-containers.ligo.org/lscsoft/lalsuite/nightly:stretch
+containers.ligo.org/lscsoft/lalsuite/nightly:buster
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:stretch
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:el7
