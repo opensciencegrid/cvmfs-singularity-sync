@@ -159,6 +159,7 @@ xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
 xwcl/xpipeline:*
 yxfu93/julia:latest
+yxfu93/julia:amd
 
 # MINT project (rynge)
 ankushumn/rsatest
