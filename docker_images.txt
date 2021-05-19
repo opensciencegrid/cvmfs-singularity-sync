@@ -449,3 +449,6 @@ lmlepin9/slf7-ubcode-gallery-fmwk:2.0
 
 # University of Guam - Bioinformatics
 jagault/evolution-photosymbiosis:rscriptv3.5.3
+
+# GAPS - General Anti Particle Spectrometer
+gapscr/crane:1.6.4
