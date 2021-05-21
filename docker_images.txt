@@ -194,6 +194,9 @@ whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
 electronioncollider/escalate:latest
+eicweb/jug_xl:*-stable
+eicweb/jug_xl:testing
+eicweb/jug_xl:nightly
 
 # Common biology tools
 # Biocontainers :latest doesn't exist any longer.
