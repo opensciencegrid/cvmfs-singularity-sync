@@ -452,3 +452,7 @@ lmlepin9/slf7-ubcode-gallery-fmwk:2.0
 
 # University of Guam - Bioinformatics
 jagault/evolution-photosymbiosis:rscriptv3.5.3
+
+# University of Chicago - JonasLab Molecular Sim
+ericmjonas/osg:*
+ 
