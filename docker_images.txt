@@ -448,7 +448,7 @@ intel/oneapi-hpckit
 e1039/e1039-sl7
 
 # University of Manchester/MicroBooNE uboonecode + gallery-fmwk
-lmlepin9/slf7-ubcode-gallery-fmwk:2.0
+lmlepin9/slf7-ubcode-gallery-fmwk:2.1
 
 # University of Guam - Bioinformatics
 jagault/evolution-photosymbiosis:rscriptv3.5.3
