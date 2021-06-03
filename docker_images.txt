@@ -52,7 +52,7 @@ opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-el7-cuda10:*
 opensciencegrid/osgvo-el8
 opensciencegrid/osgvo-freesurfer:*
-opensciencegrid/osgvo-gromacs
+opensciencegrid/osgvo-gromacs:*
 opensciencegrid/osgvo-gromacs-gpu
 opensciencegrid/osgvo-gromacs-plumed
 opensciencegrid/osgvo-julia:*
