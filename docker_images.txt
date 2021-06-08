@@ -155,6 +155,7 @@ syavuz/tidyrstan:latest
 syavuz/modelcomparison:v1
 vedularaghu/unet_wf:latest
 weiminghu123/panen
+weiphy/skopt
 xevra/sparse_kernel_docker:latest
 xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
