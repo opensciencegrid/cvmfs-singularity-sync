@@ -213,7 +213,8 @@ igwn/software:stretch
 igwn/software:stretch-proposed
 
 # LIGO PyCBC compute nodes
-pycbc/pycbc-el7:v*
+pycbc/pycbc-el7:v1.16.*
+pycbc/pycbc-el7:v1.18.*
 pycbc/pycbc-el7:latest
 
 # CMS worker node
