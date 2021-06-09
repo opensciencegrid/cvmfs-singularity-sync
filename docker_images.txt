@@ -125,6 +125,7 @@ jamessaxon/postgres-routing:a0
 jasoncpatton/qutip_kwant:v1.2
 jborrel00/pyccx-ubuntu16:latest
 jborrel00/pyccx-ubuntu16:development
+jiahe58/tensorflow:latest
 jonlam/osg_ubuntu:latest
 jml230/osg-amber:*
 justbennet/seas:lidar
