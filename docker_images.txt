@@ -98,6 +98,7 @@ agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
 anniesoft/toolanalysis
+arburks/aris-convert:latest
 blaylockbk/miniconda3_osg:latest
 blibgober/pdf_converter:latest
 bpschenke/ipglasma:latest
