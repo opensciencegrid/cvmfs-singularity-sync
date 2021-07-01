@@ -266,6 +266,7 @@ wipac/skylab:1.0.0
 
 #fMRI Prep
 poldracklab/fmriprep
+nipreps/fmriprep:20.2.1
 
 # cyverse container camp
 evolinc/rmta:1.6
