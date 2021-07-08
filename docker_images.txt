@@ -155,6 +155,7 @@ snirgaz/osg_julia:latest
 ssrujanaa/catsanddogs:latest
 syavuz/tidyrstan:latest
 syavuz/modelcomparison:v1
+tahans/revbayes:*
 vedularaghu/unet_wf:latest
 weiminghu123/panen
 weiphy/skopt
