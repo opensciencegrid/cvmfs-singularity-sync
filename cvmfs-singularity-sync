@@ -30,20 +30,16 @@ perform publicly and display publicly, and to permit other to do so.
 '''
 
 import sys
-import dockerhub
-import docker
 import argparse
 import os
-import re
-import stat
 import errno
 import fnmatch
 import urllib.request, urllib.error, urllib.parse
 import hashlib
-import tempfile
-import tarfile
-import cleanup
 import traceback
+import subprocess
+import dockerhub
+import cleanup
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
@@ -55,13 +51,13 @@ def main():
                         type=str,
                         default=None)
 
-    # Name of the docker image, required
+    # Link to the file of the docker images, required
     parser.add_argument("--images-url",
                         dest='filelist',
                         help="URL to download a list of Docker images from",
                         type=str,
                         default=None)
-    
+
     # Name of the docker image file, required
     parser.add_argument("--images-file",
                         dest='filelist_path',
@@ -112,9 +108,9 @@ def main():
 
     # Find root filesystem location
     if args.rootfs:
-       singularity_rootfs = args.rootfs
+        singularity_rootfs = args.rootfs
     else:
-       singularity_rootfs = '/cvmfs/singularity.opensciencegrid.org'
+        singularity_rootfs = '/cvmfs/singularity.opensciencegrid.org'
     singularity_rootfs = os.path.abspath(singularity_rootfs)
 
     # Does the registry require a token?
@@ -138,7 +134,7 @@ def main():
         #fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
         if args.filelist:
             fp = urllib.request.urlopen(args.filelist).read().decode().split('\n')
-        else: 
+        else:
             if args.filelist_path:
                 fp = open(args.filelist_path, "r").read().split('\n')
         for image in fp:
@@ -156,6 +152,15 @@ def main():
                     print("Failed to get tags for image: {}".format(image))
                     traceback.print_exc()
                     print(ex)
+                    glob_path = os.path.join(singularity_rootfs, namespace, repo_name + ":" + repo_tag)
+                    existing_images = glob.glob(glob_path)
+
+                    # Remove the prepended singularity_rootfs and slash
+                    existing_images = [x[len(singularity_rootfs)+1:] for x in existing_images]
+                    for existing_image in existing_images:
+                        registry, namespace, repo_name, repo_tag = parse_image(existing_image)
+                        currentImages.append('%s/%s/%s:%s' % (registry, namespace, repo_name, repo_tag))
+
                     continue
                 repo_tag = fnmatch.filter(tag_names, repo_tag)
             else:
@@ -165,18 +170,31 @@ def main():
                 image = '%s/%s/%s:%s' % (registry, namespace, repo_name, tag)
                 currentImages.append(image)
                 retval = 1
-                if not args.dryrun:
-                    try:
-                        retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
-                    except Exception as ex:
-                        print("Failed to publish image: {}".format(image))
-                        traceback.print_exc()
-                else:
-                    try:
-                        retval = verify_image(image, registry, doauth, args.socket)
-                    except Exception as ex:
-                        print("Failed to verify image: {}".format(image))
-                        traceback.print_exc()
+                tries = 3
+                for i in range(tries):
+                    if not args.dryrun:
+                        try:
+                            retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
+                        except Exception as ex:
+               	            if i < tries -1:
+                                print("Failed to publish image: {}".format(image))
+                                traceback.print_exc()
+                                print("Retry image {}".format(image))
+                                continue
+                            else:
+                                print("Tried {} times ".format(tries) + "for image {}".format(image) + ", giving up")
+                    else:
+                        try:
+                            retval = verify_image(image, registry, doauth, args.socket)
+                        except Exception as ex:
+                            if i < tries -1:
+                                print("Failed to verify image: {}".format(image))
+                                traceback.print_exc()
+                                print("Retry image {}".format(image))
+                                continue
+                            else:
+                                print("Tried {} times ".format(tries) + "for image {}".format(image))
+                    break
                 if retval:
                     final_retval = retval
                     failed_images.append("{}".format(image))
@@ -340,14 +358,24 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
     # for the final image.
-    hasher = hashlib.sha256()
-    for layerinfo in manifest['fsLayers']:
-        layer_hash = layerinfo['blobSum'].split(":")[-1].encode('utf-8')
-        hasher.update(layer_hash)
-    image_hash = hasher.hexdigest()
+    if manifest['schemaVersion'] == 1:
+        hasher = hashlib.sha256()
+        for layerinfo in manifest['fsLayers']:
+            layer_hash = layerinfo['blobSum'].split(":")[-1].encode('utf-8')
+            hasher.update(layer_hash)
+        image_hash = hasher.hexdigest()
+    elif manifest['schemaVersion'] == 2:
+        hasher = hashlib.sha256()
+        for layerinfo in manifest['layers']:
+            layer_hash = layerinfo['digest'].split(":")[-1].encode('utf-8')
+            hasher.update(layer_hash)
+        image_hash = hasher.hexdigest()
+    else:
+        raise ValueError('Cannot handle schemaVersion: %s' % manifest['schemaVersion'])
 
     # The image is staged to $ROOTFS/.images/$HASH
-    image_dir = os.path.join(singularity_rootfs, ".images", image_hash[0:2], image_hash[2:])
+    image_parentdir = os.path.join(singularity_rootfs, ".images", image_hash[0:2])
+    image_dir = os.path.join(image_parentdir, image_hash[2:])
 
     # If the image has already been staged, simply return.
     if os.path.exists(image_dir):
@@ -362,93 +390,37 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
         if retval:
             return retval
         try:
-            os.makedirs(image_dir)
+            # Create the parent directory, but not the image directory itself
+            # Singularity will create the image directory on successful conversion
+            os.makedirs(image_parentdir)
         except OSError as oe:
             if oe.errno != errno.EEXIST:
                 raise
 
-#  DOWNLOAD LAYERS -------------------------------------------
-# Each is a .tar.gz file, obtained from registry with curl
+#  DOWNLOAD IMAGE --------------------------------------------
+    # Use /var/tmp for singularity temporary files
+    singularity_env = os.environ.copy()
+    singularity_env['TMPDIR'] = '/var/tmp'
 
-    # Create a temporary directory for targzs
-    tmphandle, tmpfilename = tempfile.mkstemp(prefix="singularity-image-", dir="/var/tmp")
-
-    # Use docker to pull the image
-    if socket:
-        client = docker.DockerClient(base_url=socket,timeout=240)
-    else:
-        client = docker.from_env()
-    print("Pulling image from DockerHub")
-    client.images.pull(image)
-    print("Creating the container to export")
-    container = client.containers.create(image, command="/bin/bash")
-    resp = container.export()
-    f = os.fdopen(tmphandle, 'wb')
-    
-    print("Exporting container")
-    for chunk in resp:
-        f.write(chunk)
-    f.close()
-
-    # Remove the file from docker
-    container.remove(force=True)
-    client.images.remove(image, force=True)
-    # Untar the image
-    tar = tarfile.open(tmpfilename, errorlevel=0)
-    tar.extractall(image_dir)
-    tar.close()
-
-    # Remove the original tar file
-    os.remove(tmpfilename)
-
-    # Walk the path, fixing file permissions
-    for (dirpath, dirnames, filenames) in os.walk(image_dir):
-        for fname in filenames:
-            full_fname = os.path.join(dirpath, fname)
-            st = os.lstat(full_fname)
-            old_mode = stat.S_IMODE(st.st_mode)
-            if (old_mode & 0o444) == 0000:
-                new_mode = old_mode | 0o400
-                print("Fixing mode of", full_fname, "to", oct(new_mode))
-                os.chmod(full_fname, new_mode)
-        for dname in dirnames:
-            full_dname = os.path.join(dirpath, dname)
-            st = os.lstat(full_dname)
-            if not stat.S_ISDIR(st.st_mode):
-                continue
-            old_mode = stat.S_IMODE(st.st_mode)
-            if old_mode & 0o111 == 0:
-                new_mode = old_mode | 0o100
-                print("Fixing mode of", full_dname, "to", oct(new_mode))
-                os.chmod(full_dname, new_mode)
-            if old_mode & 0o222 == 0:
-                new_mode = old_mode | 0o200
-                print("Fixing mode of", full_dname, "to", oct(new_mode))
-                os.chmod(full_dname, new_mode)
-
-    # Make sure the image_dir is writable by us!
-    os.chmod(image_dir, 0o755)
+    print("Calling singularity to build sandbox from image")
+    subprocess.check_call(
+        ['singularity', '--silent', 'build',
+         '--disable-cache=true', # Images are only downloaded once
+         '--force',              # Don't get stuck at a prompt if the target somehow exists
+         '--fix-perms',
+         '--sandbox',
+         image_dir, 'docker://' + image],
+        env=singularity_env)
 
     # Various fixups to make the image compatible with CVMFS and singularity.
     srv = os.path.join(image_dir, "srv")
     cvmfs = os.path.join(image_dir, "cvmfs")
-    dev = os.path.join(image_dir, "dev")
-    proc = os.path.join(image_dir, "proc")
-    sys_dir = os.path.join(image_dir, "sys")
     if not os.path.exists(srv):
         os.makedirs(srv)
     if not os.path.exists(cvmfs):
         os.makedirs(cvmfs)
-    if not os.path.exists(dev):
-        os.makedirs(dev)
-    if not os.path.exists(proc):
-        os.makedirs(proc)
-    if not os.path.exists(sys_dir):
-        os.makedirs(sys_dir)
-
 
     make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
-
     # Publish CVMFS as necessary.
     return publish_txn()
 
@@ -467,14 +439,17 @@ def verify_image(image, registry, doauth, socket=None):
     if "://" not in registry:
         registry = "https://%s" % registry
     hub = dockerhub.DockerHub(url=registry)
-    try: 
+    retval = 0
+    try:
         hub.manifest(namespace, repo_name, repo_tag)
         print(repo_name + ":" + repo_tag + " manifest found")
-        return 0
+        retval = 0
     except Exception as ex:
         print(repo_name + ":" + repo_tag + " manifest not found")
-        return 1
-
+        traceback.print_exc()
+        retval = 1
+        raise
+    return retval
 
 if __name__ == '__main__':
     sys.exit(main())
