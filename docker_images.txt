@@ -131,6 +131,7 @@ rafaelnalin/r-ver-openblas:latest
 xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
 relugzosiraba/kwant_adaptive:v1
+relugzosiraba/juqbox_env:v1
 
 # MINT project (rynge)
 ankushumn/rsatest
