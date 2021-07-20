@@ -148,6 +148,7 @@ parabola505/geospatxgboost:*
 rafaelnalin/r-ver-openblas:latest
 relugzosiraba/kwant_adaptive:v1
 relugzosiraba/juqbox_env:v1
+relugzosiraba/juqbox_env:v2
 researchcomputing/namd_212_multicore_osgvo-el6:latest
 shilpac/my_mindboggle
 showmic09/dream3d:6.5.121
