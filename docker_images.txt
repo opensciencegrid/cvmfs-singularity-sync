@@ -364,6 +364,7 @@ containers.ligo.org/lscsoft/gstlal:osg_dag_workflow
 containers.ligo.org/lscsoft/gstlal:O3b_online
 containers.ligo.org/lscsoft/gstlal:master
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
+containers.ligo.org/echoes-model-independent/bayeswave-echoes-image:v1.0.7_echoes_reviewed
 
 # Lancaster U Muon g-2 Beamline Simulations
 valetov/g4bl:*
