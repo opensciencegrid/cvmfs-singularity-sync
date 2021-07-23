@@ -6,6 +6,7 @@ cvmfs-singularity-sync.bak
 cvmfs-singularity-syncc
 dockerhub.py.bak
 dockerhub.pyc
+docker-creds.json
 johntest
 johntest2
 venv/

@@ -34,12 +34,15 @@ import argparse
 import os
 import errno
 import fnmatch
+import json
 import urllib.request, urllib.error, urllib.parse
 import hashlib
 import traceback
 import subprocess
 import dockerhub
 import cleanup
+
+DOCKER_CREDS = dict()
 
 def main():
     parser = argparse.ArgumentParser(description="Bootstrap Docker images for Singularity containers deployed to CVMFS")
@@ -93,6 +96,11 @@ def main():
                         help="Indicate that auth is not required",
                         default=False)
 
+    # File with access token
+    parser.add_argument("--docker-creds",
+                        help="JSON file with Docker credentials",
+                        type=argparse.FileType('r'))
+
     # Flag to indicate dry-run
     parser.add_argument("--dry-run",
                         dest='dryrun',
@@ -105,6 +113,11 @@ def main():
     except:
         parser.print_help()
         sys.exit(0)
+
+    if args.docker_creds:
+        global DOCKER_CREDS
+        DOCKER_CREDS = json.load(args.docker_creds)
+        args.docker_creds.close()
 
     # Find root filesystem location
     if args.rootfs:
@@ -243,9 +256,11 @@ def get_tags(username, repo, registry=None, auth=None):
     if registry != "registry.hub.docker.com":
         if "://" not in registry:
             registry = "https://%s" % registry
-        hub = dockerhub.DockerHub(url=registry)
+        auth = DOCKER_CREDS.get(registry, {})
+        hub = dockerhub.DockerHub(url=registry, **auth)
     else:
-        hub = dockerhub.DockerHub()
+        auth = DOCKER_CREDS.get('https://registry.hub.docker.com', {})
+        hub = dockerhub.DockerHub(**auth)
     tag_names = []
     for tag in hub.tags(username, repo):
         tag_names.append(tag['name'])
@@ -353,7 +368,8 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     # Prepend "https://" to the registry
     if "://" not in registry:
         registry = "https://%s" % registry
-    hub = dockerhub.DockerHub(url=registry)
+    auth = DOCKER_CREDS.get(registry, {})
+    hub = dockerhub.DockerHub(url=registry, **auth)
     manifest = hub.manifest(namespace, repo_name, repo_tag)
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
@@ -402,6 +418,11 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     singularity_env = os.environ.copy()
     singularity_env['TMPDIR'] = '/var/tmp'
 
+    if 'username' in auth:
+        singularity_env['SINGULARITY_DOCKER_USERNAME'] = auth['username']
+    if 'password' in auth:
+        singularity_env['SINGULARITY_DOCKER_PASSWORD'] = auth['password']
+
     print("Calling singularity to build sandbox from image")
     subprocess.check_call(
         ['singularity', '--silent', 'build',
@@ -438,7 +459,8 @@ def verify_image(image, registry, doauth, socket=None):
     # Prepend "https://" to the registry
     if "://" not in registry:
         registry = "https://%s" % registry
-    hub = dockerhub.DockerHub(url=registry)
+    auth = DOCKER_CREDS.get(registry, {})
+    hub = dockerhub.DockerHub(url=registry, **auth)
     retval = 0
     try:
         hub.manifest(namespace, repo_name, repo_tag)

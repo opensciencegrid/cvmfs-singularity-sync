@@ -45,7 +45,7 @@ class AuthenticationError(Exception):
 
 
 class DockerHubAuth(AuthBase):
-    def __init__(self, requests_post, api_url, username=None, password=None, token=None, delete_creds=True, scope=None):
+    def __init__(self, requests_post, api_url, username=None, password=None, token=None, delete_creds=False, scope=None):
         """
 
         Args:
@@ -92,6 +92,11 @@ class DockerHubAuth(AuthBase):
         return r
 
     def updateToken(self, scope, service=None, realm=None, **kwargs):
+        if self._username:
+            auth = (self._username,self._password)
+        else:
+            auth = None
+
         if scope:
             params = {'service': 'registry.docker.io', 'scope': scope}
         else:
@@ -99,9 +104,9 @@ class DockerHubAuth(AuthBase):
         if service:
             params['service'] = service
         if realm:
-            r = requests.get(realm, params = params)
+            r = requests.get(realm, params=params, auth=auth)
         else:
-            r = requests.get("https://auth.docker.io/token", params = params)
+            r = requests.get("https://auth.docker.io/token", params=params, auth=auth)
         try:
             self._token = r.json()['token']
         except KeyError as ke:
