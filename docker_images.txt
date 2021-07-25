@@ -108,6 +108,7 @@ cathrine98/osg-beast2
 cathrine98/r-vmanthena:latest
 christinalk/slim:latest
 chunshen1987/iebe-music:*
+chunshen1987/ipglasmaframework:*
 clkwisconsin/spacetimer:latest
 cnatzke/griffin_simulation:*
 cnatzke/ntuple:*
