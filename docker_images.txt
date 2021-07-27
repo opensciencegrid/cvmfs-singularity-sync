@@ -156,9 +156,9 @@ showmic09/dream3d:6.5.121
 sjmay/zephyr:latest
 snirgaz/osg_julia:latest
 ssrujanaa/catsanddogs:latest
+sswiston/revbayes:*
 syavuz/tidyrstan:latest
 syavuz/modelcomparison:v1
-tahans/revbayes:*
 vedularaghu/unet_wf:latest
 weiminghu123/panen
 weiphy/skopt
