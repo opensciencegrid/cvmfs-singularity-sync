@@ -41,6 +41,7 @@ import traceback
 import subprocess
 import dockerhub
 import cleanup
+import sqlitedict
 
 DOCKER_CREDS = dict()
 
@@ -75,10 +76,9 @@ def main():
                         type=str,
                         default=None)
 
-    # Socket to local docker engine
-    parser.add_argument("--docker-socket",
-                        dest='socket',
-                        help="connect to specified docker socket rather than using docker.from_env()",
+    # Manifest cache file
+    parser.add_argument("--sqlite-cache",
+                        help="SQLite database to cache Docker manifests",
                         type=str,
                         default=None)
 
@@ -119,6 +119,8 @@ def main():
         DOCKER_CREDS = json.load(args.docker_creds)
         args.docker_creds.close()
 
+    manifest_cache = sqlitedict.SqliteDict(args.sqlite_cache, tablename='manifests', autocommit=True)
+
     # Find root filesystem location
     if args.rootfs:
         singularity_rootfs = args.rootfs
@@ -138,9 +140,9 @@ def main():
     if args.docker:
         image = args.docker
         if not args.dryrun:
-            return publish_image(image, singularity_rootfs, args.registry, doauth, args.socket)
+            return publish_image(image, singularity_rootfs, args.registry, doauth, manifest_cache)
         else:
-            return verify_image(image, args.registry, doauth, args.socket)
+            return verify_image(image, args.registry, doauth, manifest_cache)
     else:
         final_retval = 0
         failed_images = []
@@ -187,7 +189,7 @@ def main():
                 for i in range(tries):
                     if not args.dryrun:
                         try:
-                            retval = publish_image(image, singularity_rootfs, registry, doauth, args.socket)
+                            retval = publish_image(image, singularity_rootfs, registry, doauth, manifest_cache)
                         except Exception as ex:
                	            if i < tries -1:
                                 print("Failed to publish image: {}".format(image))
@@ -198,7 +200,7 @@ def main():
                                 print("Tried {} times ".format(tries) + "for image {}".format(image) + ", giving up")
                     else:
                         try:
-                            retval = verify_image(image, registry, doauth, args.socket)
+                            retval = verify_image(image, registry, doauth, manifest_cache)
                         except Exception as ex:
                             if i < tries -1:
                                 print("Failed to verify image: {}".format(image))
@@ -353,7 +355,18 @@ def parse_image(image):
 
     return registry, namespace, repo_name, repo_tag
 
-def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
+def get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache):
+    metadata = hub.manifest(namespace, repo_name, repo_tag, head=True)
+    digest = metadata.headers['docker-content-digest']
+
+    if digest in manifest_cache:
+        return manifest_cache['digest']
+    else:
+        manifest = hub.manifest(namespace, repo_name, repo_tag)
+        manifest_cache[digest] = manifest
+        return manifest
+
+def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
 
     # Tell the user the namespace, repo name and tag
     registry, namespace, repo_name, repo_tag = parse_image(image)
@@ -370,7 +383,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
         registry = "https://%s" % registry
     auth = DOCKER_CREDS.get(registry, {})
     hub = dockerhub.DockerHub(url=registry, **auth)
-    manifest = hub.manifest(namespace, repo_name, repo_tag)
+    manifest = get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache)
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
     # for the final image.
@@ -445,7 +458,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, socket=None):
     # Publish CVMFS as necessary.
     return publish_txn()
 
-def verify_image(image, registry, doauth, socket=None):
+def verify_image(image, registry, doauth, manifest_cache):
 
     # Tell the user the namespace, repo name and tag
     registry, namespace, repo_name, repo_tag = parse_image(image)
@@ -463,7 +476,7 @@ def verify_image(image, registry, doauth, socket=None):
     hub = dockerhub.DockerHub(url=registry, **auth)
     retval = 0
     try:
-        hub.manifest(namespace, repo_name, repo_tag)
+        hub.manifest(namespace, repo_name, repo_tag, head=True)
         print(repo_name + ":" + repo_tag + " manifest found")
         retval = 0
     except Exception as ex:

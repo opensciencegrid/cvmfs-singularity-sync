@@ -324,6 +324,9 @@ class DockerHub(object):
             del kwargs['noPage']
         return self._do_request('GET', address, **kwargs)
 
+    def _do_requests_head(self, address, **kwargs):
+        return self._do_request('HEAD', address, **kwargs)
+
     def _do_requests_post(self, address, json_data=None, **kwargs):
         return self._do_request('POST', address, json=json_data, **kwargs)
 
@@ -361,7 +364,7 @@ class DockerHub(object):
             return
 
     def _api_url(self, path):
-        return '{0}/{1}/'.format(self.url, path)
+        return '{0}/{1}'.format(self.url, path)
 
     def _get_username(self):
         if self.logged_in:
@@ -478,19 +481,24 @@ class DockerHub(object):
         self._auth = None
         return self._iter_requests_get(url, **kwargs)
 
-    def manifest(self, user, image, tag, **kwargs):
+    def manifest(self, user, repository, tag, head=False, **kwargs):
         """
 
         Args:
             user:
             repository:
+            tag:
+            head (bool, optional):
             **kwargs:
 
         Returns:
 
         """
-        url = self._api_url('{0}/{1}/manifests/{2}'.format(user, image, tag))
-        return self._do_requests_get(url, **kwargs).json()
+        url = self._api_url('{0}/{1}/manifests/{2}'.format(user, repository, tag))
+        if head:
+            return self._do_requests_head(url, **kwargs)
+        else:
+            return self._do_requests_get(url, **kwargs).json()
 
     def user(self, user, **kwargs):
         """
