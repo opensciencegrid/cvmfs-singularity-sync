@@ -159,6 +159,7 @@ ssrujanaa/catsanddogs:latest
 sswiston/revbayes:*
 syavuz/tidyrstan:latest
 syavuz/modelcomparison:v1
+sylabsio/lolcow:latest
 vedularaghu/unet_wf:latest
 weiminghu123/panen
 weiphy/skopt
