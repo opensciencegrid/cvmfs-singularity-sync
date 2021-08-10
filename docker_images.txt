@@ -142,6 +142,7 @@ mfrayer/perl-stats
 molssi/qcarchive_worker_openff:*
 nipy/mindboggle
 nkern/21cmfast_env
+npanicker/r-desolve:*
 npavlovikj/prokevo:latest
 npcooley/heron:latest
 npcooley/deepec:latest
