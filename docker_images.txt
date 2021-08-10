@@ -100,6 +100,7 @@ agladstein/simprily_autobuild
 anniesoft/toolanalysis
 arburks/aris-convert:latest
 arnaudbecheler/quetzal-eggs:*
+arnaudbecheler/quetzal-open-science-grid:*
 blaylockbk/miniconda3_osg:latest
 blibgober/pdf_converter:latest
 bpschenke/ipglasma:latest
