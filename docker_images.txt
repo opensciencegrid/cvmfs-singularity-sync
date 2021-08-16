@@ -39,6 +39,7 @@ opensciencegrid/osg-wn:3.3-testing-el7
 opensciencegrid/osg-wn:3.3-devel-el7
 
 # OSGVO
+opensciencegrid/peaklearner:*
 opensciencegrid/npjoodi
 opensciencegrid/osgvo-ants
 opensciencegrid/osgvo-beagle
@@ -116,7 +117,6 @@ cnatzke/griffin_simulation:*
 cnatzke/ntuple:*
 cnatzke/prepare_files:*
 cnatzke/grsisort:*
-deltarod/peaklearnerslurm:*
 dmbala/r-3.4.1
 dmbala/r-ebcrimage
 drtmfigy/hjets_herwig7
