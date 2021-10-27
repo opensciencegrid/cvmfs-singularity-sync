@@ -311,6 +311,7 @@ sugwg/dbrown:*
 sugwg/dfinstad:*
 sugwg/prp:*
 sugwg/sdreyes:*
+patrickrmiles/j0030:*
 
 # brainlife.io - An online platform for reproducible neuroscience.
 brainlife/mrtrix3:3.0_RC3
