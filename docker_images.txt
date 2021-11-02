@@ -39,7 +39,6 @@ opensciencegrid/osg-wn:3.3-testing-el7
 opensciencegrid/osg-wn:3.3-devel-el7
 
 # OSGVO
-opensciencegrid/peaklearner:*
 opensciencegrid/npjoodi
 opensciencegrid/osgvo-ants
 opensciencegrid/osgvo-beagle
@@ -91,6 +90,7 @@ djw8605/rnamake:*
 krespicio/network-ga:*
 
 # OSGVO - user defined images
+deltarod/peaklearnerslurm:*
 aahong/osg_fcc_text
 adwasser/slomo
 agladstein/data_science_popgen_notebook:*
