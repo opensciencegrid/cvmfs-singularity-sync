@@ -483,3 +483,6 @@ gapscr/crane:1.6.4
 
 # University of Chicago - JonasLab Molecular Sim
 ericmjonas/osg:*
+
+# Justin Cha
+jcha40/chexmix:latest
