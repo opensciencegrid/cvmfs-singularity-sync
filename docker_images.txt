@@ -90,7 +90,7 @@ djw8605/rnamake:*
 krespicio/network-ga:*
 
 # OSGVO - user defined images
-deltarod/peaklearnerslurm:v2
+deltarod/peaklearnerslurm:*
 aahong/osg_fcc_text
 adwasser/slomo
 agladstein/data_science_popgen_notebook:*
