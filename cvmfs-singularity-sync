@@ -216,7 +216,7 @@ def main():
         print("All requested images have been attempted; final return code: %d" % final_retval)
         if final_retval:
             print("Failed images:")
-            print(*failed_images, sep = "\n") 
+            print(*failed_images, sep = "\n")
         if not args.dryrun:
             print("Cleaning up unlinked images")
             start_txn(singularity_rootfs)
@@ -259,7 +259,7 @@ def get_tags(username, repo, registry=None, auth=None):
         if "://" not in registry:
             registry = "https://%s" % registry
         auth = DOCKER_CREDS.get(registry, {})
-        hub = dockerhub.DockerHub(url=registry, **auth)
+        hub = dockerhub.DockerHub(url=registry, namespace=username, repo=repo, **auth)
     else:
         auth = DOCKER_CREDS.get('https://registry.hub.docker.com', {})
         hub = dockerhub.DockerHub(**auth)
@@ -382,7 +382,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
     if "://" not in registry:
         registry = "https://%s" % registry
     auth = DOCKER_CREDS.get(registry, {})
-    hub = dockerhub.DockerHub(url=registry, **auth)
+    hub = dockerhub.DockerHub(url=registry, namespace=namespace, repo=repo_name, **auth)
     manifest = get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache)
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
@@ -473,7 +473,7 @@ def verify_image(image, registry, doauth, manifest_cache):
     if "://" not in registry:
         registry = "https://%s" % registry
     auth = DOCKER_CREDS.get(registry, {})
-    hub = dockerhub.DockerHub(url=registry, **auth)
+    hub = dockerhub.DockerHub(url=registry, namespace=namespace, repo=repo_name, **auth)
     retval = 0
     try:
         hub.manifest(namespace, repo_name, repo_tag, head=True)

@@ -486,3 +486,8 @@ ericmjonas/osg:*
 
 # Justin Cha
 jcha40/chexmix:latest
+
+# SCIPP, UCSC
+ghcr.io/scipp-atlas/mario-mapyde/madgraph:latest
+ghcr.io/scipp-atlas/mario-mapyde/delphes:latest
+ghcr.io/scipp-atlas/mario-mapyde/delphes-snowmass:latest
