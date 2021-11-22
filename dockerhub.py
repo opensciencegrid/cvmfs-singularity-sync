@@ -183,6 +183,8 @@ class DockerHub(object):
         password(str, optional):
         token(str, optional):
         url(str, optional): Url of api (https://hub.docker.com)
+        namespace(str, optional): Namespace of a docker image
+        repo(str, optional): Repo of the image
         version(str, optional): Api version (v2)
         delete_creds (bool, optional): Whether to delete password after logging in (default True)
         return_lists (bool, optional): Whether to return a `generator` from calls that return multiple values
@@ -190,18 +192,20 @@ class DockerHub(object):
     """
 
     # <editor-fold desc="Class Management">
-    def __init__(self, username=None, password=None, token=None, url=None, version='v2', delete_creds=True,
+    def __init__(self, username=None, password=None, token=None, url=None, namespace=None, repo=None, version='v2', delete_creds=True,
                  return_lists=False):
 
         self._version = version
         self._url = '{0}/{1}'.format(url or 'https://hub.docker.com', self.version)
+        self._namespace = None
+        self._repo = None
         self._session = requests.Session()
         self._auth = None
         self._token = None
         self._username = None
         self._password = None
         self._return_lists = return_lists
-        self.login(username, password, token, delete_creds)
+        self.login(username, password, token, namespace, repo, delete_creds)
 
     def __enter__(self):
         return self
@@ -248,6 +252,14 @@ class DockerHub(object):
         return self._url
 
     @property
+    def namespace(self):
+        return self._namespace
+
+    @property
+    def repo(self):
+        return self._repo
+
+    @property
     def token(self):
         return self._token
 
@@ -289,7 +301,7 @@ class DockerHub(object):
             resp = self._session.request(method, address, **kwargs)
             #print(address)
             #print(kwargs)
-            
+
         except requests.exceptions.Timeout as e:
             raise TimeoutError('Connection Timeout. Download failed: {0}'.format(e))
         except requests.exceptions.RequestException as e:
@@ -374,7 +386,7 @@ class DockerHub(object):
 
     # </editor-fold>
 
-    def login(self, username=None, password=None, token=None, delete_creds=True):
+    def login(self, username=None, password=None, token=None, namespace=None, repo=None, delete_creds=True):
         """Logs into Docker hub and gets a token
 
         Either username and password or token should be specified
@@ -383,6 +395,8 @@ class DockerHub(object):
             username (str, optional):
             password (str, optional):
             token (str, optional):
+            namespace (str, optional): required if the registry is ghcr.io
+            repo (str, optional): required if the registry is ghcr.io
             delete_creds (bool, optional):
 
         Returns:
@@ -399,6 +413,8 @@ class DockerHub(object):
             # login with user/pass
             self._auth = DockerHubAuth(self._do_requests_post, self._api_url('users/login'), username=username,
                                        password=password)
+        elif 'ghcr.io' in self.url:
+            self._auth = DockerHubAuth(self._do_requests_get, "https://ghcr.io/token?service=ghcr.io&scope=repository:"+namespace+"/"+repo+":pull")
         else:
             self._auth = DockerHubAuth(self._do_requests_get, "https://auth.docker.io/token?service=registry.docker.io")
 
