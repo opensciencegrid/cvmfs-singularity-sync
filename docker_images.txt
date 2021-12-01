@@ -99,6 +99,7 @@ agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
 anniesoft/toolanalysis
+anniesoft/wcsim
 arburks/aris-convert:latest
 arnaudbecheler/quetzal-eggs:*
 arnaudbecheler/quetzal-open-science-grid:*
