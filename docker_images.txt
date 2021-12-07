@@ -330,7 +330,8 @@ novaexperiment/el7-tensorflow-gpu:*
 novaexperiment/nova-sl7-novat2k:*
 novaexperiment/slf67:*
 novaexperiment/sl7:*
-egoodman/mach3_t2knova_cd:postbanff
+#egoodman/mach3_t2knova_cd:postbanff
+egoodman/t2knova_mach3_configdata:PostBANFF
 
 #holosim (tree migration)
 astrand/holosim
