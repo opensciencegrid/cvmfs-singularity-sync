@@ -489,6 +489,7 @@ ericmjonas/osg:*
 
 # Justin Cha
 jcha40/chexmix:latest
+jcha40/python:latest
 
 # SCIPP, UCSC
 ghcr.io/scipp-atlas/mario-mapyde/madgraph:latest
