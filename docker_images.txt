@@ -375,7 +375,7 @@ containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:stretch
 containers.ligo.org/lscsoft/bayeswave:latest
 containers.ligo.org/lscsoft/bayeswave:v1.0.6
 containers.ligo.org/lscsoft/bayeswave:v1.0.7
-containers.ligo.org/rucio/igwn-rucio-client/rucio-clients:latest
+containers.ligo.org/computing/rucio/containers/rucio-clients:latest
 containers.ligo.org/lscsoft/gstlal:osg_dag_workflow
 containers.ligo.org/lscsoft/gstlal:O3b_online
 containers.ligo.org/lscsoft/gstlal:master
