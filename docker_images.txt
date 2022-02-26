@@ -361,7 +361,8 @@ containers.ligo.org/james-clark/tgr_images/lalsuite-master:latest
 containers.ligo.org/alec.gunny/deepclean-prod:export-20.07
 containers.ligo.org/alec.gunny/deepclean-prod:client-20.07
 containers.ligo.org/alec.gunny/deepclean-prod:server-20.07
-fastml/gw-iaas-export
+fastml/gwiaas.export:latest
+fastml/gwiaas.tritonserver:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
