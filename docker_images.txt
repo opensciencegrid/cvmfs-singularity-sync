@@ -101,6 +101,7 @@ agladstein/simprily_autobuild
 anniesoft/toolanalysis
 anniesoft/wcsim
 arburks/aris-convert:latest
+arnaudbecheler/quetzal-nest:*
 arnaudbecheler/quetzal-eggs:*
 arnaudbecheler/quetzal-open-science-grid:*
 blaylockbk/miniconda3_osg:latest
