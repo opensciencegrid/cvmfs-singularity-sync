@@ -273,6 +273,7 @@ rjones30/gluexpro8
 rjones30/gluextest
 markito3/gluex_docker_devel
 markito3/gluex_docker_prod
+jeffersonlab/gluex_prod:v1
 
 # WIPAC (IceCube)
 wipac/fasig_scalable_radio_array
