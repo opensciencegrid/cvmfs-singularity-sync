@@ -156,6 +156,8 @@ npcooley/synextend:*
 docker.opencarp.org/opencarp/opencarp:latest
 parabola505/geospatxgboost:*
 rafaelnalin/r-ver-openblas:latest
+rasa/rasa:latest
+rasa/rasa-x:latest
 relugzosiraba/kwant_adaptive:v1
 relugzosiraba/juqbox_env:v1
 relugzosiraba/juqbox_env:v2
