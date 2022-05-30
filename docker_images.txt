@@ -505,3 +505,7 @@ ghcr.io/scipp-atlas/mario-mapyde/delphes-snowmass:latest
 
 # University of Wisconsin - Jason Kwan Lab
 jasonkwan/autometa:latest
+
+# Network for Computational Modeling in the Social and Ecological Sciences (CoMSES Net, https://comses.net) images
+comses/osg-netlogo:*
+
