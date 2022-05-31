@@ -385,6 +385,7 @@ containers.ligo.org/lscsoft/bayeswave:v1.0.6
 containers.ligo.org/lscsoft/bayeswave:v1.0.7
 containers.ligo.org/computing/rucio/containers/rucio-clients:latest
 containers.ligo.org/lscsoft/gstlal:master
+containers.ligo.org/lscsoft/gstlal:o4-online
 containers.ligo.org/lscsoft/gstlal:o4-online-dev
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
 containers.ligo.org/echoes-model-independent/bayeswave-echoes-image:v1.0.7_echoes_reviewed
