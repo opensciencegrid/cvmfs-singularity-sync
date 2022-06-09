@@ -175,6 +175,7 @@ sylabsio/lolcow:latest
 vedularaghu/unet_wf:latest
 weiminghu123/panen:default
 weiphy/skopt
+xevra/gwalk:latest
 xevra/sparse_kernel_docker:latest
 xevra/sparse_kernel_docker:RIFT
 xevra/sparse_kernel_docker:stable
