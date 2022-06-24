@@ -373,7 +373,7 @@ containers.ligo.org/alec.gunny/deepclean-prod:client-20.07
 containers.ligo.org/alec.gunny/deepclean-prod:server-20.07
 fastml/gwiaas.export:latest
 fastml/gwiaas.tritonserver:latest
-containers.ligo.org/matthew-pitkin/cwinpy-containers/cwinpy-dev-python38:latest
+containers.ligo.org/cwinpy/cwinpy-containers/cwinpy-dev-python38:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
