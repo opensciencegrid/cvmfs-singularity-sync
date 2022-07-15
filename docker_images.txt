@@ -116,8 +116,10 @@ christinalk/slim:latest
 chunshen1987/iebe-music:*
 chunshen1987/ipglasmaframework:*
 clkwisconsin/spacetimer:latest
+cnatzke/griffin_2photon_sim:*
 cnatzke/griffin_simulation:*
 cnatzke/ntuple:*
+cnatzke/ntuple2eventtree_2photon:*
 cnatzke/prepare_files:*
 cnatzke/grsisort:*
 dmbala/r-3.4.1
