@@ -377,6 +377,7 @@ fastml/gwiaas.export:latest
 fastml/gwiaas.tritonserver:latest
 containers.ligo.org/cwinpy/cwinpy-containers/cwinpy-dev-python38:latest
 containers.ligo.org/rhys.poulton/cw-frequencyhough-image:latest
+containers.ligo.org/rhys.poulton/cw-frequencyhough-image:escape-datalake
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
