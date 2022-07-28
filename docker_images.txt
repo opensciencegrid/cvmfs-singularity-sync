@@ -27,6 +27,7 @@ r-base:latest
 continuumio/anaconda
 gromacs/gromacs:*
 rocker/r-ver:latest
+lammps/lammps:stable_29Sep2021_centos7_openmpi_py3
 
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
