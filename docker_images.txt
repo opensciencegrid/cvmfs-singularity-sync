@@ -229,6 +229,7 @@ eicweb/jug_xl:*-beta
 eicweb/jug_xl:*-alpha
 eicweb/jug_xl:testing
 eicweb/jug_xl:nightly
+raygunkennesaw/tensorflow:1.2.0-py3
 
 # Common biology tools
 # Biocontainers :latest doesn't exist any longer.
