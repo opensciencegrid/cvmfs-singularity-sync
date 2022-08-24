@@ -99,6 +99,7 @@ agladstein/msprime:latest
 agladstein/simprily:latest
 agladstein/simprily:version1
 agladstein/simprily_autobuild
+amogan/larcv2:ub20.04-cuda11.0-pytorch1.7.1-larndsim-cvmfs
 anniesoft/toolanalysis
 anniesoft/wcsim
 arburks/aris-convert:latest
