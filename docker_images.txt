@@ -356,9 +356,9 @@ egoodman/t2knova_mach3_configdata:PostBANFF
 astrand/holosim
 astrand/popassemble
 
-# HTMap
+# HTMap/HTCondor Software
 htcondor/htmap-exec:*
-
+hub.opensciencegrid.org/htcondor/hpc-annex-pilot:*
 
 # LIGO - user defined images
 containers.ligo.org/cody.messick/container:latest
