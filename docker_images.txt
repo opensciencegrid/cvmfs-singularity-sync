@@ -355,6 +355,7 @@ egoodman/t2knova_mach3_configdata:PostBANFF
 #holosim (tree migration)
 astrand/holosim
 astrand/popassemble
+astrand/foundadmix
 
 # HTMap
 htcondor/htmap-exec:*
