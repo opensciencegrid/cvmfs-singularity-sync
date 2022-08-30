@@ -358,7 +358,10 @@ astrand/popassemble
 
 # HTMap/HTCondor Software
 htcondor/htmap-exec:*
-hub.opensciencegrid.org/htcondor/hpc-annex-pilot:*
+# cvmfs-singularity-sync does not yet support wildcard tags from hub.opensciencegrid.org
+#hub.opensciencegrid.org/htcondor/hpc-annex-pilot:*
+hub.opensciencegrid.org/htcondor/hpc-annex-pilot:el8
+hub.opensciencegrid.org/htcondor/hpc-annex-pilot:latest
 
 # LIGO - user defined images
 containers.ligo.org/cody.messick/container:latest
