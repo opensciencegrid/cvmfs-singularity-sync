@@ -395,8 +395,8 @@ class DockerHub(object):
             username (str, optional):
             password (str, optional):
             token (str, optional):
-            namespace (str, optional): required if the registry is ghcr.io
-            repo (str, optional): required if the registry is ghcr.io
+            namespace (str, optional): required if the registry is ghcr.io or hub.opensciencegrid.org
+            repo (str, optional): required if the registry is ghcr.io or hub.opensciencegrid.org
             delete_creds (bool, optional):
 
         Returns:
@@ -415,6 +415,8 @@ class DockerHub(object):
                                        password=password)
         elif 'ghcr.io' in self.url:
             self._auth = DockerHubAuth(self._do_requests_get, "https://ghcr.io/token?service=ghcr.io&scope=repository:"+namespace+"/"+repo+":pull")
+        elif 'hub.opensciencegrid.org' in self.url:
+            self._auth = DockerHubAuth(self._do_requests_get, "https://hub.opensciencegrid.org/service/token?service=harbor-registry&scope=repository:"+namespace+"/"+repo+":pull")
         else:
             self._auth = DockerHubAuth(self._do_requests_get, "https://auth.docker.io/token?service=registry.docker.io")
 
@@ -511,6 +513,21 @@ class DockerHub(object):
 
         """
         url = self._api_url('{0}/{1}/manifests/{2}'.format(user, repository, tag))
+        
+        #Added support to retrieve oci images for hub.opensciencegrid.org
+        #https://gitlab.com/gitlab-org/gitlab-foss/-/merge_requests/31127
+        headers_has_accept = False
+        if 'headers' not in kwargs:
+            kwargs['headers'] = {'ACCEPT' : 'application/vnd.oci.image.manifest.v1+json'}
+        else:
+            for headers_key in kwargs['headers'].keys():
+                if 'accept' in headers_key.casefold():
+                    headers_has_accept = True
+                    kwargs['headers'][headers_key]+=', application/vnd.oci.image.manifest.v1+json'
+                    break
+            if not headers_has_accept:
+                kwargs['headers']['ACCEPT'] = 'application/vnd.oci.image.manifest.v1+json'
+                
         if head:
             return self._do_requests_head(url, **kwargs)
         else:
