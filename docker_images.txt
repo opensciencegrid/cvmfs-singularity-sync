@@ -135,6 +135,7 @@ efajardo/astroflow:latest
 evbauer/mesa_lean:10108.01
 evbauer/mesa_lean:r22.05.1.01
 grassla/osg_testing:latest
+goodgolden5/randy:*
 habg/lammps_sw0:23Jun2022
 huckb/clas6sim:latest
 jamessaxon/postgres-routing:latest
