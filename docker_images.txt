@@ -439,6 +439,7 @@ fasthep/fast-hep-docker:version-0.2.0
 eventhorizontelescope/hops:*
 #casavlbi_ehtproduction:latest
 mjanssen2308/symba:latest
+mjanssen2308/symba:513f44b290d992213fb21e99515b0f0440f0d477
 ttrent808/ray:*
 ehtcon/img-env:*
 ehtcon/mcfe-env:*
