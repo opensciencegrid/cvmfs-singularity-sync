@@ -193,6 +193,17 @@ xwcl/xpipeline:*
 yxfu93/julia:latest
 ppaschos/koto-dev:latest
 chiehlin0212/koto-dev:latest
+sickleinafrica/plink2:latest
+sickleinafrica/bcftools:1.11
+sickleinafrica/plink1.9:1.9
+sickleinafrica/r-tidyverse-qqman:latest
+sickleinafrica/beagle:latest
+sickleinafrica/eagle2:latest
+lifebitai/shapeit4:latest
+lifebitai/impute2:latest
+r/biocontainers/vcftools:v0.1.16-1-deb_cv1
+rhughwhite/minimac3:2.0.1
+biocontainers/minimac4:v1.0.0-2-deb_cv1
 
 # MINT project (rynge)
 ankushumn/rsatest
