@@ -202,7 +202,7 @@ sickleinafrica/beagle:latest
 sickleinafrica/eagle2:latest
 lifebitai/shapeit4:latest
 lifebitai/impute2:latest
-r/biocontainers/vcftools:v0.1.16-1-deb_cv1
+biocontainers/vcftools:v0.1.16-1-deb_cv1
 rhughwhite/minimac3:2.0.1
 biocontainers/minimac4:v1.0.0-2-deb_cv1
 
