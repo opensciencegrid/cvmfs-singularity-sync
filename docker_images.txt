@@ -459,6 +459,7 @@ eventhorizontelescope/hops:*
 #casavlbi_ehtproduction:latest
 mjanssen2308/symba:latest
 mjanssen2308/symba:513f44b290d992213fb21e99515b0f0440f0d477
+mjanssen2308/symba:19d8c85bfc21c8392af9601620eb33789801b6e3
 ttrent808/ray:*
 ehtcon/img-env:*
 ehtcon/mcfe-env:*
