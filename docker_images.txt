@@ -551,3 +551,5 @@ comses/osg-netlogo:*
 # NCBI
 ncbi/pgap:2022-04-14.build6021
 
+# STAR experiment dev container
+ghcr.io/star-bnl/star-sw
