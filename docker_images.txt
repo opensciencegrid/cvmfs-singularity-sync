@@ -13,6 +13,7 @@ debian:testing
 debian:unstable
 ubuntu:latest
 fedora:latest
+rockylinux:8
 
 # Common programming environments
 python:latest
