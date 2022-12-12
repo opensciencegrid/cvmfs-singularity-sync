@@ -208,6 +208,11 @@ biocontainers/vcftools:v0.1.16-1-deb_cv1
 rhughwhite/minimac3:2.0.1
 biocontainers/minimac4:v1.0.0-2-deb_cv1
 
+# E4S
+ecpe4s/e4s-cuda:22.11
+ecpe4s/e4s-rocm:22.11
+ecpe4s/e4s-oneapi:22.11 
+
 # MINT project (rynge)
 ankushumn/rsatest
 mintproject/ankush:latest
