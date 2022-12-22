@@ -404,17 +404,15 @@ atanasi/darkmatter:latest
 lucarvirgo/tensorflowmatlab:latest
 containers.ligo.org/james-clark/tgr_images/testing_gr_fta:latest
 containers.ligo.org/james-clark/tgr_images/lalsuite-master:latest
-containers.ligo.org/alec.gunny/deepclean-prod:export-20.07
-containers.ligo.org/alec.gunny/deepclean-prod:client-20.07
-containers.ligo.org/alec.gunny/deepclean-prod:server-20.07
-fastml/gwiaas.export:latest
-fastml/gwiaas.tritonserver:latest
 containers.ligo.org/cwinpy/cwinpy-containers/cwinpy-dev-python38:latest
 containers.ligo.org/rhys.poulton/cw-frequencyhough-image:latest
 containers.ligo.org/rhys.poulton/cw-frequencyhough-image:escape-datalake
 containers.ligo.org/aei-tgr/cvmfs-images/pseob-rd:20220828
 containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:latest
 containers.ligo.org/alan.knee/lal-images/lalsuite-fstatbinary:latest
+ghcr.io/ml4gw/hermes/tritonserver:22.07
+ghcr.io/ml4gw/hermes/tritonserver:22.02
+ghcr.io/ml4gw/pinto:main
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
