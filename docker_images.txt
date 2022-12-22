@@ -546,10 +546,6 @@ ericmjonas/osg:*
 jcha40/chexmix:latest
 jcha40/python_env:latest
 
-# SCIPP, UCSC
-ghcr.io/scipp-atlas/mario-mapyde/madgraph:latest
-ghcr.io/scipp-atlas/mario-mapyde/delphes:latest
-
 # University of Wisconsin - Jason Kwan Lab
 jasonkwan/autometa:latest
 
