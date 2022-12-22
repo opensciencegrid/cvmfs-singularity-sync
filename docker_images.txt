@@ -30,6 +30,7 @@ gromacs/gromacs:*
 rocker/r-ver:latest
 lammps/lammps:stable_29Sep2021_centos7_openmpi_py3
 pytorch/pytorch:1.13.0-cuda11.6-cudnn8-devel
+nvidia/opencl:runtime-ubuntu16.04
 
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
