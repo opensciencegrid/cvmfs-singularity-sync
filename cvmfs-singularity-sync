@@ -34,12 +34,15 @@ import argparse
 import os
 import errno
 import fnmatch
+import functools
+import glob
 import json
 import urllib.request, urllib.error, urllib.parse
 import hashlib
 import traceback
 import subprocess
-import dockerhub
+from dxf import DXF
+import furl
 import cleanup
 import sqlitedict
 import glob
@@ -129,9 +132,6 @@ def main():
         singularity_rootfs = '/cvmfs/singularity.opensciencegrid.org'
     singularity_rootfs = os.path.abspath(singularity_rootfs)
 
-    # Does the registry require a token?
-    doauth = not args.notoken
-
     # Do we have a docker image specified?
     if not args.docker and not (args.filelist or args.filelist_path):
         print("No docker image or file list specified..", file=sys.stderr)
@@ -141,9 +141,9 @@ def main():
     if args.docker:
         image = args.docker
         if not args.dryrun:
-            return publish_image(image, singularity_rootfs, args.registry, doauth, manifest_cache)
+            return publish_image(image, singularity_rootfs, args.registry, manifest_cache)
         else:
-            return verify_image(image, args.registry, doauth, manifest_cache)
+            return verify_image(image, args.registry)
     else:
         final_retval = 0
         failed_images = []
@@ -162,7 +162,7 @@ def main():
 
             if '*' in repo_tag: # Treat wildcards as a glob
                 try:
-                    tag_names = get_tags(namespace, repo_name, registry=registry, auth=doauth)
+                    tag_names = get_tags(namespace, repo_name, registry=registry)
                 except Exception as ex:
                     image = '%s/%s/%s' % (registry, namespace, repo_name)
                     print("Failed to get tags for image: {}".format(image))
@@ -190,7 +190,7 @@ def main():
                 for i in range(tries):
                     if not args.dryrun:
                         try:
-                            retval = publish_image(image, singularity_rootfs, registry, doauth, manifest_cache)
+                            retval = publish_image(image, singularity_rootfs, registry, manifest_cache)
                         except Exception as ex:
                	            if i < tries -1:
                                 print("Failed to publish image: {}".format(image))
@@ -201,7 +201,7 @@ def main():
                                 print("Tried {} times ".format(tries) + "for image {}".format(image) + ", giving up")
                     else:
                         try:
-                            retval = verify_image(image, registry, doauth, manifest_cache)
+                            retval = verify_image(image, registry)
                         except Exception as ex:
                             if i < tries -1:
                                 print("Failed to verify image: {}".format(image))
@@ -254,21 +254,56 @@ def start_txn(singularity_rootfs):
             if oe.errno != errno.EEXIST:
                 raise
 
+# REGISTRY -------------------------------------------------
+# Reuse dxf object if possible. A token can be reused for access to all tags.
+@functools.lru_cache(maxsize=None)
+def get_dxf(registry, repo):
+    return DXF(registry, repo, docker_auth)
 
-def get_tags(username, repo, registry=None, auth=None):
-    if registry != "registry.hub.docker.com":
-        if "://" not in registry:
-            registry = "https://%s" % registry
-        auth = DOCKER_CREDS.get(registry, {})
-        hub = dockerhub.DockerHub(url=registry, namespace=username, repo=repo, **auth)
+def docker_auth(dxf, response):
+    '''DXF auth handler, using DOCKER_CREDS global'''
+    origin = furl.furl(response.url).origin
+    authvars = DOCKER_CREDS.get(origin, {})
+    dxf.authenticate(response=response, **authvars)
+
+def get_tags(namespace, repo_name, registry='registry.hub.docker.com'):
+    '''Retrieve tag list. This API call is uncounted.'''
+    repo = namespace + '/' + repo_name
+    #dxf = DXF(registry, repo, docker_auth)
+    dxf = get_dxf(registry, repo)
+    return dxf.list_aliases()
+
+def get_manifest(namespace, repo_name, repo_tag, cache={}, registry='registry.hub.docker.com'):
+    '''Retrieve Docker manifest. If uncached, this counts as an API call.'''
+    repo = namespace + '/' + repo_name
+    #dxf = DXF(registry, repo, docker_auth)
+    dxf = get_dxf(registry, repo)
+    digest = dxf_get_digest(dxf, repo_tag)
+
+    if digest in cache:
+        return cache[digest], digest
     else:
-        auth = DOCKER_CREDS.get('https://registry.hub.docker.com', {})
-        hub = dockerhub.DockerHub(**auth)
-    tag_names = []
-    for tag in hub.tags(username, repo):
-        tag_names.append(tag['name'])
-    return tag_names
+        manifest = dxf.get_manifest(repo_tag)
+        cache[digest] = manifest
+        return manifest
 
+def get_digest(namespace, repo_name, repo_tag, registry='registry.hub.docker.com'):
+    '''Retrieve docker-content-digest of the manifest blob. This API call is uncounted.'''
+    repo = namespace + '/' + repo_name
+    #dxf = DXF(registry, repo, docker_auth)
+    dxf = get_dxf(registry, repo)
+    return dxf_get_digest(dxf, repo_tag)
+
+def dxf_get_digest(dxf, repo_tag):
+    # Harbor returns 404 on HEAD of /v2/{repo_name}/manifests/{repo_tag}
+    # without the ACCEPT header
+    headers = {
+            'ACCEPT': 'application/vnd.oci.image.manifest.v1+json',
+    }
+    ret = dxf._request('head', 'manifests/' + repo_tag, headers=headers)
+    return ret.headers['docker-content-digest']
+
+# ----------------------------------------------------------
 def publish_txn():
     global _in_txn
     if _in_txn:
@@ -356,18 +391,7 @@ def parse_image(image):
 
     return registry, namespace, repo_name, repo_tag
 
-def get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache):
-    metadata = hub.manifest(namespace, repo_name, repo_tag, head=True)
-    digest = metadata.headers['docker-content-digest']
-
-    if digest in manifest_cache:
-        return manifest_cache[digest]
-    else:
-        manifest = hub.manifest(namespace, repo_name, repo_tag)
-        manifest_cache[digest] = manifest
-        return manifest
-
-def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
+def publish_image(image, singularity_rootfs, registry, manifest_cache):
 
     # Tell the user the namespace, repo name and tag
     registry, namespace, repo_name, repo_tag = parse_image(image)
@@ -383,8 +407,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
     if "://" not in registry:
         registry = "https://%s" % registry
     auth = DOCKER_CREDS.get(registry, {})
-    hub = dockerhub.DockerHub(url=registry, namespace=namespace, repo=repo_name, **auth)
-    manifest = get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache)
+    manifest = get_manifest(namespace, repo_name, repo_tag, registry=registry, cache=manifest_cache)
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
     # for the final image.
@@ -459,7 +482,7 @@ def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
     # Publish CVMFS as necessary.
     return publish_txn()
 
-def verify_image(image, registry, doauth, manifest_cache):
+def verify_image(image, registry):
 
     # Tell the user the namespace, repo name and tag
     registry, namespace, repo_name, repo_tag = parse_image(image)
@@ -468,16 +491,9 @@ def verify_image(image, registry, doauth, manifest_cache):
 # IMAGE METADATA -------------------------------------------
 # Use Docker Registry API (version 2.0) to get images ids, manifest
 
-    # Get an image manifest - has image ids to parse, and will be
-    # used later to get Cmd
-    # Prepend "https://" to the registry
-    if "://" not in registry:
-        registry = "https://%s" % registry
-    auth = DOCKER_CREDS.get(registry, {})
-    hub = dockerhub.DockerHub(url=registry, namespace=namespace, repo=repo_name, **auth)
     retval = 0
     try:
-        hub.manifest(namespace, repo_name, repo_tag, head=True)
+        get_digest(namespace, repo_name, repo_tag, registry=registry)
         print(repo_name + ":" + repo_tag + " manifest found")
         retval = 0
     except Exception as ex:
