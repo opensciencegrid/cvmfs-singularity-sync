@@ -410,6 +410,7 @@ containers.ligo.org/rhys.poulton/cw-frequencyhough-image:escape-datalake
 containers.ligo.org/aei-tgr/cvmfs-images/pseob-rd:20220828
 containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:latest
 containers.ligo.org/alan.knee/lal-images/lalsuite-fstatbinary:latest
+ghcr.io/ml4gw/hermes/tritonserver:22.12
 ghcr.io/ml4gw/hermes/tritonserver:22.07
 ghcr.io/ml4gw/hermes/tritonserver:22.02
 ghcr.io/ml4gw/pinto:main
