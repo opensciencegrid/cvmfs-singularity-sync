@@ -42,6 +42,7 @@ import subprocess
 import dockerhub
 import cleanup
 import sqlitedict
+import glob
 
 DOCKER_CREDS = dict()
 
