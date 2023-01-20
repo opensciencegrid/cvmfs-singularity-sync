@@ -558,10 +558,19 @@ comses/osg-netlogo:*
 # NCBI
 ncbi/pgap:2022-04-14.build6021
 
-# STAR experiment images
+# STAR experiment at Brookhaven National Lab images
 ghcr.io/star-bnl/star-sw
+ghcr.io/star-bnl/star-sw:SL23a
+ghcr.io/star-bnl/star-sw:SL22c
+ghcr.io/star-bnl/star-sw:SL22b
+ghcr.io/star-bnl/star-sw:SL22a
 ghcr.io/star-bnl/star-sw:SL21d
 ghcr.io/star-bnl/star-sw:SL21c
+ghcr.io/star-bnl/star-sw:SL21b
+ghcr.io/star-bnl/star-sw:SL21a
+ghcr.io/star-bnl/star-sw:SL20c
+ghcr.io/star-bnl/star-sw:SL19e
+ghcr.io/star-bnl/star-sw:SL19b
 
 # REDTOP Collaboration
 redtopexp/redtop:*
