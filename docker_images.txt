@@ -107,6 +107,7 @@ amogan/larcv2:ub20.04-cuda11.0-pytorch1.7.1-larndsim-cvmfs
 anniesoft/toolanalysis
 anniesoft/wcsim
 anniesoft/genie3
+anniesoft/g4dirt
 arburks/aris-convert:latest
 areias/viral-mutation:latest
 arnaudbecheler/quetzal-nest:*
