@@ -13,6 +13,7 @@ debian:testing
 debian:unstable
 ubuntu:latest
 fedora:latest
+rockylinux:8
 
 # Common programming environments
 python:latest
@@ -28,6 +29,9 @@ continuumio/anaconda
 gromacs/gromacs:*
 rocker/r-ver:latest
 lammps/lammps:stable_29Sep2021_centos7_openmpi_py3
+pytorch/pytorch:1.12.1-cuda11.3-cudnn8-devel
+pytorch/pytorch:1.13.0-cuda11.6-cudnn8-devel
+nvidia/opencl:runtime-ubuntu16.04
 
 # OSG-specific worker node images
 opensciencegrid/osg-3.3-wn-el6
@@ -102,6 +106,8 @@ agladstein/simprily_autobuild
 amogan/larcv2:ub20.04-cuda11.0-pytorch1.7.1-larndsim-cvmfs
 anniesoft/toolanalysis
 anniesoft/wcsim
+anniesoft/genie3
+anniesoft/g4dirt
 arburks/aris-convert:latest
 areias/viral-mutation:latest
 arnaudbecheler/quetzal-nest:*
@@ -193,6 +199,22 @@ xwcl/xpipeline:*
 yxfu93/julia:latest
 ppaschos/koto-dev:latest
 chiehlin0212/koto-dev:latest
+sickleinafrica/plink2:latest
+sickleinafrica/bcftools:1.11
+sickleinafrica/plink1.9:1.9
+sickleinafrica/r-tidyverse-qqman:latest
+sickleinafrica/beagle:latest
+sickleinafrica/eagle2:latest
+lifebitai/shapeit4:latest
+lifebitai/impute2:latest
+biocontainers/vcftools:v0.1.16-1-deb_cv1
+rhughwhite/minimac3:2.0.1
+biocontainers/minimac4:v1.0.0-2-deb_cv1
+
+# E4S
+ecpe4s/e4s-cuda:22.11
+ecpe4s/e4s-rocm:22.11
+ecpe4s/e4s-oneapi:22.11 
 
 # MINT project (rynge)
 ankushumn/rsatest
@@ -384,16 +406,19 @@ atanasi/darkmatter:latest
 lucarvirgo/tensorflowmatlab:latest
 containers.ligo.org/james-clark/tgr_images/testing_gr_fta:latest
 containers.ligo.org/james-clark/tgr_images/lalsuite-master:latest
-containers.ligo.org/alec.gunny/deepclean-prod:export-20.07
-containers.ligo.org/alec.gunny/deepclean-prod:client-20.07
-containers.ligo.org/alec.gunny/deepclean-prod:server-20.07
-fastml/gwiaas.export:latest
-fastml/gwiaas.tritonserver:latest
 containers.ligo.org/cwinpy/cwinpy-containers/cwinpy-dev-python38:latest
 containers.ligo.org/rhys.poulton/cw-frequencyhough-image:latest
 containers.ligo.org/rhys.poulton/cw-frequencyhough-image:escape-datalake
-containers.ligo.org/aei-tgr/cvmfs-images/pseob-rd:20220828
+containers.ligo.org/aei-tgr/cvmfs-images/pseob:rd-latest
+containers.ligo.org/aei-tgr/cvmfs-images/pseob:fti-latest
+containers.ligo.org/aei-tgr/cvmfs-images/pseob:testing
+containers.ligo.org/aei-tgr/cvmfs-images/pseob:envs
 containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:latest
+containers.ligo.org/alan.knee/lal-images/lalsuite-fstatbinary:latest
+ghcr.io/ml4gw/hermes/tritonserver:22.12
+ghcr.io/ml4gw/hermes/tritonserver:22.07
+ghcr.io/ml4gw/hermes/tritonserver:22.02
+ghcr.io/ml4gw/pinto:main
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/nightly:el7
@@ -482,6 +507,7 @@ bardelch/jetscape-deploy:*
 bardelch/jetscape-compiled:*
 amitkr2410/jetscape-compiled:*
 dananjaya92/jetscape-compiled:*
+jetscape/base:*
 
 #osg.PortlandState_Feng
 mythril/myth
@@ -524,10 +550,6 @@ ericmjonas/osg:*
 jcha40/chexmix:latest
 jcha40/python_env:latest
 
-# SCIPP, UCSC
-ghcr.io/scipp-atlas/mario-mapyde/madgraph:latest
-ghcr.io/scipp-atlas/mario-mapyde/delphes:latest
-
 # University of Wisconsin - Jason Kwan Lab
 jasonkwan/autometa:latest
 
@@ -537,3 +559,22 @@ comses/osg-netlogo:*
 # NCBI
 ncbi/pgap:2022-04-14.build6021
 
+# STAR experiment at Brookhaven National Lab images
+ghcr.io/star-bnl/star-sw
+ghcr.io/star-bnl/star-sw:SL23a
+ghcr.io/star-bnl/star-sw:SL22c
+ghcr.io/star-bnl/star-sw:SL22b
+ghcr.io/star-bnl/star-sw:SL22a
+ghcr.io/star-bnl/star-sw:SL21d
+ghcr.io/star-bnl/star-sw:SL21c
+ghcr.io/star-bnl/star-sw:SL21b
+ghcr.io/star-bnl/star-sw:SL21a
+ghcr.io/star-bnl/star-sw:SL20c
+ghcr.io/star-bnl/star-sw:SL19e
+ghcr.io/star-bnl/star-sw:SL19b
+
+# REDTOP Collaboration
+redtopexp/redtop:*
+
+# FIU_Hamid FPHLM
+houpengg/fphlm:*
