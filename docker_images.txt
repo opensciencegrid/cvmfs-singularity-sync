@@ -371,10 +371,24 @@ fermilab/fnal-wn-sl6:*
 fermilab/benchmark:*
 
 # NOvA Experiment
-novaexperiment/el7-tensorflow-gpu:*
-novaexperiment/nova-sl7-novat2k:*
-novaexperiment/slf67:*
-novaexperiment/sl7:*
+ghcr.io/novaexperiment/el7-tensorflow-gpu:latest
+ghcr.io/novaexperiment/nova-sl7-novat2k:2020-10-27_freeze
+ghcr.io/novaexperiment/nova-sl7-novat2k:aborttest
+ghcr.io/novaexperiment/nova-sl7-novat2k:latest
+ghcr.io/novaexperiment/nova-sl7-novat2k:nightmare
+ghcr.io/novaexperiment/nova-sl7-novat2k:novatest
+ghcr.io/novaexperiment/nova-sl7-novat2k:poissondata
+ghcr.io/novaexperiment/nova-sl7-novat2k:v1_nonorms
+ghcr.io/novaexperiment/nova-sl7-novat2k:v2_withnorms
+ghcr.io/novaexperiment/nova-sl7-novat2k:v3_realnddata_cosmics
+ghcr.io/novaexperiment/nova-sl7-novat2k:v4_fixcosmicsrock
+ghcr.io/novaexperiment/nova-sl7-novat2k:v5_setasimov
+ghcr.io/novaexperiment/sl7:latest
+ghcr.io/novaexperiment/sl7:master
+ghcr.io/novaexperiment/sl7:mini
+ghcr.io/novaexperiment/sl7:mpichdiy
+ghcr.io/novaexperiment/sl7:v1.1.0
+ghcr.io/novaexperiment/slf67:latest
 egoodman/t2knova_mach3_configdata:PostBANFF
 egoodman/mach3_binned_osc:PostBanff
 
