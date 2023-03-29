@@ -327,6 +327,7 @@ wipac/skylab:1.0.0
 poldracklab/fmriprep
 nipreps/fmriprep:20.2.1
 nipreps/fmriprep:23.0.0
+nxdens/fmriprep-afni:1.0
 
 # cyverse container camp
 evolinc/rmta:1.6
