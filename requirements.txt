@@ -1,4 +1,4 @@
-docker==2.0.0
 furl
+python-dxf
 requests
 sqlitedict
