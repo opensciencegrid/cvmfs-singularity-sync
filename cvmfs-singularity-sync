@@ -41,7 +41,7 @@ import urllib.request, urllib.error, urllib.parse
 import hashlib
 import traceback
 import subprocess
-from dxf import DXF
+import dxf as dxflib
 import furl
 import cleanup
 import sqlitedict
@@ -258,7 +258,7 @@ def start_txn(singularity_rootfs):
 # Reuse dxf object if possible. A token can be reused for access to all tags.
 @functools.lru_cache(maxsize=None)
 def get_dxf(registry, repo):
-    return DXF(registry, repo, docker_auth)
+    return dxflib.DXF(registry, repo, docker_auth)
 
 def docker_auth(dxf, response):
     '''DXF auth handler, using DOCKER_CREDS global'''
@@ -295,12 +295,8 @@ def get_digest(namespace, repo_name, repo_tag, registry='registry.hub.docker.com
     return dxf_get_digest(dxf, repo_tag)
 
 def dxf_get_digest(dxf, repo_tag):
-    # Harbor returns 404 on HEAD of /v2/{repo_name}/manifests/{repo_tag}
-    # without the ACCEPT header
-    headers = {
-            'ACCEPT': 'application/vnd.oci.image.manifest.v1+json',
-    }
-    ret = dxf._request('head', 'manifests/' + repo_tag, headers=headers)
+    # Registries will return 404 without MIME type headers
+    ret = dxf._request('head', 'manifests/' + repo_tag, headers=dxflib._accept_header)
     return ret.headers['docker-content-digest']
 
 # ----------------------------------------------------------
