@@ -513,20 +513,28 @@ class DockerHub(object):
 
         """
         url = self._api_url('{0}/{1}/manifests/{2}'.format(user, repository, tag))
+
+        manifest_mime = ', '.join((
+            'application/vnd.docker.distribution.manifest.v1+json',
+            'application/vnd.docker.distribution.manifest.v2+json',
+            'application/vnd.docker.distribution.manifest.list.v2+json',
+            'application/vnd.oci.image.manifest.v1+json',
+            'application/vnd.oci.image.index.v1+json',
+        ))
         
         #Added support to retrieve oci images for hub.opensciencegrid.org
         #https://gitlab.com/gitlab-org/gitlab-foss/-/merge_requests/31127
         headers_has_accept = False
         if 'headers' not in kwargs:
-            kwargs['headers'] = {'ACCEPT' : 'application/vnd.oci.image.manifest.v1+json'}
+            kwargs['headers'] = {'ACCEPT': manifest_mime}
         else:
             for headers_key in kwargs['headers'].keys():
                 if 'accept' in headers_key.casefold():
                     headers_has_accept = True
-                    kwargs['headers'][headers_key]+=', application/vnd.oci.image.manifest.v1+json'
+                    kwargs['headers'][headers_key]+=', ' + manifest_mime
                     break
             if not headers_has_accept:
-                kwargs['headers']['ACCEPT'] = 'application/vnd.oci.image.manifest.v1+json'
+                kwargs['headers']['ACCEPT'] = manifest_mime
                 
         if head:
             return self._do_requests_head(url, **kwargs)
