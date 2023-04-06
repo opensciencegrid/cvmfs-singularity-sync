@@ -212,6 +212,12 @@ rhughwhite/minimac3:2.0.1
 biocontainers/minimac4:v1.0.0-2-deb_cv1
 nnesquivelr/decam_proc_base:*
 
+# Geant4 simulation and analysis tools
+physino/gears
+physino/mingle
+physino/heprapp
+physino/root:*
+
 # E4S
 ecpe4s/e4s-cuda:22.11
 ecpe4s/e4s-rocm:22.11
