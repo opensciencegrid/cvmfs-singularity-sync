@@ -361,11 +361,11 @@ def get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache):
     digest = metadata.headers['docker-content-digest']
 
     if digest in manifest_cache:
-        return manifest_cache[digest]
+        return manifest_cache[digest], digest
     else:
         manifest = hub.manifest(namespace, repo_name, repo_tag)
         manifest_cache[digest] = manifest
-        return manifest
+        return manifest, digest
 
 def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
 
@@ -384,28 +384,33 @@ def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
         registry = "https://%s" % registry
     auth = DOCKER_CREDS.get(registry, {})
     hub = dockerhub.DockerHub(url=registry, namespace=namespace, repo=repo_name, **auth)
-    manifest = get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache)
+    manifest, digest = get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache)
 
     # Calculate a unique hash across all layers.  We'll use that as the identifier
     # for the final image.
-    if manifest['schemaVersion'] == 1:
+    if manifest['schemaVersion'] == 1 and 'fsLayers' in manifest:
         hasher = hashlib.sha256()
         for layerinfo in manifest['fsLayers']:
             layer_hash = layerinfo['blobSum'].split(":")[-1].encode('utf-8')
             hasher.update(layer_hash)
         image_hash = hasher.hexdigest()
-    elif manifest['schemaVersion'] == 2:
+    elif manifest['schemaVersion'] == 2 and 'layers' in manifest:
         hasher = hashlib.sha256()
         for layerinfo in manifest['layers']:
             layer_hash = layerinfo['digest'].split(":")[-1].encode('utf-8')
             hasher.update(layer_hash)
         image_hash = hasher.hexdigest()
     else:
-        raise ValueError('Cannot handle schemaVersion: %s' % manifest['schemaVersion'])
+        # Use the Docker-Content-Digest to identify the image
+        image_hash = digest
 
     # The image is staged to $ROOTFS/.images/$HASH
-    image_parentdir = os.path.join(singularity_rootfs, ".images", image_hash[0:2])
-    image_dir = os.path.join(image_parentdir, image_hash[2:])
+    # Docker-Content-Digest uses format 'sha256:dead...beef'
+    # Split it after the hash type       ^^^^^^^^^
+    #   plus two chars                            ^^^^^^^^^
+    sep = image_hash.find(':')
+    image_parentdir = os.path.join(singularity_rootfs, ".images", image_hash[0:sep+3])
+    image_dir = os.path.join(image_parentdir, image_hash[sep+3:])
 
     # If the image has already been staged, simply return.
     if os.path.exists(image_dir):
