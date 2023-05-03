@@ -188,6 +188,7 @@ sswiston/revbayes:*
 syavuz/tidyrstan:latest
 syavuz/modelcomparison:v1
 sylabsio/lolcow:latest
+teamcompas/compas:*
 vedularaghu/unet_wf:latest
 weiminghu123/panen:default
 weiphy/skopt
