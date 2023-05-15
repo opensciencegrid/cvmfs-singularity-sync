@@ -393,6 +393,8 @@ ghcr.io/novaexperiment/nova-sl7-novat2k:v2_withnorms
 ghcr.io/novaexperiment/nova-sl7-novat2k:v3_realnddata_cosmics
 ghcr.io/novaexperiment/nova-sl7-novat2k:v4_fixcosmicsrock
 ghcr.io/novaexperiment/nova-sl7-novat2k:v5_setasimov
+ghcr.io/novaexperiment/nova-sl7-novat2k:v6c_nightmareplus
+ghcr.io/novaexperiment/nova-sl7-novat2k:v7_pvalue
 ghcr.io/novaexperiment/sl7:latest
 ghcr.io/novaexperiment/sl7:master
 ghcr.io/novaexperiment/sl7:mini
