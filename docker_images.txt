@@ -393,6 +393,7 @@ ghcr.io/novaexperiment/sl7:v1.1.0
 ghcr.io/novaexperiment/slf67:latest
 egoodman/t2knova_mach3_configdata:PostBANFF
 egoodman/mach3_binned_osc:PostBanff
+egoodman/mach3_pvalue:latest
 
 #holosim (tree migration)
 astrand/holosim
