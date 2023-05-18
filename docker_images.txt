@@ -56,6 +56,7 @@ opensciencegrid/osgvo-el6-feltus
 opensciencegrid/osgvo-el7
 opensciencegrid/osgvo-el7-cuda10:*
 opensciencegrid/osgvo-el8
+opensciencegrid/osgvo-el9
 opensciencegrid/osgvo-freesurfer:*
 opensciencegrid/osgvo-gromacs:*
 opensciencegrid/osgvo-gromacs-gpu
@@ -449,8 +450,6 @@ ghcr.io/ml4gw/pinto:main
 containers.ligo.org/yannick.lecoeuche/glitch-pe-container/glitch-pe:latest
 
 # LIGO/VIRGO/KAGRA containers
-containers.ligo.org/lscsoft/lalsuite/nightly:el7
-containers.ligo.org/lscsoft/lalsuite/nightly:buster
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:stretch
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:el7
