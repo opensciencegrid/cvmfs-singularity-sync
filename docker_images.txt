@@ -461,8 +461,7 @@ containers.ligo.org/lscsoft/bayeswave:v1.0.6
 containers.ligo.org/lscsoft/bayeswave:v1.0.7
 containers.ligo.org/computing/rucio/containers/rucio-clients:latest
 containers.ligo.org/lscsoft/gstlal:master
-containers.ligo.org/lscsoft/gstlal:o4-offline-dev
-containers.ligo.org/lscsoft/gstlal:o4-online-dev
+containers.ligo.org/lscsoft/gstlal:osg-dev
 containers.ligo.org/snax/snax:v0.5.1
 containers.ligo.org/snax/snax:v0.5.2
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
