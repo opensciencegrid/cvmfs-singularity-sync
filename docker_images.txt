@@ -162,6 +162,7 @@ leofang/cthyb-ohmic
 m8zeng/julia-packages
 mfrayer/perl-stats
 molssi/qcarchive_worker_openff:*
+nathanjmcl/gpaw-vdw-repository:latest
 nipy/mindboggle
 nkern/21cmfast_env
 npanicker/r-desolve:*
