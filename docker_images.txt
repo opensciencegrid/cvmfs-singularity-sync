@@ -134,8 +134,6 @@ cnatzke/grsisort:*
 dmbala/r-3.4.1
 dmbala/r-ebcrimage
 drtmfigy/hjets_herwig7
-drtmfigy/herwig_hjets
-drtmfigy/fbps
 econtal/numpy-mkl:latest
 efajardo/osgvo-nsides:latest
 efajardo/astroflow:latest
