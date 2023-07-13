@@ -44,10 +44,13 @@ opensciencegrid/osg-wn:3.3-testing-el7
 opensciencegrid/osg-wn:3.3-devel-el7
 
 # htc/ - this are the images replacing the osgvo-* ones
-hub.opensciencegrid.org/htc/debian:*
-hub.opensciencegrid.org/htc/matlab-runtime:*
-hub.opensciencegrid.org/htc/rocky:*
-hub.opensciencegrid.org/htc/ubuntu:*
+hub.opensciencegrid.org/htc/debian:12
+hub.opensciencegrid.org/htc/matlab-runtime:R2023a
+hub.opensciencegrid.org/htc/rocky:8
+hub.opensciencegrid.org/htc/rocky:9
+hub.opensciencegrid.org/htc/rocky:8-cuda-11.0.3
+hub.opensciencegrid.org/htc/ubuntu:20.04
+hub.opensciencegrid.org/htc/ubuntu:22.04
 
 # OSGVO
 opensciencegrid/npjoodi
