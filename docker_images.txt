@@ -461,6 +461,7 @@ ghcr.io/ml4gw/hermes/tritonserver:22.07
 ghcr.io/ml4gw/hermes/tritonserver:22.02
 ghcr.io/ml4gw/pinto:main
 containers.ligo.org/yannick.lecoeuche/glitch-pe-container/glitch-pe:latest
+containers.ligo.org/bayeswave/igwn-wave-compare:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
