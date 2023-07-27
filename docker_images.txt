@@ -455,6 +455,7 @@ containers.ligo.org/aei-tgr/cvmfs-images/pseob:fti-latest
 containers.ligo.org/aei-tgr/cvmfs-images/pseob:testing
 containers.ligo.org/aei-tgr/cvmfs-images/pseob:envs
 containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:latest
+containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:v5
 containers.ligo.org/alan.knee/lal-images/lalsuite-fstatbinary:latest
 ghcr.io/ml4gw/hermes/tritonserver:22.12
 ghcr.io/ml4gw/hermes/tritonserver:22.07
