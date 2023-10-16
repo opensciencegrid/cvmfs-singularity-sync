@@ -346,6 +346,8 @@ wipac/skylab:1.0.0
 wipac/pyglidein-el8-cuda11:main
 icecube/icetray-ml:icetray-v1.8.1-cuda11.8-cudnn8-graphnet-ubuntu22.04-devel
 icecube/icetray-base:devel-rocky8-cuda11.8-cudnn8
+icecube/icetray-base:devel-devel-ubuntu22.04-cuda11.8.0-cudnn8
+
 
 #fMRI Prep
 poldracklab/fmriprep
