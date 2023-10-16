@@ -343,6 +343,9 @@ wipac/fasig_scalable_radio_array
 wipac/npx-el6:latest
 wipac/npx-el6:test
 wipac/skylab:1.0.0
+wipac/pyglidein-el8-cuda11
+icecube/icetray-ml:icetray-v1.8.1-cuda11.8-cudnn8-graphnet-ubuntu22.04-devel
+icecube/icetray-base:devel-rocky8-cuda11.8-cudnn8
 
 #fMRI Prep
 poldracklab/fmriprep
