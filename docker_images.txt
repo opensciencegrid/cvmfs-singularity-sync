@@ -628,6 +628,8 @@ ncbi/pgap:2022-04-14.build6021
 
 # STAR experiment at Brookhaven National Lab images
 ghcr.io/star-bnl/star-sw
+ghcr.io/star-bnl/star-sw:SL23f
+ghcr.io/star-bnl/star-sw:SL23e
 ghcr.io/star-bnl/star-sw:SL23d
 ghcr.io/star-bnl/star-sw:SL23c
 ghcr.io/star-bnl/star-sw:SL23b
