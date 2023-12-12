@@ -550,6 +550,7 @@ nrstickley/jsp_apps:*
 #American Museum of Natural History (AMNH)
 amnh/osgimages:*
 amnh/herpetology-pseudo-it:*
+amnh/herpetology_iqtree_r_quibl:*
 
 # Single-cell Inference of Networks using Granger Ensembles (SINGE)
 agitter/singe:latest
