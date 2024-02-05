@@ -624,6 +624,20 @@ jcha40/python_env:latest
 # University of Wisconsin - Jason Kwan Lab
 jasonkwan/autometa:latest
 
+# UW-Madison & Reed College -- Gitter Lab, SPRAS project
+# https://hub.docker.com/r/reedcompbio
+reedcompbio/omics-integrator-1:latest
+reedcompbio/omics-integrator-1:no-conda
+reedcompbio/omics-integrator-2:v2
+reedcompbio/pathlinker:latest
+reedcompbio/meo:latest
+reedcompbio/mincostflow:latest
+reedcompbio/domino:latest
+reedcompbio/allpairs:latest
+reedcompbio/py4cytoscape:v2
+reedcompbio/tiedie:latest
+reedcompbio/random-walk-with-restart:latest
+
 # Network for Computational Modeling in the Social and Ecological Sciences (CoMSES Net, https://comses.net) images
 comses/osg-netlogo:*
 
