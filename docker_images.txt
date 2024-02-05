@@ -288,7 +288,6 @@ cyverse/rsem-prepare
 
 # IGWN (Internation Gravitational Wave Network) worker nodes
 igwn/lalsuite-dev:el7
-igwn/lalsuite-dev:stretch
 igwn/software:el7
 igwn/software:el7-testing
 igwn/software:stretch
