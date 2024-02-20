@@ -505,12 +505,14 @@ containers.ligo.org/snax/snax:v0.5.2
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
 containers.ligo.org/echoes-model-independent/bayeswave-echoes-image:v1.0.7_echoes_reviewed
 
-# Lancaster U Muon g-2 Beamline Simulations
-valetov/g4bl:*
+# Lancaster U, Muon g-2 Beamline Simulations
 valetov/beam_track:*
-valetov/gm2dev:*
+
+# Michigan State U, Center for Beam Theory and Dynamical Systems
 valetov/cosy:*
-engineren/calogan-docker:latest
+valetov/g4bl:*
+valetov/gm2dev:*
+valetov/glyfada:*
 
 # Mu2e
 egstern/centos7-synergia2:*
