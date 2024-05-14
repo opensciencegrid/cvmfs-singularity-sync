@@ -234,6 +234,9 @@ physino/heprapp
 physino/root:*
 
 # E4S
+ecpe4s/e4s-cuda:24.05
+ecpe4s/e4s-rocm:24.05
+ecpe4s/e4s-oneapi:24.05
 ecpe4s/e4s-cuda:22.11
 ecpe4s/e4s-rocm:22.11
 ecpe4s/e4s-oneapi:22.11 
