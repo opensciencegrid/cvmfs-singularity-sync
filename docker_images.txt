@@ -47,6 +47,7 @@ opensciencegrid/osg-wn:3.3-devel-el7
 hub.opensciencegrid.org/htc/centos:7
 hub.opensciencegrid.org/htc/debian:12
 hub.opensciencegrid.org/htc/gromacs:2023.4
+hub.opensciencegrid.org/htc/gromacs:2024.2
 hub.opensciencegrid.org/htc/matlab-runtime:R2023a
 hub.opensciencegrid.org/htc/rocky:8
 hub.opensciencegrid.org/htc/rocky:9
