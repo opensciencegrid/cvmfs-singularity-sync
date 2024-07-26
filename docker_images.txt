@@ -181,8 +181,7 @@ nkern/21cmfast_env
 npanicker/r-desolve:*
 npavlovikj/prokevo:latest
 npcooley/heron:latest
-npcooley/deepec:latest
-npcooley/phylosim:latest
+npcooley/esmfold:*
 npcooley/synextend:*
 docker.opencarp.org/opencarp/opencarp:latest
 parabola505/geospatxgboost:*
