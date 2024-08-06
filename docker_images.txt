@@ -56,6 +56,7 @@ hub.opensciencegrid.org/htc/scikit-learn:1.3
 hub.opensciencegrid.org/htc/tensorflow:2.15
 hub.opensciencegrid.org/htc/ubuntu:20.04
 hub.opensciencegrid.org/htc/ubuntu:22.04
+hub.opensciencegrid.org/htc/ubuntu:24.04
 
 # OSGVO
 opensciencegrid/npjoodi
