@@ -528,6 +528,7 @@ egstern/wn-synergia2:latest
 # Mu3e
 4ndr85/mu3e:v2
 4ndr85/mu3e:v3
+paolobeltrame/mu3e:v20240810
 
 #NEURON+Brian2+Python
 rtikid/python2-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
