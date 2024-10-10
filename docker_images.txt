@@ -356,6 +356,7 @@ markito3/gluex_docker_devel
 markito3/gluex_docker_prod
 jeffersonlab/gluex_prod:v1
 jeffersonlab/gluex_devel:latest
+jeffersonlab/gluex_almalinux_9:latest
 
 # WIPAC (IceCube)
 wipac/fasig_scalable_radio_array
