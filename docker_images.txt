@@ -50,6 +50,7 @@ hub.opensciencegrid.org/htc/deeplabcut:3.0.0rc4
 hub.opensciencegrid.org/htc/gromacs:2023.4
 hub.opensciencegrid.org/htc/gromacs:2024.2
 hub.opensciencegrid.org/htc/matlab-runtime:R2023a
+hub.opensciencegrid.org/htc/minimal:0
 hub.opensciencegrid.org/htc/pytorch:2.3.1-cuda11.8
 hub.opensciencegrid.org/htc/rocky:8
 hub.opensciencegrid.org/htc/rocky:9
