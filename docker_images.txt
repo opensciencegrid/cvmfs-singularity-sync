@@ -512,6 +512,10 @@ containers.ligo.org/lscsoft/bayeswave:v1.0.7
 containers.ligo.org/computing/rucio/containers/rucio-clients:latest
 containers.ligo.org/lscsoft/gstlal:master
 containers.ligo.org/lscsoft/gstlal:osg-dev
+containers.ligo.org/gstlal/o4a-containers:cvmfs1
+containers.ligo.org/gstlal/o4a-containers:cvmfs2
+containers.ligo.org/gstlal/o4b-containers:cvmfs1
+containers.ligo.org/gstlal/o4b-containers:cvmfs2
 containers.ligo.org/snax/snax:v0.5.1
 containers.ligo.org/snax/snax:v0.5.2
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
