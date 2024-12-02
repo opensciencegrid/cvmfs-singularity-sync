@@ -528,6 +528,7 @@ egstern/wn-synergia2:latest
 # Mu3e
 4ndr85/mu3e:v2
 4ndr85/mu3e:v3
+paolobeltrame/mu3esim:v5.3
 paolobeltrame/mu3e:v5.4
 
 #NEURON+Brian2+Python
