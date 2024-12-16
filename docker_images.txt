@@ -499,6 +499,7 @@ containers.ligo.org/yannick.lecoeuche/glitch-pe-container/glitch-pe:latest
 containers.ligo.org/computing/distributed/igwn-pool-exorciser/gpu_burn:latest
 containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/bilby-pipe-production-python311:latest
 containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/gwpopulation-python311:latest
+containers.ligo.org/tomasz.baka/tgr-docker-image/bilby_tgr:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
