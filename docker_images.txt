@@ -158,6 +158,7 @@ efajardo/osgvo-nsides:latest
 efajardo/astroflow:latest
 evbauer/mesa_lean:10108.01
 evbauer/mesa_lean:r22.05.1.01
+ghcr.io/devinbayly/ros_noetic_ouster:latest
 grassla/osg_testing:latest
 goodgolden5/randy:6.0
 goodgolden5/randy:7.0
