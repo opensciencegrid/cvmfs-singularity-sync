@@ -232,6 +232,7 @@ biocontainers/vcftools:v0.1.16-1-deb_cv1
 rhughwhite/minimac3:2.0.1
 biocontainers/minimac4:v1.0.0-2-deb_cv1
 nnesquivelr/decam_proc_base:*
+dxando/rift-container:latest
 
 # Geant4 simulation and analysis tools
 physino/gears
