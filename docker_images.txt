@@ -178,7 +178,7 @@ k3jph/torch-diffeq:latest
 k3jph/python-optimization:latest
 leofang/cthyb-ohmic
 m8zeng/julia-packages
-hub.opensciencegrid.org/matyasosg/testimage:latest
+hub.opensciencegrid.org/matyasosg/testimage:v3
 mfrayer/perl-stats
 molssi/qcarchive_worker_openff:*
 nathanjmcl/gpaw-vdw-repository:latest
@@ -220,11 +220,10 @@ xwcl/xpipeline:*
 yxfu93/julia:latest
 ppaschos/koto-dev:latest
 chiehlin0212/koto-dev:latest
-sickleinafrica/plink2:latest
 sickleinafrica/bcftools:1.11
 sickleinafrica/plink1.9:1.9
 sickleinafrica/r-tidyverse-qqman:latest
-sickleinafrica/beagle:latest
+sickleinafrica/beagle:5.4
 sickleinafrica/eagle2:latest
 lifebitai/shapeit4:latest
 lifebitai/impute2:latest
