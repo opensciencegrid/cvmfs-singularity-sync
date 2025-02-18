@@ -698,3 +698,6 @@ houpengg/fphlm:*
 # PosEiDon
 pegasus/1000genome-workflow:latest
 pegasus/montage-workflow-v3:latest
+
+# h2oai
+h2oai/h2o-open-source-k8s:latest
