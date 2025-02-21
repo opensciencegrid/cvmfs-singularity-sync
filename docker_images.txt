@@ -1,4 +1,3 @@
-
 # This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
 
 # First, some generic CentOS images:
@@ -526,12 +525,11 @@ mu2e/synergia:v0
 egstern/wn-synergia2:latest
 
 # Mu3e
-4ndr85/mu3e:v2
 4ndr85/mu3e:v3
-paolobeltrame/mu3e:v5.1
 paolobeltrame/mu3e:v5.4
 paolobeltrame/mu3e:v5.42L
 paolobeltrame/mu3e:v5.4cosm2L
+paolobeltrame/mu3e:mctrk
 
 #NEURON+Brian2+Python
 rtikid/python2-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
