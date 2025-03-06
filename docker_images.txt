@@ -177,7 +177,7 @@ k3jph/torch-diffeq:latest
 k3jph/python-optimization:latest
 leofang/cthyb-ohmic
 m8zeng/julia-packages
-hub.opensciencegrid.org/matyasosg/testimage:v3
+hub.opensciencegrid.org/matyasosg/testimage:v4
 mfrayer/perl-stats
 molssi/qcarchive_worker_openff:*
 nathanjmcl/gpaw-vdw-repository:latest
