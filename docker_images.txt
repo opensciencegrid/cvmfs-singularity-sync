@@ -284,6 +284,8 @@ eicweb/jug_xl:*-stable
 eicweb/jug_xl:nightly
 eicweb/eic_xl:*-stable
 eicweb/eic_xl:nightly
+eicweb/eic_cuda:nightly
+eicweb/eic_dev_cuda:nightly
 raygunkennesaw/tensorflow:1.2.0-py3
 
 # Common biology tools
