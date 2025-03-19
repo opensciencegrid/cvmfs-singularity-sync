@@ -1,8 +1,5 @@
 # This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
 
-# First, some generic CentOS images:
-centos:latest
-
 # Fairly common Linux distros
 debian:latest
 debian:stable
@@ -290,10 +287,6 @@ raygunkennesaw/tensorflow:1.2.0-py3
 # Biocontainers :latest doesn't exist any longer.
 #biocontainers/blast
 cyverse/rsem-prepare
-
-# IGWN (Internation Gravitational Wave Network) worker nodes
-igwn/software:stretch
-igwn/software:stretch-proposed
 
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v1.16.12
