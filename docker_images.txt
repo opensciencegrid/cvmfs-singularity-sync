@@ -294,9 +294,6 @@ raygunkennesaw/tensorflow:1.2.0-py3
 cyverse/rsem-prepare
 
 # IGWN (Internation Gravitational Wave Network) worker nodes
-igwn/lalsuite-dev:el7
-igwn/software:el7
-igwn/software:el7-testing
 igwn/software:stretch
 igwn/software:stretch-proposed
 
