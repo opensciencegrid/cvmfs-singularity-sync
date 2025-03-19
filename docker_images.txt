@@ -2,8 +2,6 @@
 
 # First, some generic CentOS images:
 centos:latest
-centos:centos6
-centos:centos7
 
 # Fairly common Linux distros
 debian:latest
