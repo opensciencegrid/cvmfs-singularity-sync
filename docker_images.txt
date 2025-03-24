@@ -514,6 +514,7 @@ containers.ligo.org/snax/snax:v0.5.1
 containers.ligo.org/snax/snax:v0.5.2
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
 containers.ligo.org/echoes-model-independent/bayeswave-echoes-image:v1.0.7_echoes_reviewed
+containers.ligo.org/calibration/gstlal-calibration:gstlal-calibration-1.5.10-v1
 
 # Lancaster U, Muon g-2 Beamline Simulations
 valetov/beam_track:*
