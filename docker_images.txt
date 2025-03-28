@@ -292,6 +292,7 @@ cyverse/rsem-prepare
 pycbc/pycbc-el7:v1.16.12
 pycbc/pycbc-el7:v1.18.3
 pycbc/pycbc-el8:v2.3.*
+pycbc/pycbc-el8:v2.8.*
 pycbc/pycbc-el8:latest
 
 # CMS worker node
