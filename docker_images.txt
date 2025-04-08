@@ -1,10 +1,5 @@
 # This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
 
-# First, some generic CentOS images:
-centos:latest
-centos:centos6
-centos:centos7
-
 # Fairly common Linux distros
 debian:latest
 debian:stable
@@ -293,17 +288,11 @@ raygunkennesaw/tensorflow:1.2.0-py3
 #biocontainers/blast
 cyverse/rsem-prepare
 
-# IGWN (Internation Gravitational Wave Network) worker nodes
-igwn/lalsuite-dev:el7
-igwn/software:el7
-igwn/software:el7-testing
-igwn/software:stretch
-igwn/software:stretch-proposed
-
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v1.16.12
 pycbc/pycbc-el7:v1.18.3
 pycbc/pycbc-el8:v2.3.*
+pycbc/pycbc-el8:v2.8.*
 pycbc/pycbc-el8:latest
 
 # CMS worker node
@@ -504,6 +493,7 @@ containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/bilby-pipe-production-p
 containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/gwpopulation-python311:latest
 containers.ligo.org/tomasz.baka/tgr-docker-image/bilby_tgr:latest
 containers.ligo.org/nihar.gupte/dingo-ci/dingo:latest
+containers.ligo.org/pystamp/pystampas:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
@@ -526,6 +516,7 @@ containers.ligo.org/snax/snax:v0.5.1
 containers.ligo.org/snax/snax:v0.5.2
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
 containers.ligo.org/echoes-model-independent/bayeswave-echoes-image:v1.0.7_echoes_reviewed
+containers.ligo.org/calibration/gstlal-calibration:gstlal-calibration-1.5.10-v1
 
 # Lancaster U, Muon g-2 Beamline Simulations
 valetov/beam_track:*
