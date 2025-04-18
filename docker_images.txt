@@ -275,12 +275,10 @@ alpine
 whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
-eicweb/jug_xl:*-stable
-eicweb/jug_xl:nightly
-eicweb/eic_xl:*-stable
-eicweb/eic_xl:nightly
-eicweb/eic_cuda:nightly
-eicweb/eic_dev_cuda:nightly
+ghcr.io/eic/eic_xl:*-stable
+ghcr.io/eic/eic_xl:nightly
+ghcr.io/eic/eic_cuda:nightly
+ghcr.io/eic/eic_dev_cuda:nightly
 raygunkennesaw/tensorflow:1.2.0-py3
 
 # Common biology tools
