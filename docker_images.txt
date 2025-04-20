@@ -276,6 +276,9 @@ whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
 # old dockerhub globbing for backwards compatibility during transition to ghcr.io
+eicweb/eic_xl:nightly
+eicweb/eic_cuda:nightly
+eicweb/eic_dev_cuda:nightly
 eicweb/eic_xl:25.04.0-stable
 eicweb/eic_xl:25.04-stable
 eicweb/eic_xl:*-stable
