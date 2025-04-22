@@ -332,6 +332,7 @@ class DockerHub(object):
             kwargs['params'] = {}
         if 'perPage' not in kwargs['params'] and 'noPage' not in kwargs:
             kwargs['params']['perPage'] = 100
+            kwargs['params']['page_size'] = 100
         if 'noPage' in kwargs:
             del kwargs['noPage']
         return self._do_request('GET', address, **kwargs)
