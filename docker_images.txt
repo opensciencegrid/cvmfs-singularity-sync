@@ -318,6 +318,7 @@ ghcr.io/eic/eic_xl:25.03.0-stable
 ghcr.io/eic/eic_xl:25.03.1-stable
 ghcr.io/eic/eic_xl:25.03-stable
 ghcr.io/eic/eic_xl:25.04.0-stable
+ghcr.io/eic/eic_xl:25.04.1-stable
 ghcr.io/eic/eic_xl:25.04-stable
 ghcr.io/eic/eic_xl:nightly
 ghcr.io/eic/eic_cuda:nightly
