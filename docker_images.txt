@@ -234,14 +234,6 @@ physino/mingle
 physino/heprapp
 physino/root:*
 
-# E4S
-ecpe4s/e4s-cuda:22.11
-ecpe4s/e4s-rocm:22.11
-ecpe4s/e4s-oneapi:22.11 
-ecpe4s/e4s-cuda:23.05
-ecpe4s/e4s-rocm:23.05
-ecpe4s/e4s-oneapi:23.05
-
 # MINT project (rynge)
 ankushumn/rsatest
 mintproject/ankush:latest
