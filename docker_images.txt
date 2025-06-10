@@ -1,10 +1,4 @@
-
 # This file is a list of Docker images to synchronize to singularity.opensciencegrid.org.
-
-# First, some generic CentOS images:
-centos:latest
-centos:centos6
-centos:centos7
 
 # Fairly common Linux distros
 debian:latest
@@ -46,16 +40,21 @@ opensciencegrid/osg-wn:3.3-devel-el7
 # htc/ - this are the images replacing the osgvo-* ones
 hub.opensciencegrid.org/htc/centos:7
 hub.opensciencegrid.org/htc/debian:12
+hub.opensciencegrid.org/htc/deeplabcut:3.0.0rc4
 hub.opensciencegrid.org/htc/gromacs:2023.4
 hub.opensciencegrid.org/htc/gromacs:2024.2
 hub.opensciencegrid.org/htc/matlab-runtime:R2023a
+hub.opensciencegrid.org/htc/minimal:0
+hub.opensciencegrid.org/htc/pytorch:2.3.1-cuda11.8
 hub.opensciencegrid.org/htc/rocky:8
 hub.opensciencegrid.org/htc/rocky:9
 hub.opensciencegrid.org/htc/rocky:8-cuda-11.0.3
+hub.opensciencegrid.org/htc/rocky:9-cuda-12.6.0
 hub.opensciencegrid.org/htc/scikit-learn:1.3
 hub.opensciencegrid.org/htc/tensorflow:2.15
 hub.opensciencegrid.org/htc/ubuntu:20.04
 hub.opensciencegrid.org/htc/ubuntu:22.04
+hub.opensciencegrid.org/htc/ubuntu:24.04
 
 # OSGVO
 opensciencegrid/npjoodi
@@ -153,6 +152,7 @@ efajardo/osgvo-nsides:latest
 efajardo/astroflow:latest
 evbauer/mesa_lean:10108.01
 evbauer/mesa_lean:r22.05.1.01
+ghcr.io/devinbayly/ros_noetic_ouster:latest
 grassla/osg_testing:latest
 goodgolden5/randy:6.0
 goodgolden5/randy:7.0
@@ -172,7 +172,7 @@ k3jph/torch-diffeq:latest
 k3jph/python-optimization:latest
 leofang/cthyb-ohmic
 m8zeng/julia-packages
-hub.opensciencegrid.org/matyasosg/testimage:latest
+hub.opensciencegrid.org/matyasosg/testimage:v4
 mfrayer/perl-stats
 molssi/qcarchive_worker_openff:*
 nathanjmcl/gpaw-vdw-repository:latest
@@ -214,11 +214,10 @@ xwcl/xpipeline:*
 yxfu93/julia:latest
 ppaschos/koto-dev:latest
 chiehlin0212/koto-dev:latest
-sickleinafrica/plink2:latest
 sickleinafrica/bcftools:1.11
 sickleinafrica/plink1.9:1.9
 sickleinafrica/r-tidyverse-qqman:latest
-sickleinafrica/beagle:latest
+sickleinafrica/beagle:5.4
 sickleinafrica/eagle2:latest
 lifebitai/shapeit4:latest
 lifebitai/impute2:latest
@@ -226,20 +225,14 @@ biocontainers/vcftools:v0.1.16-1-deb_cv1
 rhughwhite/minimac3:2.0.1
 biocontainers/minimac4:v1.0.0-2-deb_cv1
 nnesquivelr/decam_proc_base:*
+dxando/rift-container:latest
+mascencio/al9g4bnb:latest
 
 # Geant4 simulation and analysis tools
 physino/gears
 physino/mingle
 physino/heprapp
 physino/root:*
-
-# E4S
-ecpe4s/e4s-cuda:22.11
-ecpe4s/e4s-rocm:22.11
-ecpe4s/e4s-oneapi:22.11 
-ecpe4s/e4s-cuda:23.05
-ecpe4s/e4s-rocm:23.05
-ecpe4s/e4s-oneapi:23.05
 
 # MINT project (rynge)
 ankushumn/rsatest
@@ -274,10 +267,53 @@ alpine
 whit2333/eic-slic:latest
 argonneeic/evochain:v*
 argonneeic/fpadsim:v*
-eicweb/jug_xl:*-stable
-eicweb/jug_xl:nightly
-eicweb/eic_xl:*-stable
+# old dockerhub globbing for backwards compatibility during transition to ghcr.io
 eicweb/eic_xl:nightly
+eicweb/eic_cuda:nightly
+eicweb/eic_dev_cuda:nightly
+eicweb/eic_xl:25.04.0-stable
+eicweb/eic_xl:25.04-stable
+eicweb/eic_xl:*-stable
+# globs fail on ghcr.io for now, so explicit listing
+# ghcr.io/eic/eic_xl:*-stable
+ghcr.io/eic/eic_xl:24.03.1-stable
+ghcr.io/eic/eic_xl:24.03-stable
+ghcr.io/eic/eic_xl:24.04.0-stable
+ghcr.io/eic/eic_xl:24.04-stable
+ghcr.io/eic/eic_xl:24.05.0-stable
+ghcr.io/eic/eic_xl:24.05.2-stable
+ghcr.io/eic/eic_xl:24.05-stable
+ghcr.io/eic/eic_xl:24.06.0-stable
+ghcr.io/eic/eic_xl:24.06-stable
+ghcr.io/eic/eic_xl:24.07.0-stable
+ghcr.io/eic/eic_xl:24.07-stable
+ghcr.io/eic/eic_xl:24.08.0-stable
+ghcr.io/eic/eic_xl:24.08.1-stable
+ghcr.io/eic/eic_xl:24.08-stable
+ghcr.io/eic/eic_xl:24.09.0-stable
+ghcr.io/eic/eic_xl:24.09-stable
+ghcr.io/eic/eic_xl:24.10.0-stable
+ghcr.io/eic/eic_xl:24.10.1-stable
+ghcr.io/eic/eic_xl:24.10-stable
+ghcr.io/eic/eic_xl:24.11.0-stable
+ghcr.io/eic/eic_xl:24.11.1-stable
+ghcr.io/eic/eic_xl:24.11.2-stable
+ghcr.io/eic/eic_xl:24.11-stable
+ghcr.io/eic/eic_xl:24.12.0-stable
+ghcr.io/eic/eic_xl:24.12-stable
+ghcr.io/eic/eic_xl:25.01.0-stable
+ghcr.io/eic/eic_xl:25.01.1-stable
+ghcr.io/eic/eic_xl:25.01-stable
+ghcr.io/eic/eic_xl:25.02.0-stable
+ghcr.io/eic/eic_xl:25.02-stable
+ghcr.io/eic/eic_xl:25.03.0-stable
+ghcr.io/eic/eic_xl:25.03.1-stable
+ghcr.io/eic/eic_xl:25.03-stable
+ghcr.io/eic/eic_xl:25.04.0-stable
+ghcr.io/eic/eic_xl:25.04-stable
+ghcr.io/eic/eic_xl:nightly
+ghcr.io/eic/eic_cuda:nightly
+ghcr.io/eic/eic_dev_cuda:nightly
 raygunkennesaw/tensorflow:1.2.0-py3
 
 # Common biology tools
@@ -285,17 +321,11 @@ raygunkennesaw/tensorflow:1.2.0-py3
 #biocontainers/blast
 cyverse/rsem-prepare
 
-# IGWN (Internation Gravitational Wave Network) worker nodes
-igwn/lalsuite-dev:el7
-igwn/software:el7
-igwn/software:el7-testing
-igwn/software:stretch
-igwn/software:stretch-proposed
-
 # LIGO PyCBC compute nodes
 pycbc/pycbc-el7:v1.16.12
 pycbc/pycbc-el7:v1.18.3
 pycbc/pycbc-el8:v2.3.*
+pycbc/pycbc-el8:v2.8.*
 pycbc/pycbc-el8:latest
 
 # CMS worker node
@@ -353,6 +383,7 @@ markito3/gluex_docker_devel
 markito3/gluex_docker_prod
 jeffersonlab/gluex_prod:v1
 jeffersonlab/gluex_devel:latest
+jeffersonlab/gluex_almalinux_9:latest
 
 # WIPAC (IceCube)
 wipac/fasig_scalable_radio_array
@@ -486,9 +517,16 @@ containers.ligo.org/alan.knee/lal-images/lalsuite-fstatbinary:latest
 ghcr.io/ml4gw/hermes/tritonserver:22.12
 ghcr.io/ml4gw/hermes/tritonserver:22.07
 ghcr.io/ml4gw/hermes/tritonserver:22.02
+ghcr.io/ml4gw/hermes/tritonserver:23.01
+ghcr.io/ml4gw/hermes/tritonserver:24.01
 ghcr.io/ml4gw/pinto:main
 containers.ligo.org/yannick.lecoeuche/glitch-pe-container/glitch-pe:latest
 containers.ligo.org/computing/distributed/igwn-pool-exorciser/gpu_burn:latest
+containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/bilby-pipe-production-python311:latest
+containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/gwpopulation-python311:latest
+containers.ligo.org/tomasz.baka/tgr-docker-image/bilby_tgr:latest
+containers.ligo.org/nihar.gupte/dingo-ci/dingo:latest
+containers.ligo.org/pystamp/pystampas:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
@@ -503,10 +541,15 @@ containers.ligo.org/lscsoft/bayeswave:v1.0.7
 containers.ligo.org/computing/rucio/containers/rucio-clients:latest
 containers.ligo.org/lscsoft/gstlal:master
 containers.ligo.org/lscsoft/gstlal:osg-dev
+containers.ligo.org/gstlal/o4a-containers:cvmfs1
+containers.ligo.org/gstlal/o4a-containers:cvmfs2
+containers.ligo.org/gstlal/o4b-containers:cvmfs1
+containers.ligo.org/gstlal/o4b-containers:cvmfs2
 containers.ligo.org/snax/snax:v0.5.1
 containers.ligo.org/snax/snax:v0.5.2
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
 containers.ligo.org/echoes-model-independent/bayeswave-echoes-image:v1.0.7_echoes_reviewed
+containers.ligo.org/calibration/gstlal-calibration:gstlal-calibration-1.5.10-v1
 
 # Lancaster U, Muon g-2 Beamline Simulations
 valetov/beam_track:*
@@ -525,8 +568,10 @@ mu2e/synergia:v0
 egstern/wn-synergia2:latest
 
 # Mu3e
-4ndr85/mu3e:v2
-4ndr85/mu3e:v3
+# 4ndr85/mu3e:v3 (old)
+paolobeltrame/mu3e:v5.4
+paolobeltrame/mu3e:mctrk
+paolobeltrame/mu3e:v5.5
 
 #NEURON+Brian2+Python
 rtikid/python2-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
@@ -575,6 +620,8 @@ jinnian/automl-osg:2dunet
 
 # LUX-ZEPLIN (LZ) Base OS
 luxzeplin/base_os:centos7
+luxzeplin/base_os:rocky9_3
+luxzeplin/offline_hosted:rocky9_3
 
 #Jetscape
 bardelch/jetscape-deploy:*
@@ -675,3 +722,6 @@ houpengg/fphlm:*
 # PosEiDon
 pegasus/1000genome-workflow:latest
 pegasus/montage-workflow-v3:latest
+
+# h2oai
+h2oai/h2o-open-source-k8s:latest
