@@ -181,7 +181,7 @@ nkern/21cmfast_env
 npanicker/r-desolve:*
 npavlovikj/prokevo:latest
 npcooley/heron:latest
-npcooley/esmfold:*
+npcooley/esm:0.0.3
 npcooley/synextend:*
 docker.opencarp.org/opencarp/opencarp:latest
 parabola505/geospatxgboost:*
