@@ -529,6 +529,7 @@ containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/gwpopulation-python311:
 containers.ligo.org/tomasz.baka/tgr-docker-image/bilby_tgr:latest
 containers.ligo.org/nihar.gupte/dingo-ci/dingo:latest
 containers.ligo.org/pystamp/pystampas:latest
+containers.ligo.org/junjiezhao/tgr-ssb-docker-image/bilby_tgr:latest
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
