@@ -366,6 +366,8 @@ clelange/slc5-cms:latest
 # CMS L1 trigger analysis
 cmsl1tanalysis/cmsl1t-dev:*
 cmsl1tanalysis/cmsl1t:*
+# CMS SONIC
+fastml/triton-torchgeo:22.07-py3-geometric
 
 # ATLAS worker node
 lincolnbryant/atlas-wn
