@@ -731,3 +731,8 @@ pegasus/montage-workflow-v3:latest
 
 # h2oai
 h2oai/h2o-open-source-k8s:latest
+
+# E4S - these can be large
+ecpe4s/e4s-oneapi:25.06
+ecpe4s/e4s-cuda:25.06
+ecpe4s/e4s-cpu:25.06
