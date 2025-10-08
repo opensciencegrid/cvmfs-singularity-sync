@@ -574,10 +574,11 @@ mu2e/synergia:v0
 egstern/wn-synergia2:latest
 
 # Mu3e
-# 4ndr85/mu3e:v3 (old)
 paolobeltrame/mu3e:v5.5
 paolobeltrame/mu3e:v6.2
 paolobeltrame/mu3e:v6.2cosm
+paolobeltrame/mu3e:v6.2pol
+paolobeltrame/mu3e:v6.2ph0pol
 
 #NEURON+Brian2+Python
 rtikid/python2-numpy-scipy-sympy-neuron-brian2-netpyne-inspyred-pyabf
