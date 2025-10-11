@@ -575,7 +575,6 @@ egstern/wn-synergia2:latest
 # Mu3e
 paolobeltrame/mu3e:v5.5
 paolobeltrame/mu3e:v6.2
-paolobeltrame/mu3e:v6.2cosm
 paolobeltrame/mu3e:v6.2pol
 paolobeltrame/mu3e:v6.2ph0pol
 
