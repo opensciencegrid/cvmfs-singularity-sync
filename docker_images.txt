@@ -491,7 +491,6 @@ hub.opensciencegrid.org/htcondor/hpc-annex-pilot:el8
 hub.opensciencegrid.org/htcondor/hpc-annex-pilot:latest
 
 # LIGO - user defined images
-containers.ligo.org/bayeswave/igwn-wave-compare:latest
 containers.ligo.org/cody.messick/container:latest
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/james-clark/bayeswave:latest
@@ -576,7 +575,6 @@ egstern/wn-synergia2:latest
 # Mu3e
 paolobeltrame/mu3e:v5.5
 paolobeltrame/mu3e:v6.2
-paolobeltrame/mu3e:v6.2cosm
 paolobeltrame/mu3e:v6.2pol
 paolobeltrame/mu3e:v6.2ph0pol
 
