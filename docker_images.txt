@@ -12,10 +12,6 @@ rockylinux:8
 # Common programming environments
 python:latest
 python:3.4
-python:2.7
-openjdk:latest
-openjdk:8
-openjdk:9
 gcc:latest
 julia:latest
 r-base:latest
