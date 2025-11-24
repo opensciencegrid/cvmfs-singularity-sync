@@ -34,7 +34,6 @@ opensciencegrid/osg-wn:3.3-testing-el7
 opensciencegrid/osg-wn:3.3-devel-el7
 
 # htc/ - this are the images replacing the osgvo-* ones
-hub.opensciencegrid.org/htc/centos:7
 hub.opensciencegrid.org/htc/debian:12
 hub.opensciencegrid.org/htc/deeplabcut:3.0.0rc4
 hub.opensciencegrid.org/htc/freesurfer:8.1.0
