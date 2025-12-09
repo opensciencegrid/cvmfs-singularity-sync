@@ -461,6 +461,8 @@ containers.ligo.org/james-clark/research-projects-rit/rift:latest
 containers.ligo.org/james-clark/research-projects-rit/rift:production
 containers.ligo.org/james-clark/research-projects-rit/containers-rift_o4b_jl-chadhenshaw-teobresums_eccentric:latest
 containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.dev20250814-build2
+containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.15fff1bf87f1bf6b283aadeb6f5a21df39350e4f.src-build1
+containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.15fff1bf87f1bf6b283aadeb6f5a21df39350e4f.cuda-build1
 containers.ligo.org/rodrigo.tenorio/skyhough-post-processing:master
 containers.ligo.org/tessa.carver/pygrb_o3a:latest
 atanasi/matlab:v97
