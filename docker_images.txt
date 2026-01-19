@@ -268,12 +268,11 @@ argonneeic/fpadsim:v*
 eicweb/eic_xl:nightly
 eicweb/eic_cuda:nightly
 eicweb/eic_dev_cuda:nightly
-eicweb/eic_xl:25.04.0-stable
-eicweb/eic_xl:25.04.1-stable
-eicweb/eic_xl:25.04-stable
 eicweb/eic_xl:*-stable
 ghcr.io/eic/eic_ci:nightly
 ghcr.io/eic/eic_xl:nightly
+ghcr.io/eic/eic_xl:25.11.2-stable
+ghcr.io/eic/eic_xl:25.07.0-stable
 ghcr.io/eic/eic_cuda:nightly
 ghcr.io/eic/eic_dev_cuda:nightly
 raygunkennesaw/tensorflow:1.2.0-py3
