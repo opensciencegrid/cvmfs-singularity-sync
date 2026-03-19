@@ -498,6 +498,7 @@ containers.ligo.org/junjiezhao/tgr-ssb-docker-image/bilby_tgr:latest
 containers.ligo.org/link/pre-merger-software/gravelamps:python-3.10
 containers.ligo.org/link/pre-merger-software/gravelamps:python-3.11
 containers.ligo.org/link/pre-merger-software/gravelamps:python-3.12
+containers.ligo.org/link/pre-merger-software/golum_pipe:python-3.10
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
