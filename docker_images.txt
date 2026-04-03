@@ -512,6 +512,7 @@ valetov/beam_track:*
 
 # Michigan State U, Center for Beam Theory and Dynamical Systems
 valetov/cosy:*
+valetov/cosy-glyfada:*
 valetov/g4bl:*
 valetov/gm2dev:*
 valetov/glyfada:*
