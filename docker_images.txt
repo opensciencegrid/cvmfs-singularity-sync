@@ -704,3 +704,6 @@ ghcr.io/eic/eic_xl:25.07.0-stable
 ghcr.io/eic/eic_cuda:nightly
 ghcr.io/eic/eic_dev_cuda:nightly
 raygunkennesaw/tensorflow:1.2.0-py3
+
+# Emory Proton Therapy Center
+docker.io/arnavmenon/my-topas:v1
