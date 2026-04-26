@@ -432,80 +432,98 @@ htcondor/htmap-exec:*
 hub.opensciencegrid.org/htcondor/hpc-annex-pilot:el8
 hub.opensciencegrid.org/htcondor/hpc-annex-pilot:latest
 
-# LIGO - user defined images
-containers.ligo.org/cody.messick/container:latest
-containers.ligo.org/joshua.willis/pycbc:latest
-containers.ligo.org/james-clark/bayeswave:latest
-containers.ligo.org/james-clark/bayeswave:test
-containers.ligo.org/james-clark/bilby_pipe_public:latest
-containers.ligo.org/james-clark/research-projects-rit/rift:test
-containers.ligo.org/james-clark/research-projects-rit/rift:latest
-containers.ligo.org/james-clark/research-projects-rit/rift:production
-containers.ligo.org/james-clark/research-projects-rit/containers-rift_o4b_jl-chadhenshaw-teobresums_eccentric:latest
-containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.dev20250814-build2
-containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.15fff1bf87f1bf6b283aadeb6f5a21df39350e4f.src-build1
-containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.15fff1bf87f1bf6b283aadeb6f5a21df39350e4f.cuda-build1
-containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.e17f0a58054912da8a14a7f87505839783664e63.src-build1
-containers.ligo.org/rodrigo.tenorio/skyhough-post-processing:master
-containers.ligo.org/tessa.carver/pygrb_o3a:latest
-atanasi/matlab:v97
-atanasi/darkmatter:latest
-lucarvirgo/tensorflowmatlab:latest
-containers.ligo.org/james-clark/tgr_images/testing_gr_fta:latest
-containers.ligo.org/james-clark/tgr_images/lalsuite-master:latest
-containers.ligo.org/cwinpy/cwinpy-containers/cwinpy-dev-python38:latest
-containers.ligo.org/rhys.poulton/cw-frequencyhough-image:latest
-containers.ligo.org/rhys.poulton/cw-frequencyhough-image:escape-datalake
-containers.ligo.org/aei-tgr/cvmfs-images/pseob:rd-latest
-containers.ligo.org/aei-tgr/cvmfs-images/pseob:fti-latest
-containers.ligo.org/aei-tgr/cvmfs-images/pseob:testing
-containers.ligo.org/aei-tgr/cvmfs-images/pseob:envs
-containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:latest
-containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:v5
-containers.ligo.org/alan.knee/lal-images/lalsuite-fstatbinary:latest
-ghcr.io/ml4gw/hermes/tritonserver:22.12
-ghcr.io/ml4gw/hermes/tritonserver:22.07
-ghcr.io/ml4gw/hermes/tritonserver:22.02
-ghcr.io/ml4gw/hermes/tritonserver:23.01
-ghcr.io/ml4gw/hermes/tritonserver:24.01
-ghcr.io/ml4gw/pinto:main
-containers.ligo.org/yannick.lecoeuche/glitch-pe-container/glitch-pe:latest
-containers.ligo.org/computing/distributed/igwn-pool-exorciser/gpu_burn:latest
-containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/bilby-pipe-production-python311:latest
-containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/gwpopulation-python311:latest
-containers.ligo.org/tomasz.baka/tgr-docker-image/bilby_tgr:latest
-containers.ligo.org/narola.bharatbhai/tgr-docker-image/bilby_tgr:latest
-containers.ligo.org/nihar.gupte/dingo-ci/dingo:latest
-containers.ligo.org/pystamp/pystampas:latest
-containers.ligo.org/junjiezhao/tgr-ssb-docker-image/bilby_tgr:latest
-containers.ligo.org/link/pre-merger-software/gravelamps:python-3.10
-containers.ligo.org/link/pre-merger-software/gravelamps:python-3.11
-containers.ligo.org/link/pre-merger-software/gravelamps:python-3.12
-containers.ligo.org/link/pre-merger-software/golum_pipe:python-3.10
-
-# LIGO/VIRGO/KAGRA containers
+# LIGO/VIRGO/KAGRA - Software - LALSuite
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:stretch
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:el7
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.60:stretch
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:el7
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.62:stretch
+
+# LIGO/VIRGO/KAGRA - Software - BayesWave
 containers.ligo.org/lscsoft/bayeswave:latest
 containers.ligo.org/lscsoft/bayeswave:v1.0.6
 containers.ligo.org/lscsoft/bayeswave:v1.0.7
 containers.ligo.org/lscsoft/bayeswave:v1.1.2
-containers.ligo.org/computing/rucio/containers/rucio-clients:latest
+
+# LIGO/VIRGO/KAGRA - Software - GstLAL
 containers.ligo.org/lscsoft/gstlal:master
 containers.ligo.org/lscsoft/gstlal:osg-dev
 containers.ligo.org/gstlal/o4a-containers:cvmfs1
 containers.ligo.org/gstlal/o4a-containers:cvmfs2
 containers.ligo.org/gstlal/o4b-containers:cvmfs1
 containers.ligo.org/gstlal/o4b-containers:cvmfs2
+containers.ligo.org/calibration/gstlal-calibration:gstlal-calibration-1.5.10-v1
+
+# LIGO/VIRGO/KAGRA - Software - SNAX
 containers.ligo.org/snax/snax:v0.5.1
 containers.ligo.org/snax/snax:v0.5.2
-containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
+
+# LIGO/VIRGO/KAGRA - Software - pSEOB TGR
+containers.ligo.org/aei-tgr/cvmfs-images/pseob:envs
+containers.ligo.org/aei-tgr/cvmfs-images/pseob:fti-latest
+containers.ligo.org/aei-tgr/cvmfs-images/pseob:rd-latest
+containers.ligo.org/aei-tgr/cvmfs-images/pseob:testing
+containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:latest
+containers.ligo.org/aei-tgr/cvmfs-images/seob-rom:v5
+
+# LIGO/VIRGO/KAGRA - Software - Computing tools
+containers.ligo.org/computing/rucio/containers/rucio-clients:latest
+containers.ligo.org/computing/distributed/igwn-pool-exorciser/gpu_burn:latest
+
+# LIGO/VIRGO/KAGRA - Software - CWInPy
+containers.ligo.org/cwinpy/cwinpy-containers/cwinpy-dev-python38:latest
+
+# LIGO/VIRGO/KAGRA - Software - PySTAMPAS
+containers.ligo.org/pystamp/pystampas:latest
+
+# LIGO/VIRGO/KAGRA - Software - ML4GW
+ghcr.io/ml4gw/hermes/tritonserver:22.02
+ghcr.io/ml4gw/hermes/tritonserver:22.07
+ghcr.io/ml4gw/hermes/tritonserver:22.12
+ghcr.io/ml4gw/hermes/tritonserver:23.01
+ghcr.io/ml4gw/hermes/tritonserver:24.01
+ghcr.io/ml4gw/pinto:main
+
+# LIGO/VIRGO/KAGRA - Software - Gravelamps, GOLUM
+containers.ligo.org/link/pre-merger-software/gravelamps:python-3.10
+containers.ligo.org/link/pre-merger-software/gravelamps:python-3.11
+containers.ligo.org/link/pre-merger-software/gravelamps:python-3.12
+containers.ligo.org/link/pre-merger-software/golum_pipe:python-3.10
+
+# LIGO/VIRGO/KAGRA - User defined images
+atanasi/darkmatter:latest
+atanasi/matlab:v97
+containers.ligo.org/alan.knee/lal-images/lalsuite-fstatbinary:latest
+containers.ligo.org/cody.messick/container:latest
+containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/bilby-pipe-production-python311:latest
+containers.ligo.org/colm.talbot/bilby-pipe-image-sandbox/gwpopulation-python311:latest
 containers.ligo.org/echoes-model-independent/bayeswave-echoes-image:v1.0.7_echoes_reviewed
-containers.ligo.org/calibration/gstlal-calibration:gstlal-calibration-1.5.10-v1
+containers.ligo.org/james-clark/bayeswave:latest
+containers.ligo.org/james-clark/bayeswave:test
+containers.ligo.org/james-clark/bilby_pipe_public:latest
+containers.ligo.org/james-clark/research-projects-rit/containers-rift_o4b_jl-chadhenshaw-teobresums_eccentric:latest
+containers.ligo.org/james-clark/research-projects-rit/rift:latest
+containers.ligo.org/james-clark/research-projects-rit/rift:production
+containers.ligo.org/james-clark/research-projects-rit/rift:test
+containers.ligo.org/james-clark/tgr_images/lalsuite-master:latest
+containers.ligo.org/james-clark/tgr_images/testing_gr_fta:latest
+containers.ligo.org/joshua.willis/pycbc:latest
+containers.ligo.org/junjiezhao/tgr-ssb-docker-image/bilby_tgr:latest
+containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.15fff1bf87f1bf6b283aadeb6f5a21df39350e4f.cuda-build1
+containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.15fff1bf87f1bf6b283aadeb6f5a21df39350e4f.src-build1
+containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.dev20250814-build2
+containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.e17f0a58054912da8a14a7f87505839783664e63.src-build1
+containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
+containers.ligo.org/narola.bharatbhai/tgr-docker-image/bilby_tgr:latest
+containers.ligo.org/nihar.gupte/dingo-ci/dingo:latest
+containers.ligo.org/rhys.poulton/cw-frequencyhough-image:escape-datalake
+containers.ligo.org/rhys.poulton/cw-frequencyhough-image:latest
+containers.ligo.org/rodrigo.tenorio/skyhough-post-processing:master
+containers.ligo.org/tessa.carver/pygrb_o3a:latest
+containers.ligo.org/tomasz.baka/tgr-docker-image/bilby_tgr:latest
+containers.ligo.org/yannick.lecoeuche/glitch-pe-container/glitch-pe:latest
+lucarvirgo/tensorflowmatlab:latest
 
 # Lancaster U, Muon g-2 Beamline Simulations
 valetov/beam_track:*
