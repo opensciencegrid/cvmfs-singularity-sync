@@ -483,6 +483,7 @@ containers.ligo.org/link/pre-merger-software/gravelamps:python-3.10
 containers.ligo.org/link/pre-merger-software/gravelamps:python-3.11
 containers.ligo.org/link/pre-merger-software/gravelamps:python-3.12
 containers.ligo.org/link/pre-merger-software/golum_pipe:python-3.10
+containers.ligo.org/maria-antonia.ferrer/bilby-pyfstat-container:69998c5f185b9d66c0f2df2366f4fc4788d9ac36
 
 # LIGO/VIRGO/KAGRA containers
 containers.ligo.org/lscsoft/lalsuite/lalsuite-v6.59:el7
