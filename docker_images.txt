@@ -635,6 +635,10 @@ jasonkwan/autometa:latest
 # UW-Madison & Reed College -- Gitter Lab, SPRAS project
 # https://hub.docker.com/r/reedcompbio
 reedcompbio/omics-integrator-1:latest
+
+# JLab Parity Simulations and Analysis - JAPAN-MOLLER
+# https://hub.docker.com/r/jeffersonlab/japan-moller
+jeffersonlab/japan-moller:nightly
 reedcompbio/omics-integrator-1:no-conda
 reedcompbio/omics-integrator-2:v2
 reedcompbio/pathlinker:latest
