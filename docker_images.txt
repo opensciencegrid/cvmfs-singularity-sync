@@ -522,6 +522,7 @@ containers.ligo.org/tessa.carver/pygrb_o3a:latest
 containers.ligo.org/tomasz.baka/tgr-docker-image/bilby_tgr:latest
 containers.ligo.org/yannick.lecoeuche/glitch-pe-container/glitch-pe:latest
 lucarvirgo/tensorflowmatlab:latest
+containers.ligo.org/alicia.calafat/cw-lensing-population:lensing-v1
 
 # Lancaster U, Muon g-2 Beamline Simulations
 valetov/beam_track:*
