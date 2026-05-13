@@ -433,6 +433,10 @@ htcondor/htmap-exec:*
 hub.opensciencegrid.org/htcondor/hpc-annex-pilot:el8
 hub.opensciencegrid.org/htcondor/hpc-annex-pilot:latest
 
+# LIGO/VIRGO/KAGRA - Software - LALSuite
+containers.ligo.org/lscsoft/lalsuite/debian:7.26
+containers.ligo.org/lscsoft/lalsuite/el:7.26
+
 # LIGO/VIRGO/KAGRA - Software - BayesWave
 containers.ligo.org/lscsoft/bayeswave:latest
 containers.ligo.org/lscsoft/bayeswave:v1.0.6
