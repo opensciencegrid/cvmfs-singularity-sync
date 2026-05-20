@@ -284,8 +284,10 @@ cmssw/cms:rhel6-x86_64
 cmssw/cms:rhel7-x86_64
 cmssw/cms:rhel8-x86_64
 cmssw/cms:rhel9-x86_64
+cmssw/cms:rhel10-x86_64
 cmssw/cms:rhel8-aarch64
 cmssw/cms:rhel9-aarch64
+cmssw/cms:rhel10-aarch64
 cmssw/cms:rhel8-ppc64le
 cmssw/cms:rhel6-itb
 cmssw/cms:rhel7-itb
@@ -295,8 +297,10 @@ cmssw/cms:rhel6-itb-x86_64
 cmssw/cms:rhel7-itb-x86_64
 cmssw/cms:rhel8-itb-x86_64
 cmssw/cms:rhel9-itb-x86_64
+cmssw/cms:rhel10-itb-x86_64
 cmssw/cms:rhel8-itb-aarch64
 cmssw/cms:rhel9-itb-aarch64
+cmssw/cms:rhel10-itb-aarch64
 cmssw/cms:rhel8-itb-ppc64le
 cmssw/cms:rhel6-m*
 cmssw/cms:rhel7-m*
