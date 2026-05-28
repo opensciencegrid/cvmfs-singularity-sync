@@ -735,3 +735,4 @@ amenon83/my-topas:v1
 
 # DUNE Collaboration
 dunescience/sim2x2:*
+dunescience/machinelearning:spine-latest
