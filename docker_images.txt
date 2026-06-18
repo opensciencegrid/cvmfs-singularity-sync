@@ -626,6 +626,8 @@ snowmass21software/delphes-osg:*
 
 # Zwicky Transient Facility
 michaelwcoughlin/ztfperiodic:latest
+# NMMA/fiesta light-curve fitting
+michaelwcoughlin/fiesta:latest
 
 #intel
 intel/oneapi-hpckit
