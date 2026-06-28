@@ -223,6 +223,7 @@ biocontainers/minimac4:v1.0.0-2-deb_cv1
 nnesquivelr/decam_proc_base:*
 dxando/rift-container:latest
 mascencio/al9g4bnb:latest
+mascencio/ratpac2:latest
 carriganm95/uproot:latest
 
 # Geant4 simulation and analysis tools
