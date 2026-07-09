@@ -160,7 +160,8 @@ def main():
             registry, namespace, repo_name, repo_tag = parse_image(image)
             print("Working on image: {}".format(image))
 
-            if '*' in repo_tag: # Treat wildcards as a glob
+            # Treat wildcards as a glob
+            if any(pat in repo_tag for pat in ['*', '?', '[']):
                 try:
                     tag_names = get_tags(namespace, repo_name, registry=registry, auth=doauth)
                 except Exception as ex:
