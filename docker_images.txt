@@ -629,6 +629,7 @@ snowmass21software/delphes-osg:*
 michaelwcoughlin/ztfperiodic:latest
 # NMMA/fiesta light-curve fitting
 michaelwcoughlin/fiesta:latest
+michaelwcoughlin/fiesta-gpu:latest
 
 #intel
 intel/oneapi-hpckit
