@@ -630,6 +630,9 @@ michaelwcoughlin/ztfperiodic:latest
 # NMMA/fiesta light-curve fitting
 michaelwcoughlin/fiesta:latest
 michaelwcoughlin/fiesta-gpu:latest
+# redback-jax transient inference
+nsarinastro/redback-jax:latest
+nsarinastro/redback-jax:gpu
 
 #intel
 intel/oneapi-hpckit
