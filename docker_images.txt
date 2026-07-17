@@ -179,6 +179,7 @@ npavlovikj/prokevo:latest
 npcooley/heron:latest
 npcooley/esm:*
 npcooley/synextend:*
+npcooley/taxalogue:0.0.2
 docker.opencarp.org/opencarp/opencarp:latest
 parabola505/geospatxgboost:*
 rafaelnalin/r-ver-openblas:latest
