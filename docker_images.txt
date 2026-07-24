@@ -399,6 +399,7 @@ fermilab/fnal-wn-el8:*
 fermilab/fnal-wn-sl7:*
 fermilab/fnal-wn-sl6:*
 fermilab/fnal-dev-sl7:*
+fermilab/fnal-dev-el9:*
 fermilab/benchmark:*
 
 # NOvA Experiment
