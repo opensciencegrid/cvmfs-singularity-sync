@@ -748,3 +748,7 @@ dunescience/machinelearning:spine-latest
 
 # Pegasus
 pegasus/crophealth:latest
+
+# SCoPe
+michaelwcoughlin/periodfind:latest
+michaelwcoughlin/periodfind-gpu:latest
