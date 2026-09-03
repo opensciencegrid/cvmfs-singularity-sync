@@ -635,6 +635,8 @@ michaelwcoughlin/fiesta-gpu:latest
 # redback-jax transient inference
 nsarinastro/redback-jax:latest
 nsarinastro/redback-jax:gpu
+# MOSFiT transient light-curve fitting
+ashleyvillar/mosfit:latest
 
 #intel
 intel/oneapi-hpckit
