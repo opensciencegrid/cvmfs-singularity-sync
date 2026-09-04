@@ -721,7 +721,7 @@ pegasus/1000genome-workflow:latest
 pegasus/montage-workflow-v3:latest
 
 # h2oai
-h2oai/h2o-open-source-k8s:latest
+#h2oai/h2o-open-source-k8s:latest
 
 # E4S - these can be large
 ecpe4s/e4s-oneapi:25.06
