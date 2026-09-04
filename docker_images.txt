@@ -637,6 +637,8 @@ nsarinastro/redback-jax:latest
 nsarinastro/redback-jax:gpu
 # MOSFiT transient light-curve fitting
 ashleyvillar/mosfit:latest
+# SNID-SAGE supernova spectral classification
+ghcr.io/fiorenst/snid-sage:latest
 
 #intel
 intel/oneapi-hpckit
