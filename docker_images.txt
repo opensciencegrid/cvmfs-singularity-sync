@@ -641,6 +641,8 @@ nsarinastro/redback-jax:gpu
 ashleyvillar/mosfit:latest
 # SNID-SAGE supernova spectral classification
 ghcr.io/fiorenst/snid-sage:latest
+# ML4GW buoy — aframe gravitational-wave targeted search
+ghcr.io/ml4gw/buoy/buoy:main
 
 #intel
 intel/oneapi-hpckit
