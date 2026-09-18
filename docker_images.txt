@@ -643,6 +643,8 @@ ashleyvillar/mosfit:latest
 ghcr.io/fiorenst/snid-sage:latest
 # ML4GW buoy — aframe gravitational-wave targeted search
 ghcr.io/ml4gw/buoy/buoy:main
+# FLARE photometric transient classifier
+ghcr.io/applecider-ml/flare:latest
 
 #intel
 intel/oneapi-hpckit
