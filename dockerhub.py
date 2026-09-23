@@ -26,6 +26,7 @@
 import json
 
 import requests
+from urllib.parse import urljoin
 from furl import furl
 from requests.auth import AuthBase
 import traceback
@@ -499,6 +500,35 @@ class DockerHub(object):
         url = self._api_url('repositories/{0}/{1}/tags'.format(user, repository))
         self._auth = None
         return self._iter_requests_get(url, **kwargs)
+
+    def registry_tags(self, user, repository, page_size=100):
+        """List a repository's tags through the Docker Registry HTTP API V2
+
+        The `tags` function uses Docker Hub's own API, which other registries
+        (ghcr.io, hub.opensciencegrid.org, GitLab registries) don't implement.
+        This uses /v2/<name>/tags/list, which all of them follow.
+
+        Args:
+            user:
+            repository:
+            page_size (int, optional): tags requested per page
+
+        Returns:
+            list of tag names
+        """
+        url = self._api_url('{0}/{1}/tags/list'.format(user_cleaner(user), repository))
+        kwargs = {'params': {'n': page_size}}
+        tag_names = []
+        while url:
+            resp = self._do_request('GET', url, **kwargs)
+            tag_names.extend(resp.json().get('tags') or [])
+            url = resp.links.get('next', {}).get('url')
+            if url:
+                # the next link is relative and carries its own query,
+                # so join to the previous url and reset kwargs
+                url = urljoin(resp.url, url)
+                kwargs = {}
+        return tag_names
 
     def manifest(self, user, repository, tag, head=False, **kwargs):
         """
