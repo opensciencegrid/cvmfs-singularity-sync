@@ -645,6 +645,8 @@ ghcr.io/fiorenst/snid-sage:latest
 ghcr.io/ml4gw/buoy/buoy:main
 # FLARE photometric transient classifier
 ghcr.io/applecider-ml/flare:latest
+# ORACLE hierarchical transient classifier
+ghcr.io/dev-ved30/oracle:main
 
 #intel
 intel/oneapi-hpckit
