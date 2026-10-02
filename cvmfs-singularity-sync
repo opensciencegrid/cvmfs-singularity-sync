@@ -39,6 +39,7 @@ import urllib.request, urllib.error, urllib.parse
 import hashlib
 import traceback
 import subprocess
+import shutil
 import dockerhub
 import cleanup
 import sqlitedict
@@ -109,6 +110,14 @@ def main():
                         help="Indicate that this is a dry-run",
                         default=False)
 
+    # Alternative build root for faster singularity build
+    parser.add_argument("--build-dir",
+                        dest='build_dir',
+                        help="Alternative directory for singularity build (e.g. on a faster filesystem). "
+                             "If set, images are built here first, then moved to the final image directory.",
+                        type=str,
+                        default=None)
+
     try:
         args = parser.parse_args()
     except:
@@ -141,7 +150,7 @@ def main():
     if args.docker:
         image = args.docker
         if not args.dryrun:
-            return publish_image(image, singularity_rootfs, args.registry, doauth, manifest_cache)
+            return publish_image(image, singularity_rootfs, args.registry, doauth, manifest_cache, build_dir=args.build_dir)
         else:
             return verify_image(image, args.registry, doauth, manifest_cache)
     else:
@@ -190,7 +199,7 @@ def main():
                 for i in range(tries):
                     if not args.dryrun:
                         try:
-                            retval = publish_image(image, singularity_rootfs, registry, doauth, manifest_cache)
+                            retval = publish_image(image, singularity_rootfs, registry, doauth, manifest_cache, build_dir=args.build_dir)
                         except Exception as ex:
                	            if i < tries -1:
                                 print("Failed to publish image: {}".format(image))
@@ -367,7 +376,7 @@ def get_manifest(hub, namespace, repo_name, repo_tag, manifest_cache):
         manifest_cache[digest] = manifest
         return manifest, digest
 
-def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
+def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache, build_dir=None):
 
     # Tell the user the namespace, repo name and tag
     registry, namespace, repo_name, repo_tag = parse_image(image)
@@ -442,23 +451,53 @@ def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache):
     if 'password' in auth:
         singularity_env['SINGULARITY_DOCKER_PASSWORD'] = auth['password']
 
+    # Determine the actual build target directory.
+    # If --build-dir is specified, build the sandbox on the (potentially faster)
+    # alternative filesystem, then move the result into the final image_dir.
+    if build_dir:
+        build_dir = os.path.abspath(build_dir)
+        # Mirror the image_parentdir/image_dir structure under build_dir so
+        # concurrent builds for different images don't collide.
+        build_parentdir = os.path.join(build_dir, image_hash[0:sep+3])
+        build_target = os.path.join(build_parentdir, image_hash[sep+3:])
+        try:
+            os.makedirs(build_parentdir)
+        except OSError as oe:
+            if oe.errno != errno.EEXIST:
+                raise
+    else:
+        build_target = image_dir
+
     print("Calling singularity to build sandbox from image")
-    subprocess.check_call(
-        ['singularity', '--silent', 'build',
-         '--disable-cache=true', # Images are only downloaded once
-         '--force',              # Don't get stuck at a prompt if the target somehow exists
-         '--fix-perms',
-         '--sandbox',
-         image_dir, 'docker://' + image],
-        env=singularity_env)
+    try:
+        subprocess.check_call(
+            ['singularity', '--silent', 'build',
+             '--disable-cache=true', # Images are only downloaded once
+             '--force',              # Don't get stuck at a prompt if the target somehow exists
+             '--fix-perms',
+             '--sandbox',
+             build_target, 'docker://' + image],
+            env=singularity_env)
+    except BaseException:
+        # Clean up partial build artifacts in the alternative build root
+        if build_dir and os.path.exists(build_target):
+            print("Cleaning up partial build at %s" % build_target)
+            shutil.rmtree(build_target, ignore_errors=True)
+        raise
 
     # Various fixups to make the image compatible with CVMFS and singularity.
-    srv = os.path.join(image_dir, "srv")
-    cvmfs = os.path.join(image_dir, "cvmfs")
+    srv = os.path.join(build_target, "srv")
+    cvmfs = os.path.join(build_target, "cvmfs")
     if not os.path.exists(srv):
         os.makedirs(srv)
     if not os.path.exists(cvmfs):
         os.makedirs(cvmfs)
+
+    # If we built in an alternative build root, move the result to the final
+    # image directory inside CVMFS.
+    if build_dir:
+        print("Moving image from build dir %s to %s" % (build_target, image_dir))
+        shutil.move(build_target, image_dir)
 
     make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
     # Publish CVMFS as necessary.
