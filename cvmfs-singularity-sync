@@ -261,6 +261,8 @@ def get_tags(username, repo, registry=None, auth=None):
             registry = "https://%s" % registry
         auth = DOCKER_CREDS.get(registry, {})
         hub = dockerhub.DockerHub(url=registry, namespace=username, repo=repo, **auth)
+        # Only Docker Hub implements the tag API `hub.tags` uses
+        return hub.registry_tags(username, repo)
     else:
         auth = DOCKER_CREDS.get('https://registry.hub.docker.com', {})
         hub = dockerhub.DockerHub(**auth)
