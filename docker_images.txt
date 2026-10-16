@@ -653,6 +653,8 @@ ghcr.io/applecider-ml/flare:latest
 ghcr.io/dev-ved30/oracle:main
 # FLEET — Finding Luminous and Exotic Extragalactic Transients
 ghcr.io/gmzsebastian/fleet:latest
+# jax-snana — SNANA supernova simulation and light-curve fitting in JAX
+ghcr.io/mattgrayling/jax-snana:latest
 
 #intel
 intel/oneapi-hpckit
