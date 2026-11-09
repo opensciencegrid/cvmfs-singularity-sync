@@ -499,7 +499,13 @@ def publish_image(image, singularity_rootfs, registry, doauth, manifest_cache, b
     # image directory inside CVMFS.
     if build_dir:
         print("Moving image from build dir %s to %s" % (build_target, image_dir))
-        shutil.move(build_target, image_dir)
+        try:
+            shutil.move(build_target, image_dir)
+        except Exception as ex:
+            # If move fails, exit here (and avoid later image processing from committing a partial copy).
+            # This leaves the transaction open for next run to abort on start.
+            print("Failed to move image into %s: %s" % (image_dir, ex), file=sys.stderr)
+            sys.exit(1)
 
     make_final_symlink(image_dir, singularity_rootfs, namespace, repo_name, repo_tag)
     # Publish CVMFS as necessary.
