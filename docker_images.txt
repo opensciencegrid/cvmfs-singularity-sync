@@ -500,6 +500,7 @@ containers.ligo.org/link/pre-merger-software/gravelamps:python-3.12
 containers.ligo.org/link/pre-merger-software/golum_pipe:python-3.10
 
 # LIGO/VIRGO/KAGRA - User defined images
+containers.ligo.org/alvinli/gstlal-worker:trixie-b96d276cc-lean-20261108
 atanasi/darkmatter:latest
 atanasi/matlab:v97
 containers.ligo.org/alan.knee/lal-images/lalsuite-fstatbinary:latest
