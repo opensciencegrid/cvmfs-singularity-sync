@@ -520,10 +520,6 @@ containers.ligo.org/james-clark/tgr_images/lalsuite-master:latest
 containers.ligo.org/james-clark/tgr_images/testing_gr_fta:latest
 containers.ligo.org/joshua.willis/pycbc:latest
 containers.ligo.org/junjiezhao/tgr-ssb-docker-image/bilby_tgr:latest
-containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.15fff1bf87f1bf6b283aadeb6f5a21df39350e4f.cuda-build1
-containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.15fff1bf87f1bf6b283aadeb6f5a21df39350e4f.src-build1
-containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.dev20250814-build2
-containers.ligo.org/karl-wette/lalsuite-containers:7.26.2.e17f0a58054912da8a14a7f87505839783664e63.src-build1
 containers.ligo.org/lmxbcrosscorr/containers:crosscorr-lattice-dev-clean
 containers.ligo.org/maria-antonia.ferrer/bilby-pyfstat-container:69998c5f185b9d66c0f2df2366f4fc4788d9ac36
 containers.ligo.org/narola.bharatbhai/tgr-docker-image/bilby_tgr:latest
